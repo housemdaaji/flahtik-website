@@ -1,0 +1,37 @@
+/* ===== Flahtik — Main Stylesheet ===== */
+
+@import 'reset.css';
+@import 'variables.css';
+@import 'typography.css';
+@import 'layout.css';
+@import 'components.css';
+@import 'animations.css';
+
+/* ===== Section transition bleeds ===== */
+
+#services::before,
+#platform::before,
+#sectors::before,
+#impact::before,
+#about::before,
+#insights::before,
+#contact::before,
+.foot::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+#services::before  { background: linear-gradient(to bottom, var(--void), transparent); }
+#platform::before  { background: linear-gradient(to bottom, var(--deep), transparent); }
+#sectors::before   { background: linear-gradient(to bottom, var(--void), transparent); }
+#impact::before    { background: linear-gradient(to bottom, var(--deep), transparent); }
+#about::before     { background: linear-gradient(to bottom, var(--void), transparent); }
+#insights::before  { background: linear-gradient(to bottom, var(--deep), transparent); }
+#contact::before   { background: linear-gradient(to bottom, var(--void), transparent); }
+.foot::before      { background: linear-gradient(to bottom, var(--deep), transparent); }
