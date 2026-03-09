@@ -31,7 +31,7 @@ export default function App() {
         zIndex: 9999, transition: 'width 0.1s linear'
       }} />
       <Nav scrolled={scrolled} />
-      <main>
+      <main style={{ paddingTop: '80px' }}>
         <Hero />
         <Services />
         <Platform />

@@ -22,7 +22,7 @@ export default function Nav({ scrolled }) {
 
   const innerStyle = {
     maxWidth: '1280px', margin: '0 auto', padding: '0 64px',
-    height: '68px', display: 'flex', alignItems: 'center',
+    height: '80px', display: 'flex', alignItems: 'center',
     justifyContent: 'space-between', gap: '40px',
   }
 
@@ -31,7 +31,7 @@ export default function Nav({ scrolled }) {
       <div style={innerStyle}>
         <a href="/" style={{ display: 'flex', alignItems: 'center' }}>
           <img src="/assets/flahtik-logo.png" alt="Flahtik"
-            style={{ height: '30px', mixBlendMode: 'multiply' }} />
+            style={{ height: '52px', mixBlendMode: 'multiply' }} />
         </a>
 
         <ul style={{ display: 'flex', gap: '32px', listStyle: 'none' }}
@@ -39,11 +39,11 @@ export default function Nav({ scrolled }) {
           {links.map(l => (
             <li key={l.href}>
               <a href={l.href} style={{
-                fontSize: '0.8rem', color: '#94a3b8', fontWeight: 400,
+                fontSize: '0.8rem', color: '#475569', fontWeight: 400,
                 transition: 'color 0.2s', letterSpacing: '0.02em',
               }}
                 onMouseEnter={e => e.target.style.color = '#0a1628'}
-                onMouseLeave={e => e.target.style.color = '#94a3b8'}>
+                onMouseLeave={e => e.target.style.color = '#475569'}>
                 {l.label}
               </a>
             </li>

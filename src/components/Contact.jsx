@@ -40,7 +40,7 @@ export default function Contact() {
               That Matters
             </span>
           </h2>
-          <p style={{ fontSize: '0.95rem', color: '#64748b', fontWeight: 300, lineHeight: 1.8, maxWidth: '480px', marginTop: '16px' }}>
+          <p style={{ fontSize: '1.05rem', color: '#1e293b', fontWeight: 400, lineHeight: 1.8, maxWidth: '480px', marginTop: '16px' }}>
             Whether you need a platform demo, want to explore an enterprise partnership, or just have
             a question — our team responds within one business day.
           </p>
@@ -59,7 +59,7 @@ export default function Contact() {
               }}>
                 <div>
                   <div style={{ fontSize: '0.85rem', fontWeight: 600, color: type === t.id ? '#fff' : 'rgba(255,255,255,0.7)', fontFamily: "'Bricolage Grotesque', sans-serif", marginBottom: '4px' }}>{t.label}</div>
-                  <div style={{ fontSize: '0.72rem', color: 'rgba(255,255,255,0.35)', lineHeight: 1.4 }}>{t.sub}</div>
+                  <div style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.5)', lineHeight: 1.4 }}>{t.sub}</div>
                 </div>
               </button>
             ))}
@@ -73,48 +73,48 @@ export default function Contact() {
                   <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2563eb" strokeWidth="1.5"><polyline points="20 6 9 17 4 12" /></svg>
                 </div>
                 <h3 style={{ fontFamily: "'Bricolage Grotesque', sans-serif", fontSize: '1.4rem', fontWeight: 700, color: '#0a1628' }}>Message received.</h3>
-                <p style={{ fontSize: '0.9rem', color: '#64748b', fontWeight: 300, lineHeight: 1.75 }}>Thank you for reaching out. A member of the Flahtik team will be in touch within one business day.</p>
+                <p style={{ fontSize: '1rem', color: '#1e293b', fontWeight: 400, lineHeight: 1.75 }}>Thank you for reaching out. A member of the Flahtik team will be in touch within one business day.</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit}>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginBottom: '20px' }}>
                   {[{ key: 'full_name', label: 'Full Name', required: true }, { key: 'organization', label: 'Organisation', required: true }].map(f => (
                     <div key={f.key}>
-                      <label style={{ fontSize: '0.72rem', fontWeight: 600, color: '#0a1628', letterSpacing: '0.04em', textTransform: 'uppercase', display: 'block', marginBottom: '6px' }}>
+                      <label style={{ fontSize: '0.8rem', fontWeight: 600, color: '#0a1628', letterSpacing: '0.04em', textTransform: 'uppercase', display: 'block', marginBottom: '6px' }}>
                         {f.label} {f.required && <span style={{ color: '#2563eb' }}>*</span>}
                       </label>
                       <input required={f.required} value={form[f.key]} onChange={e => setForm({ ...form, [f.key]: e.target.value })}
-                        style={{ width: '100%', padding: '11px 14px', border: '1.5px solid #e2e8f0', fontFamily: "'Outfit', sans-serif", fontSize: '0.88rem', color: '#0a1628', background: '#fff', outline: 'none' }} />
+                        style={{ width: '100%', padding: '11px 14px', border: '1.5px solid #e2e8f0', fontFamily: "'Outfit', sans-serif", fontSize: '1rem', color: '#0a1628', background: '#fff', outline: 'none' }} />
                     </div>
                   ))}
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginBottom: '20px' }}>
                   {[{ key: 'job_title', label: 'Job Title', required: false }, { key: 'country', label: 'Country', required: true }].map(f => (
                     <div key={f.key}>
-                      <label style={{ fontSize: '0.72rem', fontWeight: 600, color: '#0a1628', letterSpacing: '0.04em', textTransform: 'uppercase', display: 'block', marginBottom: '6px' }}>
+                      <label style={{ fontSize: '0.8rem', fontWeight: 600, color: '#0a1628', letterSpacing: '0.04em', textTransform: 'uppercase', display: 'block', marginBottom: '6px' }}>
                         {f.label} {f.required && <span style={{ color: '#2563eb' }}>*</span>}
                       </label>
                       <input required={f.required} value={form[f.key]} onChange={e => setForm({ ...form, [f.key]: e.target.value })}
-                        style={{ width: '100%', padding: '11px 14px', border: '1.5px solid #e2e8f0', fontFamily: "'Outfit', sans-serif", fontSize: '0.88rem', color: '#0a1628', background: '#fff', outline: 'none' }} />
+                        style={{ width: '100%', padding: '11px 14px', border: '1.5px solid #e2e8f0', fontFamily: "'Outfit', sans-serif", fontSize: '1rem', color: '#0a1628', background: '#fff', outline: 'none' }} />
                     </div>
                   ))}
                 </div>
                 <div style={{ marginBottom: '20px' }}>
-                  <label style={{ fontSize: '0.72rem', fontWeight: 600, color: '#0a1628', letterSpacing: '0.04em', textTransform: 'uppercase', display: 'block', marginBottom: '6px' }}>
+                  <label style={{ fontSize: '0.8rem', fontWeight: 600, color: '#0a1628', letterSpacing: '0.04em', textTransform: 'uppercase', display: 'block', marginBottom: '6px' }}>
                     Work Email <span style={{ color: '#2563eb' }}>*</span>
                   </label>
                   <input required type="email" value={form.email} onChange={e => setForm({ ...form, email: e.target.value })}
-                    style={{ width: '100%', padding: '11px 14px', border: '1.5px solid #e2e8f0', fontFamily: "'Outfit', sans-serif", fontSize: '0.88rem', color: '#0a1628', background: '#fff', outline: 'none' }} />
+                    style={{ width: '100%', padding: '11px 14px', border: '1.5px solid #e2e8f0', fontFamily: "'Outfit', sans-serif", fontSize: '1rem', color: '#0a1628', background: '#fff', outline: 'none' }} />
                 </div>
                 <div style={{ marginBottom: '28px' }}>
-                  <label style={{ fontSize: '0.72rem', fontWeight: 600, color: '#0a1628', letterSpacing: '0.04em', textTransform: 'uppercase', display: 'block', marginBottom: '6px' }}>
+                  <label style={{ fontSize: '0.8rem', fontWeight: 600, color: '#0a1628', letterSpacing: '0.04em', textTransform: 'uppercase', display: 'block', marginBottom: '6px' }}>
                     Message <span style={{ color: '#2563eb' }}>*</span>
                   </label>
                   <textarea required rows={4} value={form.message} onChange={e => setForm({ ...form, message: e.target.value })}
-                    style={{ width: '100%', padding: '11px 14px', border: '1.5px solid #e2e8f0', fontFamily: "'Outfit', sans-serif", fontSize: '0.88rem', color: '#0a1628', background: '#fff', outline: 'none', resize: 'vertical' }} />
+                    style={{ width: '100%', padding: '11px 14px', border: '1.5px solid #e2e8f0', fontFamily: "'Outfit', sans-serif", fontSize: '1rem', color: '#0a1628', background: '#fff', outline: 'none', resize: 'vertical' }} />
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '24px', paddingTop: '24px', borderTop: '1px solid #e2e8f0', flexWrap: 'wrap' }}>
-                  <p style={{ fontSize: '0.68rem', color: '#94a3b8', lineHeight: 1.5, maxWidth: '280px' }}>
+                  <p style={{ fontSize: '0.8rem', color: '#475569', lineHeight: 1.5, maxWidth: '280px' }}>
                     By submitting you agree to our Privacy Policy. We will respond within one business day.
                   </p>
                   <button type="submit" disabled={sending} style={{
@@ -138,7 +138,7 @@ export default function Contact() {
             { label: 'Response Time', value: 'Within 1 business day' },
           ].map(d => (
             <div key={d.label} style={{ background: '#fff', padding: '28px 24px' }}>
-              <div style={{ fontSize: '0.62rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: '#94a3b8', fontWeight: 600, marginBottom: '6px' }}>{d.label}</div>
+              <div style={{ fontSize: '0.8rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: '#475569', fontWeight: 600, marginBottom: '6px' }}>{d.label}</div>
               {d.href
                 ? <a href={d.href} style={{ fontSize: '0.88rem', color: '#2563eb', fontWeight: 500 }}>{d.value}</a>
                 : <div style={{ fontSize: '0.88rem', color: '#0a1628', fontWeight: 500 }}>{d.value}</div>}

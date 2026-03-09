@@ -43,7 +43,7 @@ export default function Insights() {
               </span>
             </h2>
           </div>
-          <p style={{ fontSize: '0.95rem', color: '#64748b', fontWeight: 300, lineHeight: 1.8 }}>
+          <p style={{ fontSize: '1.05rem', color: '#1e293b', fontWeight: 400, lineHeight: 1.8 }}>
             Research, case studies, and perspectives from the Flahtik team on spatial technology,
             climate, and the future of Earth intelligence.
           </p>
@@ -63,11 +63,11 @@ export default function Insights() {
             <div style={{ display: 'flex', gap: '8px', alignItems: 'center', marginBottom: '14px' }}>
               <span style={{ fontSize: '0.62rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#2563eb', fontWeight: 600 }}>{featured.cat}</span>
               <span style={{ width: '3px', height: '3px', borderRadius: '50%', background: '#e2e8f0', display: 'block' }} />
-              <span style={{ fontSize: '0.72rem', color: '#94a3b8' }}>{featured.date}</span>
-              <span style={{ fontSize: '0.72rem', color: '#94a3b8' }}>{featured.read} read</span>
+              <span style={{ fontSize: '0.8rem', color: '#475569' }}>{featured.date}</span>
+              <span style={{ fontSize: '0.8rem', color: '#475569' }}>{featured.read} read</span>
             </div>
             <h3 style={{ fontFamily: "'Bricolage Grotesque', sans-serif", fontSize: '1.4rem', fontWeight: 700, color: '#0a1628', lineHeight: 1.3, letterSpacing: '-0.02em', marginBottom: '14px' }}>{featured.title}</h3>
-            <p style={{ fontSize: '0.88rem', color: '#64748b', lineHeight: 1.75, marginBottom: '28px', flex: 1, fontWeight: 300 }}>{featured.excerpt}</p>
+            <p style={{ fontSize: '1rem', color: '#1e293b', lineHeight: 1.75, marginBottom: '28px', flex: 1, fontWeight: 400 }}>{featured.excerpt}</p>
             <a href="#" style={{ fontSize: '0.75rem', fontWeight: 600, color: '#2563eb', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Read Article →</a>
           </div>
         </div>
@@ -84,7 +84,7 @@ export default function Insights() {
               <div style={{ padding: '24px', flex: 1, display: 'flex', flexDirection: 'column' }}>
                 <div style={{ display: 'flex', gap: '6px', alignItems: 'center', marginBottom: '10px' }}>
                   <span style={{ fontSize: '0.6rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#2563eb', fontWeight: 600 }}>{a.cat}</span>
-                  <span style={{ fontSize: '0.68rem', color: '#94a3b8' }}>— {a.date}</span>
+                  <span style={{ fontSize: '0.8rem', color: '#475569' }}>— {a.date}</span>
                 </div>
                 <h4 style={{ fontFamily: "'Bricolage Grotesque', sans-serif", fontSize: '0.92rem', fontWeight: 600, color: '#0a1628', lineHeight: 1.4, marginBottom: '10px', flex: 1 }}>{a.title}</h4>
                 <a href="#" style={{ fontSize: '0.7rem', fontWeight: 600, color: '#2563eb', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Read more →</a>
@@ -97,7 +97,7 @@ export default function Insights() {
         <div style={{ padding: '48px', background: '#f0f6ff', border: '1px solid #e2e8f0', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '48px', alignItems: 'center' }}>
           <div>
             <h3 style={{ fontFamily: "'Bricolage Grotesque', sans-serif", fontSize: '1.3rem', fontWeight: 700, color: '#0a1628', marginBottom: '10px' }}>Stay ahead of the field</h3>
-            <p style={{ fontSize: '0.88rem', color: '#64748b', lineHeight: 1.75, fontWeight: 300 }}>Monthly intelligence briefings — satellite insights, platform updates, and spatial tech perspectives. No noise.</p>
+            <p style={{ fontSize: '1rem', color: '#1e293b', lineHeight: 1.75, fontWeight: 400 }}>Monthly intelligence briefings — satellite insights, platform updates, and spatial tech perspectives. No noise.</p>
           </div>
           {done ? (
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
@@ -114,7 +114,7 @@ export default function Insights() {
                   Subscribe
                 </button>
               </div>
-              <p style={{ fontSize: '0.65rem', color: '#94a3b8', lineHeight: 1.5 }}>By subscribing you agree to our Privacy Policy. We never share your data. Unsubscribe anytime.</p>
+              <p style={{ fontSize: '0.8rem', color: '#475569', lineHeight: 1.5 }}>By subscribing you agree to our Privacy Policy. We never share your data. Unsubscribe anytime.</p>
             </form>
           )}
         </div>

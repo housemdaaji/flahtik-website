@@ -41,7 +41,7 @@ export default function Platform() {
               }}>Clear Decision</span>
             </h2>
           </div>
-          <p style={{ fontSize: '0.95rem', color: '#64748b', fontWeight: 300, lineHeight: 1.8 }}>
+          <p style={{ fontSize: '1.05rem', color: '#1e293b', fontWeight: 400, lineHeight: 1.8 }}>
             A five-stage pipeline transforms raw Earth observation data into
             actionable intelligence — fully automated, fully auditable.
           </p>
@@ -55,7 +55,7 @@ export default function Platform() {
               gap: '24px', alignItems: 'start',
               paddingBottom: i < steps.length - 1 ? '48px' : '0',
             }}>
-              <span style={{ fontSize: '0.65rem', fontWeight: 700, color: '#94a3b8', letterSpacing: '0.15em', paddingTop: '4px', textAlign: 'right' }}>
+              <span style={{ fontSize: '0.65rem', fontWeight: 700, color: '#475569', letterSpacing: '0.15em', paddingTop: '4px', textAlign: 'right' }}>
                 {s.num}
               </span>
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginLeft: '-21px' }}>
@@ -83,7 +83,7 @@ export default function Platform() {
                   </svg>
                 </div>
                 <h3 style={{ fontFamily: "'Bricolage Grotesque', sans-serif", fontSize: '1.05rem', fontWeight: 600, color: '#0a1628', marginBottom: '8px' }}>{s.title}</h3>
-                <p style={{ fontSize: '0.88rem', color: '#64748b', lineHeight: 1.7, marginBottom: '14px', fontWeight: 300 }}>{s.body}</p>
+                <p style={{ fontSize: '1rem', color: '#1e293b', lineHeight: 1.7, marginBottom: '14px', fontWeight: 400 }}>{s.body}</p>
                 <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
                   {s.tags.map(tag => (
                     <span key={tag} style={{
@@ -103,12 +103,12 @@ export default function Platform() {
           padding: '28px 0', borderTop: '1px solid #e2e8f0', borderBottom: '1px solid #e2e8f0',
           display: 'flex', alignItems: 'center', gap: '32px', flexWrap: 'wrap', marginBottom: '48px',
         }}>
-          <span style={{ fontSize: '0.62rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#94a3b8', fontWeight: 600, whiteSpace: 'nowrap' }}>
+          <span style={{ fontSize: '0.8rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#475569', fontWeight: 600, whiteSpace: 'nowrap' }}>
             Powered by
           </span>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', flex: 1 }}>
             {stack.map(t => (
-              <span key={t} style={{ padding: '5px 16px', border: '1px solid #e2e8f0', fontSize: '0.72rem', color: '#64748b' }}>{t}</span>
+              <span key={t} style={{ padding: '5px 16px', border: '1px solid #e2e8f0', fontSize: '0.8rem', color: '#1e293b' }}>{t}</span>
             ))}
           </div>
         </div>
@@ -122,7 +122,7 @@ export default function Platform() {
             <h3 style={{ fontFamily: "'Bricolage Grotesque', sans-serif", fontSize: '1.4rem', fontWeight: 600, color: '#fff', marginBottom: '8px' }}>
               See the platform in action
             </h3>
-            <p style={{ fontSize: '0.88rem', color: 'rgba(255,255,255,0.45)', fontWeight: 300 }}>
+            <p style={{ fontSize: '1rem', color: 'rgba(255,255,255,0.55)', fontWeight: 400 }}>
               Book a 30-minute walkthrough with our solutions team. No commitment required.
             </p>
           </div>

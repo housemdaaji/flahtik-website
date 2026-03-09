@@ -1,7 +1,7 @@
 export default function Hero() {
   return (
     <section style={{
-      minHeight: '100vh', paddingTop: '68px',
+      minHeight: '100vh', paddingTop: '80px',
       position: 'relative', overflow: 'hidden',
       background: '#ffffff', display: 'flex',
       alignItems: 'center',
@@ -62,7 +62,7 @@ export default function Hero() {
 
         {/* Subheading */}
         <p style={{
-          fontSize: '1.05rem', color: '#64748b', fontWeight: 300,
+          fontSize: '1.05rem', color: '#1e293b', fontWeight: 400,
           lineHeight: 1.8, maxWidth: '560px', marginBottom: '44px',
         }}>
           Flahtik integrates satellite imagery, IoT sensors, and AI into a
@@ -84,7 +84,7 @@ export default function Hero() {
           <a href="#contact" style={{
             display: 'inline-flex', alignItems: 'center', gap: '8px',
             padding: '14px 28px', border: '1.5px solid #e2e8f0',
-            color: '#64748b', fontSize: '0.8rem', fontWeight: 500,
+            color: '#1e293b', fontSize: '0.8rem', fontWeight: 500,
           }}>
             Request Demo
           </a>
@@ -96,7 +96,7 @@ export default function Hero() {
             <span key={tag} style={{
               padding: '5px 16px', border: '1px solid #e2e8f0',
               fontSize: '0.68rem', letterSpacing: '0.1em',
-              textTransform: 'uppercase', color: '#94a3b8', fontWeight: 500,
+              textTransform: 'uppercase', color: '#475569', fontWeight: 500,
             }}>{tag}</span>
           ))}
         </div>

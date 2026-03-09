@@ -14,7 +14,7 @@ export default function Footer() {
           <div>
             <img src="/assets/flahtik-logo.png" alt="Flahtik"
               style={{ height: '28px', mixBlendMode: 'screen', marginBottom: '20px' }} />
-            <p style={{ fontSize: '0.82rem', color: 'rgba(255,255,255,0.35)', lineHeight: 1.75, fontWeight: 300, maxWidth: '240px', marginBottom: '28px' }}>
+            <p style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.45)', lineHeight: 1.75, fontWeight: 400, maxWidth: '240px', marginBottom: '28px' }}>
               Spatial intelligence for the living planet. Built in Riyadh. Deployed globally.
             </p>
             <div style={{ display: 'flex', gap: '10px' }}>
@@ -44,9 +44,9 @@ export default function Footer() {
               <ul style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                 {col.links.map(([label, href]) => (
                   <li key={label}>
-                    <a href={href} style={{ fontSize: '0.82rem', color: 'rgba(255,255,255,0.45)', fontWeight: 300, transition: 'color 0.2s' }}
+                    <a href={href} style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.55)', fontWeight: 400, transition: 'color 0.2s' }}
                       onMouseEnter={e => e.target.style.color = '#fff'}
-                      onMouseLeave={e => e.target.style.color = 'rgba(255,255,255,0.45)'}>
+                      onMouseLeave={e => e.target.style.color = 'rgba(255,255,255,0.55)'}>
                       {label}
                     </a>
                   </li>
@@ -59,14 +59,14 @@ export default function Footer() {
 
       <div style={{ borderTop: '1px solid rgba(255,255,255,0.07)', padding: '20px 64px' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '24px', flexWrap: 'wrap' }}>
-          <span style={{ fontSize: '0.72rem', color: 'rgba(255,255,255,0.2)', fontWeight: 300 }}>
+          <span style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.3)', fontWeight: 400 }}>
             © 2025 Flahtik. All rights reserved. Founded in Riyadh, Saudi Arabia.
           </span>
           <div style={{ display: 'flex', gap: '24px' }}>
             {['Privacy Policy', 'Terms of Service'].map(l => (
-              <a key={l} href="#" style={{ fontSize: '0.72rem', color: 'rgba(255,255,255,0.2)', transition: 'color 0.2s' }}
+              <a key={l} href="#" style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.3)', transition: 'color 0.2s' }}
                 onMouseEnter={e => e.target.style.color = 'rgba(255,255,255,0.6)'}
-                onMouseLeave={e => e.target.style.color = 'rgba(255,255,255,0.2)'}>
+                onMouseLeave={e => e.target.style.color = 'rgba(255,255,255,0.3)'}>
                 {l}
               </a>
             ))}

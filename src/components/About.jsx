@@ -26,14 +26,14 @@ export default function About() {
         {/* Story */}
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: '64px', alignItems: 'start', marginBottom: '72px' }}>
           <div>
-            <p style={{ fontSize: '0.95rem', color: '#64748b', lineHeight: 1.9, marginBottom: '20px', fontWeight: 300 }}>
+            <p style={{ fontSize: '1.05rem', color: '#1e293b', lineHeight: 1.9, marginBottom: '20px', fontWeight: 400 }}>
               Flahtik was founded in Riyadh in 2019 with a single conviction — that the gap between
               what the Earth is telling us and what decisions get made is a problem worth solving.
               We started in the Middle East because the region's challenges are the world's challenges:
               water scarcity, desertification, food security, and the pressure to grow sustainably
               in an arid environment.
             </p>
-            <p style={{ fontSize: '0.95rem', color: '#64748b', lineHeight: 1.9, fontWeight: 300 }}>
+            <p style={{ fontSize: '1.05rem', color: '#1e293b', lineHeight: 1.9, fontWeight: 400 }}>
               Today we operate across four domains and six continents, delivering spatial intelligence
               to governments, agribusinesses, water utilities, and environmental organisations. Every
               model we build, every map we produce, every alert we send is rooted in one purpose —
@@ -58,15 +58,19 @@ export default function About() {
             Our Values
           </span>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1px', background: '#e2e8f0', border: '1px solid #e2e8f0' }}>
-            {values.map(v => (
-              <div key={v.title} style={{ background: '#fff', padding: '36px 28px' }}>
+            {values.map((v, i) => (
+              <div key={v.title} style={{
+                background: '#fff',
+                padding: '36px 28px',
+                borderLeft: `3px solid ${['#2563eb', '#16a34a', '#ea580c', '#2563eb'][i % 4]}`,
+              }}>
                 <div style={{ width: '40px', height: '40px', background: '#f0f6ff', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" strokeWidth="1.5">
                     <circle cx="12" cy="12" r="10" /><path d="M12 8v4M12 16h.01" />
                   </svg>
                 </div>
                 <h3 style={{ fontFamily: "'Bricolage Grotesque', sans-serif", fontSize: '0.95rem', fontWeight: 600, color: '#0a1628', marginBottom: '10px' }}>{v.title}</h3>
-                <p style={{ fontSize: '0.8rem', color: '#64748b', lineHeight: 1.7, fontWeight: 300 }}>{v.body}</p>
+                <p style={{ fontSize: '0.9rem', color: '#1e293b', lineHeight: 1.7, fontWeight: 400 }}>{v.body}</p>
               </div>
             ))}
           </div>
@@ -78,13 +82,13 @@ export default function About() {
             <h3 style={{ fontFamily: "'Bricolage Grotesque', sans-serif", fontSize: '1.2rem', fontWeight: 600, color: '#0a1628', marginBottom: '6px' }}>
               Join the team building spatial intelligence for the planet
             </h3>
-            <p style={{ fontSize: '0.88rem', color: '#64748b', fontWeight: 300 }}>We are always looking for exceptional people in geospatial science, AI, and climate tech.</p>
+            <p style={{ fontSize: '1rem', color: '#1e293b', fontWeight: 400 }}>We are always looking for exceptional people in geospatial science, AI, and climate tech.</p>
           </div>
           <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
             <a href="mailto:hello@flahtik.com" style={{ padding: '12px 24px', background: 'linear-gradient(135deg,#2563eb,#06b6d4)', color: '#fff', fontSize: '0.78rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em' }}>
               View Open Roles →
             </a>
-            <a href="mailto:hello@flahtik.com" style={{ padding: '12px 20px', border: '1.5px solid #e2e8f0', color: '#64748b', fontSize: '0.78rem', fontWeight: 500 }}>
+            <a href="mailto:hello@flahtik.com" style={{ padding: '12px 20px', border: '1.5px solid #e2e8f0', color: '#1e293b', fontSize: '0.88rem', fontWeight: 500 }}>
               hello@flahtik.com
             </a>
           </div>
