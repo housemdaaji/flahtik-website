@@ -128,33 +128,12 @@ button { border: none; background: none; cursor: pointer; font: inherit; }
 [data-reveal].revealed { opacity: 1; transform: none; }
 
 /* ═══════════════════════════════════
-   SCROLL PROGRESS + LOADER
+   SCROLL PROGRESS
 ═══════════════════════════════════ */
 #scrollProgress {
   position: fixed; top: 0; left: 0; height: 2px; width: 0%;
   background: var(--blue-grad); z-index: 9999;
 }
-#pageLoader {
-  position: fixed; inset: 0; background: #fff;
-  display: flex; align-items: center; justify-content: center;
-  z-index: 9998; transition: opacity 0.6s, visibility 0.6s;
-}
-#pageLoader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
-.loader__inner { display: flex; flex-direction: column; align-items: center; gap: 24px; }
-.page-loader__motif {
-  width: 52px; mix-blend-mode: multiply;
-  animation: pulse 1.2s ease-in-out infinite;
-}
-@keyframes pulse {
-  0%,100% { opacity:1; transform:scale(1); }
-  50% { opacity:0.5; transform:scale(0.92); }
-}
-.loader__bar { width: 120px; height: 2px; background: var(--border); overflow: hidden; }
-.loader__bar-fill {
-  height: 100%; background: var(--blue-grad);
-  animation: fill 0.9s var(--ease) forwards;
-}
-@keyframes fill { from{width:0} to{width:100%} }
 
 /* ═══════════════════════════════════
    NAV

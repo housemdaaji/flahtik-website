@@ -1,32 +1,11 @@
+document.body.style.opacity = '1';
+
 // -- SCROLL PROGRESS --
 window.addEventListener('scroll', () => {
   const p = (window.scrollY /
     (document.body.scrollHeight - window.innerHeight)) * 100;
   document.getElementById('scrollProgress').style.width = p + '%';
 });
-
-// === PAGE LOADER ===
-(function() {
-  const loader = document.getElementById('pageLoader');
-  if (!loader) return;
-  
-  function hideLoader() {
-    loader.classList.add('hidden');
-  }
-  
-  // Hide after max 1.5s no matter what
-  const fallback = setTimeout(hideLoader, 1500);
-  
-  if (document.readyState === 'complete') {
-    clearTimeout(fallback);
-    setTimeout(hideLoader, 400);
-  } else {
-    window.addEventListener('load', function() {
-      clearTimeout(fallback);
-      setTimeout(hideLoader, 400);
-    });
-  }
-})();
 
 // Reveal on scroll
 const revealEls = document.querySelectorAll('[data-reveal]');
