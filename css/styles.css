@@ -122,10 +122,11 @@ button { border: none; background: none; cursor: pointer; font: inherit; }
 .anim-delay-3 { animation-delay: 0.3s; }
 .anim-delay-4 { animation-delay: 0.4s; }
 [data-reveal] {
-  opacity: 0; transform: translateY(28px);
-  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+  opacity: 1; transform: none;
 }
-[data-reveal].revealed { opacity: 1; transform: none; }
+[data-reveal].revealed {
+  opacity: 1; transform: none;
+}
 
 /* ═══════════════════════════════════
    SCROLL PROGRESS
@@ -234,8 +235,8 @@ button { border: none; background: none; cursor: pointer; font: inherit; }
   position: relative; z-index: 1;
   max-width: var(--max-width); margin: 0 auto;
   padding: 80px 64px;
-  display: grid; grid-template-columns: 1fr 400px;
-  gap: 80px; align-items: center;
+  display: grid; grid-template-columns: 1fr;
+  max-width: 720px;
 }
 .hero__headline { margin: 24px 0; max-width: 600px; }
 .hero__sub { max-width: 480px; margin-bottom: 40px; }
