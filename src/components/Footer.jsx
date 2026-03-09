@@ -5,11 +5,27 @@ const cols = [
   { title: 'Company', links: [['About', '#about'], ['Insights', '#insights'], ['Careers', 'mailto:hello@flahtik.com'], ['Contact', '#contact']] },
 ]
 
-export default function Footer() {
+export default function Footer({ dark = false }) {
+  const t = {
+    bg:       dark ? '#080f1e'  : '#ffffff',
+    bgAlt:    dark ? '#0d1626'  : '#f0f6ff',
+    bgCard:   dark ? '#111827'  : '#ffffff',
+    border:   dark ? '#1e2d45'  : '#e2e8f0',
+    heading:  dark ? '#f0f6ff'  : '#0a1628',
+    body:     dark ? '#cbd5e1'  : '#1e293b',
+    muted:    dark ? '#94a3b8'  : '#475569',
+    faint:    dark ? '#64748b'  : '#94a3b8',
+    blue:     dark ? '#3b82f6'  : '#2563eb',
+    cyan:     dark ? '#22d3ee'  : '#06b6d4',
+    green:    dark ? '#22c55e'  : '#16a34a',
+    orange:   dark ? '#f97316'  : '#ea580c',
+    grad:     'linear-gradient(135deg, ' + (dark ? '#3b82f6' : '#2563eb') + ', ' + (dark ? '#22d3ee' : '#06b6d4') + ')',
+    divider:  dark ? '#1e2d45'  : '#e2e8f0',
+  }
   return (
     <footer style={{ background: '#0a1628' }}>
-      <div className="container" style={{ paddingTop: '72px', paddingBottom: '0' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr 1fr', gap: '48px', paddingBottom: '56px' }}>
+      <div className="container" style={{ paddingTop: '56px', paddingBottom: '0' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr 1fr', gap: '48px', paddingBottom: '36px' }}>
           {/* Brand */}
           <div>
             <img src="/assets/flahtik-logo.png" alt="Flahtik"
