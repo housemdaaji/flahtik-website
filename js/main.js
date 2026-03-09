@@ -5,20 +5,28 @@ window.addEventListener('scroll', () => {
   document.getElementById('scrollProgress').style.width = p + '%';
 });
 
-// -- PAGE LOADER --
-window.addEventListener('load', () => {
-  setTimeout(() => {
-    document.getElementById('pageLoader').classList.add('hidden');
-    document.querySelectorAll('.anim-fadeup').forEach(el => {
-      el.style.animationPlayState = 'running';
+// === PAGE LOADER ===
+(function() {
+  const loader = document.getElementById('pageLoader');
+  if (!loader) return;
+  
+  function hideLoader() {
+    loader.classList.add('hidden');
+  }
+  
+  // Hide after max 1.5s no matter what
+  const fallback = setTimeout(hideLoader, 1500);
+  
+  if (document.readyState === 'complete') {
+    clearTimeout(fallback);
+    setTimeout(hideLoader, 400);
+  } else {
+    window.addEventListener('load', function() {
+      clearTimeout(fallback);
+      setTimeout(hideLoader, 400);
     });
-  }, 900);
-});
-
-// Pause hero animations until loader done
-document.querySelectorAll('.anim-fadeup').forEach(el => {
-  el.style.animationPlayState = 'paused';
-});
+  }
+})();
 
 // Reveal on scroll
 const revealEls = document.querySelectorAll('[data-reveal]');
