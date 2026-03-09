@@ -22,7 +22,7 @@ export default function Nav({ scrolled }) {
 
   const innerStyle = {
     maxWidth: '1280px', margin: '0 auto', padding: '0 64px',
-    height: '80px', display: 'flex', alignItems: 'center',
+    height: '180px', display: 'flex', alignItems: 'center',
     justifyContent: 'space-between', gap: '40px',
   }
 
@@ -31,7 +31,7 @@ export default function Nav({ scrolled }) {
       <div style={innerStyle}>
         <a href="/" style={{ display: 'flex', alignItems: 'center' }}>
           <img src="/assets/flahtik-logo.png" alt="Flahtik"
-            style={{ height: '52px', mixBlendMode: 'multiply' }} />
+            style={{ height: '160px', mixBlendMode: 'multiply' }} />
         </a>
 
         <ul style={{ display: 'flex', gap: '32px', listStyle: 'none' }}
