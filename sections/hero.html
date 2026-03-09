@@ -1,109 +1,124 @@
-<!-- SECTION: Hero -->
 <section id="hero" class="hero">
 
-  <!-- Grid overlay -->
-  <div class="hero__grid-overlay" aria-hidden="true"></div>
+  <!-- Background grid -->
+  <div class="hero__grid-bg" aria-hidden="true"></div>
 
-  <!-- Radial gradient glows -->
-  <div class="hero__glow hero__glow--jade" aria-hidden="true"></div>
-  <div class="hero__glow hero__glow--cyan" aria-hidden="true"></div>
+  <!-- Animated orbs -->
+  <div class="hero__orb hero__orb--1" aria-hidden="true"></div>
+  <div class="hero__orb hero__orb--2" aria-hidden="true"></div>
 
-  <!-- Noise / grain texture -->
-  <div class="hero__noise" aria-hidden="true"></div>
+  <div class="hero__inner">
 
-  <!-- Main two-column layout -->
-  <div class="container hero__container">
-    <div class="hero__grid">
+    <!-- LEFT COLUMN -->
+    <div class="hero__content">
 
-      <!-- ── Left Column ── -->
-      <div class="hero__content">
-
-        <!-- Eyebrow -->
-        <div class="hero__eyebrow animate-fade-up" style="transition-delay: 0.3s">
-          <span class="hero__eyebrow-line" aria-hidden="true"></span>
-          <span class="hero__eyebrow-text">Spatial Intelligence Platform</span>
-        </div>
-
-        <!-- Headline -->
-        <h1 class="hero__headline animate-fade-up" style="transition-delay: 0.5s">
-          Shaping the<br>
-          <span class="hero__headline--jade">Living Planet</span><br>
-          Through<br>
-          <span class="hero__headline--gradient">Spatial Data</span>
-        </h1>
-
-        <!-- Subheading -->
-        <p class="hero__sub animate-fade-up" style="transition-delay: 0.7s">
-          Flahtik fuses geospatial intelligence with environmental science —
-          empowering governments, agribusinesses, and water authorities to make
-          decisions that sustain ecosystems and accelerate growth.
-        </p>
-
-        <!-- CTA buttons -->
-        <div class="hero__cta animate-fade-up" style="transition-delay: 0.9s">
-          <a href="#platform" class="btn hero__btn-primary">
-            Explore Platform <span aria-hidden="true">&rarr;</span>
-          </a>
-          <a href="#" class="btn hero__btn-ghost">
-            <span aria-hidden="true">&#9654;</span> Watch Overview
-          </a>
-        </div>
+      <div class="badge anim-fadeup">
+        <div class="badge-dot"></div>
+        <span>Spatial Intelligence Platform</span>
       </div>
 
-      <!-- ── Right Column — Stat Cards ── -->
-      <div class="hero__stats animate-fade-up" style="transition-delay: 1.1s">
+      <h1 class="t-h1 hero__headline anim-fadeup anim-delay-1">
+        Where <span class="t-grad">Earth Data</span><br>
+        Meets Human<br>Decision
+      </h1>
 
-        <div class="hero__stat-card">
-          <div class="hero__stat-accent" aria-hidden="true"></div>
-          <span class="hero__stat-tag">Coverage</span>
-          <span class="hero__stat-number">180+</span>
-          <span class="hero__stat-label">Countries monitored via satellite &amp; sensor networks</span>
-        </div>
+      <p class="t-body hero__sub anim-fadeup anim-delay-2">
+        Flahtik integrates satellite imagery, IoT sensors, and AI
+        into a unified platform — built for governments,
+        agribusinesses, and water utilities across the planet.
+      </p>
 
-        <div class="hero__stat-card">
-          <div class="hero__stat-accent" aria-hidden="true"></div>
-          <span class="hero__stat-tag">Agriculture</span>
-          <span class="hero__stat-number">2.4M</span>
-          <span class="hero__stat-label">Hectares optimized through precision agri-analytics</span>
-        </div>
-
-        <div class="hero__stat-card">
-          <div class="hero__stat-accent" aria-hidden="true"></div>
-          <span class="hero__stat-tag">Water</span>
-          <span class="hero__stat-number">98%</span>
-          <span class="hero__stat-label">Prediction accuracy for watershed stress events</span>
-        </div>
-
-        <div class="hero__stat-card">
-          <div class="hero__stat-accent" aria-hidden="true"></div>
-          <span class="hero__stat-tag">Impact</span>
-          <span class="hero__stat-number">40+</span>
-          <span class="hero__stat-label">Government &amp; enterprise clients across 3 continents</span>
-        </div>
-
+      <div class="hero__btns anim-fadeup anim-delay-3">
+        <a href="#platform" class="btn-primary">
+          Explore Platform
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2.5">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+        <a href="#contact" class="btn-outline">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2">
+            <polygon points="5 3 19 12 5 21 5 3"/>
+          </svg>
+          Watch Overview
+        </a>
       </div>
+
+      <!-- Domain tags -->
+      <div class="hero__tags anim-fadeup anim-delay-4">
+        <span class="hero__tag">Spatial Technology</span>
+        <span class="hero__tag">Precision Agriculture</span>
+        <span class="hero__tag">Water Management</span>
+        <span class="hero__tag">Environmental Intel</span>
+      </div>
+
+    </div>
+
+    <!-- RIGHT COLUMN — Stats -->
+    <div class="hero__stats">
+
+      <div class="hero__stat anim-fadeup anim-delay-1" data-reveal>
+        <div class="hero__stat-top">
+          <span class="t-eyebrow">Global Coverage</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1.5" opacity="0.3">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/>
+          </svg>
+        </div>
+        <div class="hero__stat-num">180<span>+</span></div>
+        <div class="hero__stat-label">Countries monitored globally</div>
+      </div>
+
+      <div class="hero__stat anim-fadeup anim-delay-2" data-reveal>
+        <div class="hero__stat-top">
+          <span class="t-eyebrow">Agriculture</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1.5" opacity="0.3">
+            <rect x="2" y="3" width="20" height="4" rx="1"/>
+            <rect x="2" y="10" width="20" height="4" rx="1"/>
+            <rect x="2" y="17" width="20" height="4" rx="1"/>
+          </svg>
+        </div>
+        <div class="hero__stat-num">2.4<span>M ha</span></div>
+        <div class="hero__stat-label">Under active crop monitoring</div>
+      </div>
+
+      <div class="hero__stat anim-fadeup anim-delay-3" data-reveal>
+        <div class="hero__stat-top">
+          <span class="t-eyebrow">Accuracy</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1.5" opacity="0.3">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M6.3 6.3a8 8 0 0 0 0 11.4"/>
+            <path d="M17.7 6.3a8 8 0 0 1 0 11.4"/>
+          </svg>
+        </div>
+        <div class="hero__stat-num">98<span>%</span></div>
+        <div class="hero__stat-label">Watershed prediction accuracy</div>
+      </div>
+
+      <div class="hero__stat anim-fadeup anim-delay-4" data-reveal>
+        <div class="hero__stat-top">
+          <span class="t-eyebrow">Clients</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1.5" opacity="0.3">
+            <rect x="2" y="7" width="20" height="15" rx="1"/>
+            <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
+          </svg>
+        </div>
+        <div class="hero__stat-num">40<span>+</span></div>
+        <div class="hero__stat-label">Enterprise &amp; government clients</div>
+      </div>
+
     </div>
   </div>
 
-  <!-- ── Bottom Bar ── -->
-  <div class="hero__bottom container">
-
-    <!-- Domain tags (left) -->
-    <div class="hero__domains animate-fade-up" style="transition-delay: 1.3s">
-      <span class="hero__domain-tag hero__domain-tag--cyan">Spatial Tech</span>
-      <span class="hero__domain-tag hero__domain-tag--jade">Environment</span>
-      <span class="hero__domain-tag hero__domain-tag--amber">Agriculture</span>
-      <span class="hero__domain-tag hero__domain-tag--sky">Water Management</span>
-    </div>
-
-    <!-- Scroll indicator (right) -->
-    <div class="hero__scroll animate-fade-up" style="transition-delay: 1.6s">
-      <span class="hero__scroll-text">Scroll</span>
-      <div class="hero__scroll-track" aria-hidden="true">
-        <div class="hero__scroll-bar"></div>
-      </div>
-    </div>
-
+  <!-- Scroll indicator -->
+  <div class="hero__scroll" aria-hidden="true">
+    <div class="hero__scroll-line"></div>
+    <span>Scroll</span>
   </div>
 
 </section>

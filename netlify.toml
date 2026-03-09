@@ -9,7 +9,14 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://formspree.io; frame-ancestors 'none'"
+    Content-Security-Policy = """
+      default-src 'self';
+      script-src 'self' 'unsafe-inline';
+      style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+      font-src 'self' https://fonts.gstatic.com;
+      img-src 'self' data:;
+      connect-src 'self' https://formspree.io;
+    """
 
 [[headers]]
   for = "/assets/*"
@@ -17,16 +24,22 @@
     Cache-Control = "public, max-age=31536000, immutable"
 
 [[headers]]
-  for = "*.css"
+  for = "/css/*"
   [headers.values]
     Cache-Control = "public, max-age=86400"
 
 [[headers]]
-  for = "*.js"
+  for = "/js/*"
   [headers.values]
     Cache-Control = "public, max-age=86400"
 
 [[redirects]]
-  from = "/*"
-  to = "/index.html"
+  from = "https://www.flahtik.com/*"
+  to   = "https://flahtik.com/:splat"
+  status = 301
+  force  = true
+
+[[redirects]]
+  from   = "/*"
+  to     = "/index.html"
   status = 200

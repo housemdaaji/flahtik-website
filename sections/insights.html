@@ -1,181 +1,250 @@
-<!-- SECTION: Insights / Blog & News -->
-<section id="insights" class="ins" data-observe-section>
-  <div class="container">
+<section id="insights" class="insights">
+  <div class="section-divider"></div>
+  <div class="insights__inner">
 
-    <!-- ── Header row ── -->
-    <div class="ins__header animate-fade-up">
-      <div class="ins__header-left">
-        <div class="ins__eyebrow">
-          <span class="ins__eyebrow-line" aria-hidden="true"></span>
-          <span class="ins__eyebrow-text">Insights</span>
+    <!-- Header -->
+    <div class="insights__header" data-reveal>
+      <div class="insights__header-left">
+        <div class="badge">
+          <div class="badge-dot"></div>
+          <span>Insights</span>
         </div>
-        <h2 class="ins__title">Intelligence Briefings</h2>
+        <h2 class="t-h2 insights__title">
+          Intelligence from<br>
+          <span class="t-grad">the Field</span>
+        </h2>
       </div>
-      <div class="ins__header-right">
-        <a href="#" class="btn ins__header-btn">View All Articles &rarr;</a>
-        <span class="ins__header-note">Updated weekly</span>
+      <div class="insights__header-right">
+        <p class="t-body insights__desc">
+          Research, case studies, and perspectives
+          from the Flahtik team on spatial technology,
+          climate, and the future of Earth intelligence.
+        </p>
+        <a href="#" class="btn-outline insights__all-link">
+          View All Articles
+          <svg width="13" height="13" viewBox="0 0 24 24"
+               fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
       </div>
     </div>
 
-    <!-- ── Row 1 — Featured + 3 small ── -->
-    <div class="ins__row1 animate-fade-up">
-
-      <!-- Featured card -->
-      <article class="ins__featured">
-        <div class="ins__featured-visual">
-          <span class="ins__pill ins__pill--jade">Remote Sensing</span>
-          <div class="ins__featured-rings" aria-hidden="true">
-            <span class="ins__ring ins__ring--1"></span>
-            <span class="ins__ring ins__ring--2"></span>
-            <span class="ins__ring ins__ring--3"></span>
-          </div>
+    <!-- Featured article -->
+    <div class="insights__featured" data-reveal>
+      <div class="insights__featured-visual">
+        <div class="insights__feat-placeholder">
+          <svg viewBox="0 0 120 80" fill="none"
+               stroke="currentColor" stroke-width="0.5">
+            <circle cx="60" cy="40" r="35" stroke-dasharray="4 3"/>
+            <circle cx="60" cy="40" r="25" stroke-dasharray="3 4"/>
+            <circle cx="60" cy="40" r="15"/>
+            <circle cx="60" cy="40" r="5" fill="currentColor"
+                    fill-opacity="0.3"/>
+            <line x1="25" y1="40" x2="95" y2="40"/>
+            <line x1="60" y1="5"  x2="60" y2="75"/>
+          </svg>
         </div>
-        <div class="ins__featured-body">
-          <span class="ins__meta">8 min read</span>
-          <h3 class="ins__featured-title">
-            The Next Frontier: How Hyperspectral
-            Imaging Is Redefining Crop Intelligence
-          </h3>
-          <p class="ins__featured-excerpt">
-            Beyond RGB and multispectral — the rise of
-            400-band hyperspectral satellites is unlocking
-            soil chemistry analysis at continental scale.
+        <div class="insights__feat-tag">
+          <span>Featured</span>
+        </div>
+      </div>
+      <div class="insights__featured-body">
+        <div class="insights__article-meta">
+          <span class="insights__article-cat">Spatial Technology</span>
+          <span class="insights__article-dot"></span>
+          <span class="insights__article-date">March 2025</span>
+          <span class="insights__article-dot"></span>
+          <span class="insights__article-read">8 min read</span>
+        </div>
+        <h3 class="insights__featured-title">
+          Hyperspectral Imaging and the Future
+          of Precision Agriculture in Arid Regions
+        </h3>
+        <p class="t-body insights__featured-excerpt">
+          New advances in hyperspectral satellite sensors are enabling
+          crop stress detection at field scale across desert-edge
+          agricultural zones — transforming how food security is
+          monitored in water-scarce environments across the Middle
+          East, North Africa, and Central Asia.
+        </p>
+        <div class="insights__featured-footer">
+          <div class="insights__author">
+            <div class="insights__author-avatar"></div>
+            <div>
+              <div class="insights__author-name">Flahtik Research</div>
+              <div class="insights__author-role">
+                Geospatial Intelligence Team
+              </div>
+            </div>
+          </div>
+          <a href="#" class="insights__read-link">
+            Read Article
+            <svg width="13" height="13" viewBox="0 0 24 24"
+                 fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Article grid -->
+    <div class="insights__grid" data-reveal>
+
+      <article class="insights__card">
+        <div class="insights__card-visual insights__card-visual--blue">
+          <svg viewBox="0 0 60 40" fill="none"
+               stroke="currentColor" stroke-width="0.8">
+            <path d="M5 35 Q15 10 30 20 Q45 30 55 5"/>
+            <circle cx="30" cy="20" r="3" fill="currentColor"
+                    fill-opacity="0.4"/>
+          </svg>
+        </div>
+        <div class="insights__card-body">
+          <div class="insights__article-meta">
+            <span class="insights__article-cat">Water</span>
+            <span class="insights__article-dot"></span>
+            <span class="insights__article-date">Feb 2025</span>
+          </div>
+          <h4 class="insights__card-title">
+            Satellite-Based Flood Forecasting:
+            48-Hour Early Warning at Basin Scale
+          </h4>
+          <p class="insights__card-excerpt">
+            How synthetic aperture radar combined with
+            hydrological AI models is delivering actionable
+            flood warnings days before traditional systems.
           </p>
-          <div class="ins__author">
-            <span class="ins__author-avatar">FK</span>
-            <span class="ins__author-name">Flahtik Research Team</span>
-            <span class="ins__author-sep" aria-hidden="true"></span>
-            <span class="ins__meta">March 2026</span>
-          </div>
-          <a href="#" class="ins__read-link">Read Article &rarr;</a>
+          <a href="#" class="insights__card-link">
+            Read more
+            <svg width="11" height="11" viewBox="0 0 24 24"
+                 fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
         </div>
       </article>
 
-      <!-- 3 small cards -->
-      <div class="ins__side">
-
-        <article class="ins__small ins__small--amber">
-          <div class="ins__small-accent" aria-hidden="true"></div>
-          <div class="ins__small-content">
-            <span class="ins__pill ins__pill--amber">Agriculture</span>
-            <h4 class="ins__small-title">
-              Sentinel-2 vs. Planet Labs:
-              Which Satellite Wins for Crop Monitoring?
-            </h4>
-            <span class="ins__meta">Feb 2026</span>
+      <article class="insights__card">
+        <div class="insights__card-visual insights__card-visual--navy">
+          <svg viewBox="0 0 60 40" fill="none"
+               stroke="currentColor" stroke-width="0.8">
+            <rect x="5" y="5" width="50" height="30" rx="2"
+                  stroke-dasharray="3 2"/>
+            <line x1="20" y1="5" x2="20" y2="35"/>
+            <line x1="40" y1="5" x2="40" y2="35"/>
+            <line x1="5" y1="20" x2="55" y2="20"/>
+          </svg>
+        </div>
+        <div class="insights__card-body">
+          <div class="insights__article-meta">
+            <span class="insights__article-cat">Agriculture</span>
+            <span class="insights__article-dot"></span>
+            <span class="insights__article-date">Jan 2025</span>
           </div>
-          <span class="ins__small-time">5 min</span>
-        </article>
-
-        <article class="ins__small ins__small--sky">
-          <div class="ins__small-accent" aria-hidden="true"></div>
-          <div class="ins__small-content">
-            <span class="ins__pill ins__pill--sky">Water</span>
-            <h4 class="ins__small-title">
-              Predicting Drought 90 Days Out:
-              Flahtik's Hydrological Model Explained
-            </h4>
-            <span class="ins__meta">Feb 2026</span>
-          </div>
-          <span class="ins__small-time">6 min</span>
-        </article>
-
-        <article class="ins__small ins__small--cyan">
-          <div class="ins__small-accent" aria-hidden="true"></div>
-          <div class="ins__small-content">
-            <span class="ins__pill ins__pill--cyan">Spatial Tech</span>
-            <h4 class="ins__small-title">
-              Why GeoParquet Is Replacing Shapefiles
-              in Enterprise GIS Workflows
-            </h4>
-            <span class="ins__meta">Jan 2026</span>
-          </div>
-          <span class="ins__small-time">4 min</span>
-        </article>
-
-      </div>
-
-    </div>
-
-    <!-- ── Row 2 — 3 equal cards ── -->
-    <div class="ins__row2 animate-fade-up">
-
-      <article class="ins__card ins__card--jade">
-        <div class="ins__card-top-line" aria-hidden="true"></div>
-        <span class="ins__pill ins__pill--jade">Environment</span>
-        <h4 class="ins__card-title">
-          Measuring Carbon in Real Time:
-          From Forest Canopy to Credit Registry
-        </h4>
-        <p class="ins__card-excerpt">
-          How satellite-derived biomass estimates
-          are bridging the gap between field surveys and
-          carbon market verification.
-        </p>
-        <div class="ins__card-footer">
-          <span class="ins__meta">Jan 2026 &middot; 7 min read</span>
-          <span class="ins__card-arrow">&rarr;</span>
+          <h4 class="insights__card-title">
+            NDVI to Neural Nets: The Evolution
+            of Crop Intelligence from Space
+          </h4>
+          <p class="insights__card-excerpt">
+            A technical deep-dive into how vegetation
+            indices gave way to deep learning classifiers
+            for multi-crop, multi-season monitoring.
+          </p>
+          <a href="#" class="insights__card-link">
+            Read more
+            <svg width="11" height="11" viewBox="0 0 24 24"
+                 fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
         </div>
       </article>
 
-      <article class="ins__card ins__card--amber">
-        <div class="ins__card-top-line" aria-hidden="true"></div>
-        <span class="ins__pill ins__pill--amber">Policy</span>
-        <h4 class="ins__card-title">
-          SDG 15 and Spatial Data:
-          How Governments Are Closing the Gap
-        </h4>
-        <p class="ins__card-excerpt">
-          A review of how national statistical
-          offices are integrating earth observation data
-          into sustainable development reporting frameworks.
-        </p>
-        <div class="ins__card-footer">
-          <span class="ins__meta">Dec 2025 &middot; 9 min read</span>
-          <span class="ins__card-arrow">&rarr;</span>
+      <article class="insights__card">
+        <div class="insights__card-visual insights__card-visual--cyan">
+          <svg viewBox="0 0 60 40" fill="none"
+               stroke="currentColor" stroke-width="0.8">
+            <circle cx="30" cy="20" r="15"/>
+            <circle cx="30" cy="20" r="8"/>
+            <circle cx="30" cy="20" r="2"
+                    fill="currentColor" fill-opacity="0.5"/>
+          </svg>
         </div>
-      </article>
-
-      <article class="ins__card ins__card--sky">
-        <div class="ins__card-top-line" aria-hidden="true"></div>
-        <span class="ins__pill ins__pill--sky">Infrastructure</span>
-        <h4 class="ins__card-title">
-          Digital Twins for River Basins:
-          The New Standard in Water Governance
-        </h4>
-        <p class="ins__card-excerpt">
-          Basin-scale hydrological digital twins
-          are moving from research pilots to operational
-          decision-support systems across arid regions.
-        </p>
-        <div class="ins__card-footer">
-          <span class="ins__meta">Nov 2025 &middot; 6 min read</span>
-          <span class="ins__card-arrow">&rarr;</span>
+        <div class="insights__card-body">
+          <div class="insights__article-meta">
+            <span class="insights__article-cat">Environment</span>
+            <span class="insights__article-dot"></span>
+            <span class="insights__article-date">Dec 2024</span>
+          </div>
+          <h4 class="insights__card-title">
+            Carbon Credit Integrity: Why
+            Satellite Verification Changes Everything
+          </h4>
+          <p class="insights__card-excerpt">
+            The voluntary carbon market is under scrutiny.
+            Here is how continuous satellite monitoring
+            is restoring trust in nature-based solutions.
+          </p>
+          <a href="#" class="insights__card-link">
+            Read more
+            <svg width="11" height="11" viewBox="0 0 24 24"
+                 fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
         </div>
       </article>
 
     </div>
 
-    <!-- ── Newsletter signup ── -->
-    <div class="ins__newsletter animate-fade-up">
-      <div class="ins__newsletter-text">
-        <h3 class="ins__newsletter-title">Stay Briefed</h3>
-        <p class="ins__newsletter-desc">
-          Weekly spatial intelligence insights delivered
-          to your inbox — no noise, only signal.
+    <!-- Newsletter strip -->
+    <div class="insights__newsletter" data-reveal>
+      <div class="insights__newsletter-text">
+        <h3 class="t-h3">Stay ahead of the field</h3>
+        <p class="t-body">
+          Monthly intelligence briefings — satellite insights,
+          platform updates, and spatial tech perspectives.
+          No noise. Unsubscribe anytime.
         </p>
       </div>
-      <form id="newsletterForm" class="ins__newsletter-form" action="https://formspree.io/f/xaqpqenq" method="POST" novalidate>
-        <input type="hidden" name="_subject" value="New Newsletter Subscriber — Flahtik Digest" />
-        <input type="hidden" name="_template" value="table" />
-        <input type="hidden" name="_autoresponse" value="Welcome to the Flahtik Intelligence Digest. Your first briefing arrives next Monday." />
-        <input type="text" name="_gotcha" style="display:none" />
-        <input type="email" name="email" class="ins__newsletter-input" placeholder="your@email.com" aria-label="Email address" required>
-        <button type="submit" class="btn ins__newsletter-btn">Subscribe &rarr;</button>
+      <form class="insights__newsletter-form"
+            id="newsletterForm"
+            action="https://formspree.io/f/xaqpqenq">
+        <input type="hidden" name="_subject"
+               value="New Flahtik Newsletter Subscriber"/>
+        <input type="text" name="_gotcha"
+               style="display:none" tabindex="-1"/>
+        <div class="insights__newsletter-fields">
+          <input
+            type="email"
+            name="email"
+            class="insights__newsletter-input"
+            placeholder="your@email.com"
+            required
+            aria-label="Email address"
+          />
+          <button type="submit" class="btn-primary">
+            Subscribe
+            <svg width="13" height="13" viewBox="0 0 24 24"
+                 fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </button>
+        </div>
+        <p class="insights__newsletter-legal">
+          By subscribing you agree to our Privacy Policy.
+          We never share your data.
+        </p>
       </form>
-      <div class="ins__newsletter-success" style="display:none" role="alert" aria-live="polite">
-        <p class="ins__success-title">You're on the list. &#10003;</p>
-        <p class="ins__success-body">First digest arrives next Monday.</p>
+      <div class="ins__newsletter-success" style="display:none">
+        <svg width="20" height="20" viewBox="0 0 24 24"
+             fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+          <polyline points="22 4 12 14.01 9 11.01"/>
+        </svg>
+        <span>You are on the list. Welcome aboard.</span>
       </div>
     </div>
 

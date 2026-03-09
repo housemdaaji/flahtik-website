@@ -1,187 +1,239 @@
-<!-- SECTION: Contact / CTA -->
-<section id="contact" class="cta" data-observe-section>
+<section id="contact" class="contact">
+  <div class="section-divider"></div>
+  <div class="contact__inner">
 
-  <!-- Background glow -->
-  <div class="cta__glow" aria-hidden="true"></div>
-
-  <div class="container">
-
-    <!-- ── Header ── -->
-    <header class="cta__header animate-fade-up">
-      <div class="cta__eyebrow">
-        <span class="cta__eyebrow-line" aria-hidden="true"></span>
-        <span class="cta__eyebrow-text">Get In Touch</span>
+    <!-- Header -->
+    <div class="contact__header" data-reveal>
+      <div class="badge">
+        <div class="badge-dot"></div>
+        <span>Get In Touch</span>
       </div>
-      <h2 class="cta__title">
-        Ready to See<br>
-        <span class="cta__title--gradient">Your World</span> Differently?
+      <h2 class="t-h2 contact__title">
+        Let's Build Something<br>
+        <span class="t-grad">That Matters</span>
       </h2>
-      <p class="cta__subtitle">
-        Whether you're exploring a pilot project,
-        evaluating our platform, or ready to deploy —
+      <p class="t-body contact__desc">
+        Whether you need a platform demo, want to explore
+        an enterprise partnership, or just have a question —
         our team responds within one business day.
       </p>
-    </header>
+    </div>
 
-    <!-- ── Two-column split ── -->
-    <div class="cta__grid">
+    <!-- Layout -->
+    <div class="contact__layout" data-reveal>
 
-      <!-- Left column -->
-      <div class="cta__left animate-fade-up">
-
-        <!-- Inquiry selector -->
-        <span class="cta__selector-label">I'm interested in...</span>
-
-        <div class="cta__selector">
-          <button class="cta__option is-active" data-inquiry="demo" type="button">
-            <span class="cta__radio" aria-hidden="true"><span class="cta__radio-fill"></span></span>
-            <div class="cta__option-text">
-              <span class="cta__option-title">Platform Demo</span>
-              <span class="cta__option-sub">See Flahtik in action with your data</span>
-            </div>
-          </button>
-          <button class="cta__option" data-inquiry="pilot" type="button">
-            <span class="cta__radio" aria-hidden="true"><span class="cta__radio-fill"></span></span>
-            <div class="cta__option-text">
-              <span class="cta__option-title">Enterprise Pilot</span>
-              <span class="cta__option-sub">Run a scoped proof-of-concept project</span>
-            </div>
-          </button>
-          <button class="cta__option" data-inquiry="general" type="button">
-            <span class="cta__radio" aria-hidden="true"><span class="cta__radio-fill"></span></span>
-            <div class="cta__option-text">
-              <span class="cta__option-title">General Inquiry</span>
-              <span class="cta__option-sub">Questions, partnerships, or press</span>
-            </div>
-          </button>
-        </div>
-
-        <!-- Contact details -->
-        <div class="cta__details">
-
-          <div class="cta__detail">
-            <div class="cta__detail-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M12 2C8 2 5 5.6 5 10c0 5.4 7 12 7 12s7-6.6 7-12c0-4.4-3-8-7-8Z"/>
-                <circle cx="12" cy="10" r="3"/>
-              </svg>
-            </div>
-            <div class="cta__detail-text">
-              <span class="cta__detail-label">Headquarters</span>
-              <span class="cta__detail-value">Riyadh, Saudi Arabia</span>
+      <!-- Inquiry type selector -->
+      <div class="contact__selectors">
+        <button class="contact__selector contact__selector--active"
+                data-type="demo">
+          <div class="contact__selector-icon">
+            <svg viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="1.5">
+              <rect x="2" y="3" width="20" height="14" rx="2"/>
+              <path d="M8 21h8M12 17v4"/>
+            </svg>
+          </div>
+          <div>
+            <div class="contact__selector-name">Platform Demo</div>
+            <div class="contact__selector-sub">
+              30-min walkthrough with our team
             </div>
           </div>
+        </button>
 
-          <div class="cta__detail">
-            <div class="cta__detail-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <rect x="2" y="4" width="20" height="16" rx="2"/>
-                <path d="M22 4 12 13 2 4"/>
-              </svg>
-            </div>
-            <div class="cta__detail-text">
-              <span class="cta__detail-label">Email Us</span>
-              <a href="mailto:hello@flahtik.com" class="cta__detail-value cta__detail-link">hello@flahtik.com</a>
+        <button class="contact__selector" data-type="pilot">
+          <div class="contact__selector-icon">
+            <svg viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="1.5">
+              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+              <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+            </svg>
+          </div>
+          <div>
+            <div class="contact__selector-name">Enterprise Pilot</div>
+            <div class="contact__selector-sub">
+              Custom scoped project for your organisation
             </div>
           </div>
+        </button>
 
-          <div class="cta__detail">
-            <div class="cta__detail-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <circle cx="12" cy="12" r="10"/>
-                <path d="M2 12h20"/>
-                <ellipse cx="12" cy="12" rx="4" ry="10"/>
-              </svg>
-            </div>
-            <div class="cta__detail-text">
-              <span class="cta__detail-label">Response Time</span>
-              <span class="cta__detail-value">Within 1 business day</span>
+        <button class="contact__selector" data-type="general">
+          <div class="contact__selector-icon">
+            <svg viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="1.5">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+            </svg>
+          </div>
+          <div>
+            <div class="contact__selector-name">General Inquiry</div>
+            <div class="contact__selector-sub">
+              Any other question or collaboration idea
             </div>
           </div>
-
-        </div>
-
-        <!-- Social row -->
-        <div class="cta__social">
-          <span class="cta__social-label">Follow</span>
-          <div class="cta__social-icons">
-            <a href="#" class="cta__social-btn" aria-label="LinkedIn">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6Z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-            </a>
-            <a href="#" class="cta__social-btn" aria-label="X / Twitter">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l6.5 8L4 20h2l5.5-6.8L16 20h4l-6.8-8.5L20 4h-2l-5.2 6.3L8 4H4Z"/></svg>
-            </a>
-            <a href="#" class="cta__social-btn" aria-label="GitHub">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69C6.73 19.91 6.14 18 6.14 18c-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0 1 12 6.8c.85 0 1.7.11 2.5.34 1.9-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.75c0 .27.16.59.67.5A10 10 0 0 0 22 12c0-5.52-4.48-10-10-10Z"/></svg>
-            </a>
-            <a href="#" class="cta__social-btn" aria-label="ResearchGate">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12h4m0 0V8m0 4c2 0 4 1 4 3s-2 3-4 3"/><path d="M8 8v8"/></svg>
-            </a>
-          </div>
-        </div>
-
+        </button>
       </div>
 
-      <!-- Right column — Form -->
-      <div class="cta__right animate-fade-up">
+      <!-- Form -->
+      <form class="contact__form" id="contactForm"
+            action="https://formspree.io/f/mjgagykv">
 
-        <form id="contactForm" class="cta__form" action="https://formspree.io/f/mjgagykv" method="POST" novalidate>
+        <input type="hidden" name="_subject"
+               value="New Flahtik Contact Form Submission"/>
+        <input type="hidden" name="_template" value="table"/>
+        <input type="hidden" name="inquiry_type" id="inquiryType"
+               value="Platform Demo"/>
+        <input type="text" name="_gotcha"
+               style="display:none" tabindex="-1"/>
 
-          <input type="hidden" name="_subject" value="New Flahtik Inquiry" />
-          <input type="hidden" name="_template" value="table" />
-          <input type="hidden" name="_autoresponse" value="Thank you for reaching out to Flahtik. A member of our team will respond within one business day." />
-          <input type="text" name="_gotcha" style="display:none" />
-          <input type="hidden" id="inquiryType" name="inquiry_type" value="Platform Demo" />
-
-          <div class="cta__form-row">
-            <div class="cta__field">
-              <label class="cta__label" for="ctaName">Full Name</label>
-              <input type="text" id="ctaName" name="full_name" class="cta__input" placeholder="Jane Doe" required>
-            </div>
-            <div class="cta__field">
-              <label class="cta__label" for="ctaOrg">Organization</label>
-              <input type="text" id="ctaOrg" name="organization" class="cta__input" placeholder="Ministry of Agriculture" required>
-            </div>
+        <div class="contact__form-row">
+          <div class="contact__field">
+            <label class="contact__label" for="full_name">
+              Full Name <span>*</span>
+            </label>
+            <input class="contact__input" type="text"
+                   id="full_name" name="full_name"
+                   placeholder="Your full name" required/>
+            <span class="field-error"></span>
           </div>
-
-          <div class="cta__form-row">
-            <div class="cta__field">
-              <label class="cta__label" for="ctaTitle">Job Title</label>
-              <input type="text" id="ctaTitle" name="job_title" class="cta__input" placeholder="Director of GIS" required>
-            </div>
-            <div class="cta__field">
-              <label class="cta__label" for="ctaCountry">Country</label>
-              <input type="text" id="ctaCountry" name="country" class="cta__input" placeholder="Saudi Arabia" required>
-            </div>
+          <div class="contact__field">
+            <label class="contact__label" for="organization">
+              Organisation <span>*</span>
+            </label>
+            <input class="contact__input" type="text"
+                   id="organization" name="organization"
+                   placeholder="Your organisation" required/>
+            <span class="field-error"></span>
           </div>
-
-          <div class="cta__field">
-            <label class="cta__label" for="ctaEmail">Work Email</label>
-            <input type="email" id="ctaEmail" name="email" class="cta__input" placeholder="jane@gov.sa" required>
-          </div>
-
-          <div class="cta__field">
-            <label class="cta__label" for="ctaMessage">Message</label>
-            <textarea id="ctaMessage" name="message" class="cta__input cta__textarea" placeholder="Tell us about your challenge, dataset, or geographic area of interest..." required></textarea>
-          </div>
-
-          <button type="submit" class="btn cta__submit">Send Inquiry &rarr;</button>
-
-        </form>
-
-        <div class="cta__success" style="display:none" role="alert" aria-live="polite">
-          <div class="cta__success-icon" aria-hidden="true">&#10003;</div>
-          <h3 class="cta__success-title">Message received.</h3>
-          <p class="cta__success-text">
-            A member of our team will reach out
-            within one business day.
-          </p>
         </div>
 
+        <div class="contact__form-row">
+          <div class="contact__field">
+            <label class="contact__label" for="job_title">
+              Job Title
+            </label>
+            <input class="contact__input" type="text"
+                   id="job_title" name="job_title"
+                   placeholder="Your role"/>
+          </div>
+          <div class="contact__field">
+            <label class="contact__label" for="country">
+              Country <span>*</span>
+            </label>
+            <input class="contact__input" type="text"
+                   id="country" name="country"
+                   placeholder="Your country" required/>
+            <span class="field-error"></span>
+          </div>
+        </div>
+
+        <div class="contact__field">
+          <label class="contact__label" for="email">
+            Work Email <span>*</span>
+          </label>
+          <input class="contact__input" type="email"
+                 id="email" name="email"
+                 placeholder="your@organisation.com" required/>
+          <span class="field-error"></span>
+        </div>
+
+        <div class="contact__field">
+          <label class="contact__label" for="message">
+            Message <span>*</span>
+          </label>
+          <textarea class="contact__input contact__textarea"
+                    id="message" name="message"
+                    placeholder="Tell us about your project, data needs, or question..."
+                    rows="5" required></textarea>
+          <span class="field-error"></span>
+        </div>
+
+        <div class="contact__form-footer">
+          <p class="contact__form-legal">
+            By submitting you agree to our Privacy Policy.
+            We will respond within one business day.
+          </p>
+          <button type="submit" class="btn-primary contact__submit">
+            <span class="contact__submit-text">Send Message</span>
+            <svg width="14" height="14" viewBox="0 0 24 24"
+                 fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </button>
+        </div>
+
+      </form>
+
+      <!-- Success state -->
+      <div class="contact__success" style="display:none">
+        <div class="contact__success-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24"
+               fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+            <polyline points="22 4 12 14.01 9 11.01"/>
+          </svg>
+        </div>
+        <h3 class="t-h3">Message received.</h3>
+        <p class="t-body">
+          Thank you for reaching out. A member of the Flahtik
+          team will be in touch within one business day.
+        </p>
+        <div class="contact__success-meta">
+          <span>hello@flahtik.com</span>
+          <span>Riyadh, Saudi Arabia</span>
+        </div>
       </div>
 
     </div>
 
-  </div>
+    <!-- Contact details strip -->
+    <div class="contact__details" data-reveal>
+      <div class="contact__detail">
+        <svg width="18" height="18" viewBox="0 0 24 24"
+             fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+          <circle cx="12" cy="10" r="3"/>
+        </svg>
+        <div>
+          <div class="contact__detail-label">Headquarters</div>
+          <div class="contact__detail-value">Riyadh, Saudi Arabia</div>
+        </div>
+      </div>
+      <div class="contact__detail">
+        <svg width="18" height="18" viewBox="0 0 24 24"
+             fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+          <polyline points="22 6 12 13 2 6"/>
+        </svg>
+        <div>
+          <div class="contact__detail-label">Email</div>
+          <div class="contact__detail-value">
+            <a href="mailto:hello@flahtik.com">hello@flahtik.com</a>
+          </div>
+        </div>
+      </div>
+      <div class="contact__detail">
+        <svg width="18" height="18" viewBox="0 0 24 24"
+             fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="12" cy="12" r="10"/>
+          <polyline points="12 6 12 12 16 14"/>
+        </svg>
+        <div>
+          <div class="contact__detail-label">Response Time</div>
+          <div class="contact__detail-value">Within 1 business day</div>
+        </div>
+      </div>
+      <div class="contact__detail">
+        <svg width="18" height="18" viewBox="0 0 24 24"
+             fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/>
+        </svg>
+        <div>
+          <div class="contact__detail-label">Coverage</div>
+          <div class="contact__detail-value">Serving 180+ countries</div>
+        </div>
+      </div>
+    </div>
 
+  </div>
 </section>

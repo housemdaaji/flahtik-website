@@ -1,1558 +1,1650 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Flahtik — Spatial intelligence platform for governments, agribusinesses, and water authorities. Earth observation, AI analytics, and geospatial tools for environmental decision-making." />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description"
+        content="Flahtik — Spatial intelligence platform for
+        governments, agribusinesses, and water utilities.
+        Satellite data, AI, and geospatial processing in one platform."/>
+  <meta property="og:title" content="Flahtik — Spatial Intelligence"/>
+  <meta property="og:description"
+        content="Where Earth data meets human decision."/>
+  <meta property="og:image" content="assets/images/flahtik-logo.png"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://flahtik.com"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="theme-color" content="#2563eb"/>
   <title>Flahtik — Spatial Intelligence Platform</title>
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Flahtik — Spatial Intelligence Platform" />
-  <meta property="og:description" content="Earth observation, AI analytics, and geospatial tools for environmental decision-making." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://flahtik.com" />
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="assets/images/flahtik-motif.png" />
-  <link rel="apple-touch-icon" href="assets/images/flahtik-motif.png" />
-  <meta name="theme-color" content="#040d0a" />
-
-  <!-- Styles -->
-  <link rel="stylesheet" href="css/main.css" />
-
-  <!-- Cursor + canvas base styles -->
-  <style>
-    .custom-cursor,
-    .custom-cursor a,
-    .custom-cursor button {
-      cursor: none !important;
-    }
-
-    .cursor-dot,
-    .cursor-ring {
-      position: fixed;
-      top: 0;
-      left: 0;
-      pointer-events: none;
-      z-index: var(--z-cursor);
-      border-radius: 50%;
-      will-change: transform;
-    }
-
-    .cursor-dot {
-      width: 8px;
-      height: 8px;
-      margin: -4px 0 0 -4px;
-      background: var(--cyan);
-      mix-blend-mode: difference;
-    }
-
-    .cursor-ring {
-      width: 40px;
-      height: 40px;
-      margin: -20px 0 0 -20px;
-      border: 1.5px solid rgba(0, 229, 200, 0.5);
-      transition: width 0.3s var(--ease-out),
-                  height 0.3s var(--ease-out),
-                  margin 0.3s var(--ease-out),
-                  border-color 0.3s var(--ease-out);
-    }
-
-    .cursor-ring--hover {
-      width: 60px;
-      height: 60px;
-      margin: -30px 0 0 -30px;
-      border-color: var(--cyan);
-    }
-
-    .cursor-ring--click {
-      width: 30px;
-      height: 30px;
-      margin: -15px 0 0 -15px;
-    }
-
-    .bg-canvas {
-      position: fixed;
-      inset: 0;
-      z-index: var(--z-canvas);
-      pointer-events: none;
-    }
-
-    @media (pointer: coarse) {
-      .cursor-dot,
-      .cursor-ring { display: none; }
-    }
-  </style>
+  <link rel="icon" type="image/png"
+        href="assets/images/flahtik-motif.png"/>
+  <link rel="apple-touch-icon"
+        href="assets/images/flahtik-motif.png"/>
+  <link rel="stylesheet" href="css/main.css"/>
 </head>
 
 <body>
 
-  <div id="pageLoader" class="page-loader">
-    <img
-      src="assets/images/flahtik-motif.png"
-      alt=""
-      aria-hidden="true"
-      class="page-loader__motif"
-    />
+  <!-- Scroll progress -->
+  <div id="scrollProgress" aria-hidden="true"></div>
+
+  <!-- Page loader -->
+  <div id="pageLoader" role="status" aria-label="Loading">
+    <div class="loader__inner">
+      <img class="page-loader__motif"
+           src="assets/images/flahtik-motif.png"
+           alt="Flahtik"/>
+      <div class="loader__bar">
+        <div class="loader__bar-fill"></div>
+      </div>
+    </div>
   </div>
 
   <!-- ============================================
        NAVIGATION
        ============================================ -->
-  <nav class="nav" role="navigation" aria-label="Main navigation">
-    <div class="container nav__inner">
-      <a href="#hero" class="nav-logo" aria-label="Flahtik — Home">
-        <img
-          src="assets/images/flahtik-logo.png"
-          alt="Flahtik"
-          class="nav-logo__img"
-          width="140"
-          height="40"
-        />
+  <header id="siteNav" class="nav">
+    <div class="nav__inner">
+
+      <!-- Logo -->
+      <a href="/" class="nav__logo">
+        <img src="assets/images/flahtik-logo.png" alt="Flahtik" class="nav__logo-img">
       </a>
 
-      <ul class="nav__links">
-        <li><a href="#services" class="nav__link">Solutions</a></li>
-        <li><a href="#platform" class="nav__link">Platform</a></li>
-        <li><a href="#sectors" class="nav__link">Sectors</a></li>
-        <li><a href="#insights" class="nav__link">Insights</a></li>
-        <li><a href="#about" class="nav__link">About</a></li>
-      </ul>
+      <!-- Links -->
+      <nav class="nav__links" aria-label="Main navigation">
+        <ul>
+          <li><a href="#services" class="nav__link">Solutions</a></li>
+          <li><a href="#platform" class="nav__link">Platform</a></li>
+          <li><a href="#sectors" class="nav__link">Sectors</a></li>
+          <li><a href="#about" class="nav__link">About</a></li>
+          <li><a href="#insights" class="nav__link">Insights</a></li>
+        </ul>
+      </nav>
 
-      <a href="#contact" class="btn btn--primary nav__cta">Contact</a>
+      <!-- CTA -->
+      <div class="nav__actions">
+        <a href="#contact" class="nav__cta">Get In Touch</a>
+        <button class="nav__burger" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
 
-      <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
     </div>
-  </nav>
+
+    <!-- Mobile menu -->
+    <div class="nav__mobile" aria-hidden="true">
+      <ul>
+        <li><a href="#services">Solutions</a></li>
+        <li><a href="#platform">Platform</a></li>
+        <li><a href="#sectors">Sectors</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#insights">Insights</a></li>
+        <li><a href="#contact">Get In Touch</a></li>
+      </ul>
+    </div>
+  </header>
 
   <!-- ============================================
        MAIN CONTENT
        ============================================ -->
-  <div id="scrollProgress" aria-hidden="true"></div>
+  <main id="main" role="main">
 
-  <main role="main">
-
-    <!-- ── Hero ── -->
+    <!-- Hero -->
     <section id="hero" class="hero">
 
-      <!-- Grid overlay -->
-      <div class="hero__grid-overlay" aria-hidden="true"></div>
+      <!-- Background grid -->
+      <div class="hero__grid-bg" aria-hidden="true"></div>
 
-      <!-- Radial gradient glows -->
-      <div class="hero__glow hero__glow--jade" aria-hidden="true"></div>
-      <div class="hero__glow hero__glow--cyan" aria-hidden="true"></div>
+      <!-- Animated orbs -->
+      <div class="hero__orb hero__orb--1" aria-hidden="true"></div>
+      <div class="hero__orb hero__orb--2" aria-hidden="true"></div>
 
-      <!-- Noise / grain texture -->
-      <div class="hero__noise" aria-hidden="true"></div>
+      <div class="hero__inner">
 
-      <!-- Main two-column layout -->
-      <div class="container hero__container">
-        <div class="hero__grid">
+        <!-- LEFT COLUMN -->
+        <div class="hero__content">
 
-          <!-- Left Column -->
-          <div class="hero__content">
-
-            <!-- Eyebrow -->
-            <div class="hero__eyebrow animate-fade-up" style="transition-delay: 0.3s">
-              <span class="hero__eyebrow-line" aria-hidden="true"></span>
-              <span class="hero__eyebrow-text">Spatial Intelligence Platform</span>
-            </div>
-
-            <!-- Headline -->
-            <h1 class="hero__headline animate-fade-up" style="transition-delay: 0.5s">
-              Shaping the<br>
-              <span class="hero__headline--jade">Living Planet</span><br>
-              Through<br>
-              <span class="hero__headline--gradient">Spatial Data</span>
-            </h1>
-
-            <!-- Subheading -->
-            <p class="hero__sub animate-fade-up" style="transition-delay: 0.7s">
-              Flahtik fuses geospatial intelligence with environmental science —
-              empowering governments, agribusinesses, and water authorities to make
-              decisions that sustain ecosystems and accelerate growth.
-            </p>
-
-            <!-- CTA buttons -->
-            <div class="hero__cta animate-fade-up" style="transition-delay: 0.9s">
-              <a href="#platform" class="btn hero__btn-primary">
-                Explore Platform <span aria-hidden="true">&rarr;</span>
-              </a>
-              <a href="#" class="btn hero__btn-ghost">
-                <span aria-hidden="true">&#9654;</span> Watch Overview
-              </a>
-            </div>
+          <div class="badge anim-fadeup">
+            <div class="badge-dot"></div>
+            <span>Spatial Intelligence Platform</span>
           </div>
 
-          <!-- Right Column — Stat Cards -->
-          <div class="hero__stats animate-fade-up" style="transition-delay: 1.1s">
+          <h1 class="t-h1 hero__headline anim-fadeup anim-delay-1">
+            Where <span class="t-grad">Earth Data</span><br>
+            Meets Human<br>Decision
+          </h1>
 
-            <div class="hero__stat-card">
-              <div class="hero__stat-accent" aria-hidden="true"></div>
-              <span class="hero__stat-tag">Coverage</span>
-              <span class="hero__stat-number">180+</span>
-              <span class="hero__stat-label">Countries monitored via satellite &amp; sensor networks</span>
-            </div>
+          <p class="t-body hero__sub anim-fadeup anim-delay-2">
+            Flahtik integrates satellite imagery, IoT sensors, and AI
+            into a unified platform — built for governments,
+            agribusinesses, and water utilities across the planet.
+          </p>
 
-            <div class="hero__stat-card">
-              <div class="hero__stat-accent" aria-hidden="true"></div>
-              <span class="hero__stat-tag">Agriculture</span>
-              <span class="hero__stat-number">2.4M</span>
-              <span class="hero__stat-label">Hectares optimized through precision agri-analytics</span>
-            </div>
-
-            <div class="hero__stat-card">
-              <div class="hero__stat-accent" aria-hidden="true"></div>
-              <span class="hero__stat-tag">Water</span>
-              <span class="hero__stat-number">98%</span>
-              <span class="hero__stat-label">Prediction accuracy for watershed stress events</span>
-            </div>
-
-            <div class="hero__stat-card">
-              <div class="hero__stat-accent" aria-hidden="true"></div>
-              <span class="hero__stat-tag">Impact</span>
-              <span class="hero__stat-number">40+</span>
-              <span class="hero__stat-label">Government &amp; enterprise clients across 3 continents</span>
-            </div>
-
+          <div class="hero__btns anim-fadeup anim-delay-3">
+            <a href="#platform" class="btn-primary">
+              Explore Platform
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="2.5">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+            <a href="#contact" class="btn-outline">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="2">
+                <polygon points="5 3 19 12 5 21 5 3"/>
+              </svg>
+              Watch Overview
+            </a>
           </div>
+
+          <!-- Domain tags -->
+          <div class="hero__tags anim-fadeup anim-delay-4">
+            <span class="hero__tag">Spatial Technology</span>
+            <span class="hero__tag">Precision Agriculture</span>
+            <span class="hero__tag">Water Management</span>
+            <span class="hero__tag">Environmental Intel</span>
+          </div>
+
+        </div>
+
+        <!-- RIGHT COLUMN — Stats -->
+        <div class="hero__stats">
+
+          <div class="hero__stat anim-fadeup anim-delay-1" data-reveal>
+            <div class="hero__stat-top">
+              <span class="t-eyebrow">Global Coverage</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="1.5" opacity="0.3">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/>
+              </svg>
+            </div>
+            <div class="hero__stat-num">180<span>+</span></div>
+            <div class="hero__stat-label">Countries monitored globally</div>
+          </div>
+
+          <div class="hero__stat anim-fadeup anim-delay-2" data-reveal>
+            <div class="hero__stat-top">
+              <span class="t-eyebrow">Agriculture</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="1.5" opacity="0.3">
+                <rect x="2" y="3" width="20" height="4" rx="1"/>
+                <rect x="2" y="10" width="20" height="4" rx="1"/>
+                <rect x="2" y="17" width="20" height="4" rx="1"/>
+              </svg>
+            </div>
+            <div class="hero__stat-num">2.4<span>M ha</span></div>
+            <div class="hero__stat-label">Under active crop monitoring</div>
+          </div>
+
+          <div class="hero__stat anim-fadeup anim-delay-3" data-reveal>
+            <div class="hero__stat-top">
+              <span class="t-eyebrow">Accuracy</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="1.5" opacity="0.3">
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M6.3 6.3a8 8 0 0 0 0 11.4"/>
+                <path d="M17.7 6.3a8 8 0 0 1 0 11.4"/>
+              </svg>
+            </div>
+            <div class="hero__stat-num">98<span>%</span></div>
+            <div class="hero__stat-label">Watershed prediction accuracy</div>
+          </div>
+
+          <div class="hero__stat anim-fadeup anim-delay-4" data-reveal>
+            <div class="hero__stat-top">
+              <span class="t-eyebrow">Clients</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="1.5" opacity="0.3">
+                <rect x="2" y="7" width="20" height="15" rx="1"/>
+                <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
+              </svg>
+            </div>
+            <div class="hero__stat-num">40<span>+</span></div>
+            <div class="hero__stat-label">Enterprise &amp; government clients</div>
+          </div>
+
         </div>
       </div>
 
-      <!-- Bottom Bar -->
-      <div class="hero__bottom container">
-
-        <!-- Domain tags (left) -->
-        <div class="hero__domains animate-fade-up" style="transition-delay: 1.3s">
-          <span class="hero__domain-tag hero__domain-tag--cyan">Spatial Tech</span>
-          <span class="hero__domain-tag hero__domain-tag--jade">Environment</span>
-          <span class="hero__domain-tag hero__domain-tag--amber">Agriculture</span>
-          <span class="hero__domain-tag hero__domain-tag--sky">Water Management</span>
-        </div>
-
-        <!-- Scroll indicator (right) -->
-        <div class="hero__scroll animate-fade-up" style="transition-delay: 1.6s">
-          <span class="hero__scroll-text">Scroll</span>
-          <div class="hero__scroll-track" aria-hidden="true">
-            <div class="hero__scroll-bar"></div>
-          </div>
-        </div>
-
+      <!-- Scroll indicator -->
+      <div class="hero__scroll" aria-hidden="true">
+        <div class="hero__scroll-line"></div>
+        <span>Scroll</span>
       </div>
 
     </section>
 
-    <!-- ── Services / Solutions ── -->
-    <section id="services" class="svc">
+    <!-- Solutions -->
+    <section id="services" class="services">
+      <div class="section-divider"></div>
+      <div class="services__inner">
 
-      <!-- Subtle horizontal gradient bg -->
-      <div class="svc__bg" aria-hidden="true"></div>
-
-      <div class="container">
-
-        <!-- Section Header -->
-        <header class="svc__header animate-fade-up">
-          <div class="svc__eyebrow">
-            <span class="svc__eyebrow-line" aria-hidden="true"></span>
-            <span class="svc__eyebrow-text">What We Do</span>
+        <!-- Header -->
+        <div class="services__header" data-reveal>
+          <div class="badge">
+            <div class="badge-dot"></div>
+            <span>What We Do</span>
           </div>
-          <h2 class="svc__title">
-            Four Pillars of<br>
-            <span class="svc__title--gradient">Planetary Intelligence</span>
+          <h2 class="t-h2 services__title">
+            Four Domains.<br>
+            <span class="t-grad">One Platform.</span>
           </h2>
-          <p class="svc__subtitle">
-            From orbit to ground level — Flahtik integrates satellite data,
-            IoT sensors, and AI models to serve the sectors that sustain life.
+          <p class="t-body services__desc">
+            Flahtik brings together the most complex environmental
+            data streams into a single, decision-ready intelligence layer.
           </p>
-        </header>
+        </div>
 
-        <!-- 2×2 Card Grid -->
-        <div class="svc__grid animate-stagger">
+        <!-- Cards grid -->
+        <div class="services__grid">
 
-          <!-- Card 01 — Spatial Technology -->
-          <article class="svc__card svc__card--cyan" data-cursor="pointer">
-            <div class="svc__card-top-line" aria-hidden="true"></div>
-            <div class="svc__card-glow" aria-hidden="true"></div>
-            <span class="svc__card-num">01</span>
-            <div class="svc__card-icon">
-              <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <circle cx="32" cy="32" r="6"/>
-                <ellipse cx="32" cy="32" rx="28" ry="12" transform="rotate(-30 32 32)"/>
-                <ellipse cx="32" cy="32" rx="28" ry="12" transform="rotate(30 32 32)"/>
-                <circle cx="32" cy="4" r="2.5"/>
+          <div class="services__card" data-reveal>
+            <div class="services__card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M6.3 6.3a8 8 0 0 0 0 11.4"/>
+                <path d="M17.7 6.3a8 8 0 0 1 0 11.4"/>
+                <path d="M3.5 3.5a13 13 0 0 0 0 17"/>
+                <path d="M20.5 3.5a13 13 0 0 1 0 17"/>
               </svg>
             </div>
-            <h3 class="svc__card-title">Spatial Technology</h3>
-            <p class="svc__card-desc">
-              High-resolution satellite imagery, LiDAR point clouds, and
-              real-time geospatial processing pipelines that turn raw Earth
-              observation data into actionable intelligence.
+            <div class="services__card-tag">01</div>
+            <h3 class="t-h3 services__card-title">Spatial Technology</h3>
+            <p class="t-body services__card-body">
+              High-resolution satellite imagery, LiDAR point clouds,
+              and real-time GIS processing — delivering precise spatial
+              context at any scale, anywhere on Earth.
             </p>
-            <div class="svc__card-tags">
-              <span class="svc__tag">Remote Sensing</span>
-              <span class="svc__tag">GIS Analytics</span>
-              <span class="svc__tag">LiDAR</span>
-            </div>
-            <span class="svc__card-arrow" aria-hidden="true">Explore &rarr;</span>
-          </article>
+            <ul class="services__card-list">
+              <li>Remote sensing &amp; imagery analysis</li>
+              <li>GIS mapping &amp; spatial modelling</li>
+              <li>Change detection &amp; monitoring</li>
+            </ul>
+            <a href="#contact" class="services__card-link">
+              Learn more
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="2.5">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+          </div>
 
-          <!-- Card 02 — Environment -->
-          <article class="svc__card svc__card--jade" data-cursor="pointer">
-            <div class="svc__card-top-line" aria-hidden="true"></div>
-            <div class="svc__card-glow" aria-hidden="true"></div>
-            <span class="svc__card-num">02</span>
-            <div class="svc__card-icon">
-              <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M32 58V28"/>
-                <path d="M32 28C32 18 22 8 12 14c-4 10 4 20 20 14"/>
-                <path d="M32 36C32 26 42 16 52 22c4 10-4 20-20 14"/>
-                <path d="M22 22c5 4 8 8 10 12"/>
-                <path d="M42 28c-5 4-8 6-10 10"/>
+          <div class="services__card services__card--accent" data-reveal>
+            <div class="services__card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 2C6 2 3 7 3 12c0 4 2.5 7 6 8.5"/>
+                <path d="M12 2c6 0 9 5 9 10 0 4-2.5 7-6 8.5"/>
+                <line x1="12" y1="2" x2="12" y2="22"/>
+                <path d="M4.5 9h15M4.5 15h15"/>
               </svg>
             </div>
-            <h3 class="svc__card-title">Environmental Intelligence</h3>
-            <p class="svc__card-desc">
-              Continuous monitoring of air quality, land degradation,
-              biodiversity indices, and carbon sequestration — enabling
-              evidence-based policy and ESG compliance at scale.
+            <div class="services__card-tag">02</div>
+            <h3 class="t-h3 services__card-title">Environmental Intelligence</h3>
+            <p class="t-body services__card-body">
+              Carbon stock assessment, biodiversity mapping, and ESG
+              reporting frameworks grounded in satellite-verified
+              ground truth data.
             </p>
-            <div class="svc__card-tags">
-              <span class="svc__tag">Carbon Monitoring</span>
-              <span class="svc__tag">Biodiversity</span>
-              <span class="svc__tag">ESG</span>
-            </div>
-            <span class="svc__card-arrow" aria-hidden="true">Explore &rarr;</span>
-          </article>
+            <ul class="services__card-list">
+              <li>Carbon monitoring &amp; verification</li>
+              <li>Biodiversity &amp; habitat mapping</li>
+              <li>ESG compliance reporting</li>
+            </ul>
+            <a href="#contact" class="services__card-link">
+              Learn more
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="2.5">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+          </div>
 
-          <!-- Card 03 — Agriculture -->
-          <article class="svc__card svc__card--amber" data-cursor="pointer">
-            <div class="svc__card-top-line" aria-hidden="true"></div>
-            <div class="svc__card-glow" aria-hidden="true"></div>
-            <span class="svc__card-num">03</span>
-            <div class="svc__card-icon">
-              <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <rect x="8" y="8" width="48" height="48" rx="4"/>
-                <line x1="8" y1="20" x2="56" y2="20"/>
-                <line x1="8" y1="32" x2="56" y2="32"/>
-                <line x1="8" y1="44" x2="56" y2="44"/>
-                <line x1="20" y1="8" x2="20" y2="56"/>
-                <line x1="32" y1="8" x2="32" y2="56"/>
-                <line x1="44" y1="8" x2="44" y2="56"/>
-                <circle cx="26" cy="26" r="2" fill="currentColor" stroke="none"/>
-                <circle cx="38" cy="38" r="2" fill="currentColor" stroke="none"/>
-                <circle cx="50" cy="14" r="2" fill="currentColor" stroke="none"/>
-                <circle cx="14" cy="50" r="2" fill="currentColor" stroke="none"/>
+          <div class="services__card" data-reveal>
+            <div class="services__card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="2" y="3" width="20" height="4" rx="1"/>
+                <rect x="2" y="10" width="20" height="4" rx="1"/>
+                <rect x="2" y="17" width="20" height="4" rx="1"/>
+                <circle cx="19" cy="5" r="2" fill="currentColor" stroke="none"/>
               </svg>
             </div>
-            <h3 class="svc__card-title">Precision Agriculture</h3>
-            <p class="svc__card-desc">
-              Soil health mapping, crop stress detection, irrigation
-              optimization, and yield forecasting powered by multispectral
-              analysis and machine learning models.
+            <div class="services__card-tag">03</div>
+            <h3 class="t-h3 services__card-title">Precision Agriculture</h3>
+            <p class="t-body services__card-body">
+              AI-powered crop health monitoring, yield prediction,
+              and irrigation optimisation — turning field data into
+              season-defining decisions.
             </p>
-            <div class="svc__card-tags">
-              <span class="svc__tag">Crop Analytics</span>
-              <span class="svc__tag">Soil Mapping</span>
-              <span class="svc__tag">Yield AI</span>
-            </div>
-            <span class="svc__card-arrow" aria-hidden="true">Explore &rarr;</span>
-          </article>
+            <ul class="services__card-list">
+              <li>Multispectral crop analytics</li>
+              <li>Yield forecasting &amp; risk modelling</li>
+              <li>Irrigation &amp; resource optimisation</li>
+            </ul>
+            <a href="#contact" class="services__card-link">
+              Learn more
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="2.5">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+          </div>
 
-          <!-- Card 04 — Water Management -->
-          <article class="svc__card svc__card--sky" data-cursor="pointer">
-            <div class="svc__card-top-line" aria-hidden="true"></div>
-            <div class="svc__card-glow" aria-hidden="true"></div>
-            <span class="svc__card-num">04</span>
-            <div class="svc__card-icon">
-              <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M32 6S14 28 14 40a18 18 0 0 0 36 0C50 28 32 6 32 6Z"/>
-                <path d="M20 42c4-3 8-3 12 0s8 3 12 0"/>
-                <path d="M22 50c3-2 6-2 10 0s7 2 10 0"/>
+          <div class="services__card" data-reveal>
+            <div class="services__card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 2L6 10a6 6 0 1 0 12 0L12 2z"/>
+                <path d="M8 14c1-1 2-1.5 4-1.5s3 .5 4 1.5"/>
+                <line x1="12" y1="16" x2="12" y2="20"/>
               </svg>
             </div>
-            <h3 class="svc__card-title">Water Management</h3>
-            <p class="svc__card-desc">
-              Watershed modeling, aquifer depletion tracking, flood risk
-              prediction, and irrigation efficiency analysis for water-scarce
-              regions and utility operators.
+            <div class="services__card-tag">04</div>
+            <h3 class="t-h3 services__card-title">Water Management</h3>
+            <p class="t-body services__card-body">
+              Watershed intelligence, flood risk modelling, and
+              aquifer monitoring at basin scale — built for utilities,
+              governments, and infrastructure planners.
             </p>
-            <div class="svc__card-tags">
-              <span class="svc__tag">Watershed AI</span>
-              <span class="svc__tag">Flood Risk</span>
-              <span class="svc__tag">Aquifer Tracking</span>
-            </div>
-            <span class="svc__card-arrow" aria-hidden="true">Explore &rarr;</span>
-          </article>
+            <ul class="services__card-list">
+              <li>Watershed &amp; basin monitoring</li>
+              <li>Flood risk prediction &amp; mapping</li>
+              <li>Aquifer &amp; groundwater analysis</li>
+            </ul>
+            <a href="#contact" class="services__card-link">
+              Learn more
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="2.5">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+          </div>
 
         </div>
 
-        <!-- Bottom Strip -->
-        <div class="svc__strip animate-fade-up">
-          <p class="svc__strip-text">Not sure which solution fits your challenge?</p>
-          <a href="#contact" class="btn svc__strip-btn">Talk to Our Team &rarr;</a>
+        <!-- Bottom CTA strip -->
+        <div class="services__cta-strip" data-reveal>
+          <p class="t-body">
+            Not sure which solution fits your needs?
+          </p>
+          <a href="#contact" class="btn-primary">
+            Talk to Our Team
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2.5">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
         </div>
 
       </div>
     </section>
 
-    <!-- ── Platform / How It Works ── -->
-    <section id="platform" class="plat" data-observe-section>
+    <!-- Platform -->
+    <section id="platform" class="platform">
+      <div class="section-divider"></div>
+      <div class="platform__inner">
 
-      <!-- Scan line -->
-      <div class="plat__scanline" aria-hidden="true"></div>
-
-      <div class="container">
-
-        <!-- Section Header -->
-        <div class="plat__header animate-fade-up">
-          <div class="plat__header-left">
-            <div class="plat__eyebrow">
-              <span class="plat__eyebrow-line" aria-hidden="true"></span>
-              <span class="plat__eyebrow-text">How It Works</span>
-            </div>
-            <h2 class="plat__title">
-              From Raw Signal<br>
-              to <span class="plat__title--gradient">Smart Decision</span>
-            </h2>
-            <p class="plat__subtitle">
-              A vertically integrated pipeline — from orbital data
-              capture to AI-driven insight delivery — built for
-              real-world planetary challenges.
-            </p>
+        <!-- Header -->
+        <div class="platform__header" data-reveal>
+          <div class="badge">
+            <div class="badge-dot"></div>
+            <span>How It Works</span>
           </div>
-          <div class="plat__header-right">
-            <div class="plat__live-badge">
-              <span class="plat__live-dot" aria-hidden="true"></span>
-              <span class="plat__live-text">Live Pipeline</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Pipeline Flow -->
-        <div class="plat__flow animate-stagger">
-
-          <!-- Step 01 — Data Acquisition -->
-          <div class="plat__step plat__step--cyan">
-            <span class="plat__step-num">Step 01</span>
-            <div class="plat__step-circle">
-              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M24 38v-8"/>
-                <path d="M24 30 C20 26 14 24 10 28"/>
-                <path d="M24 30 C28 26 34 24 38 28"/>
-                <path d="M16 18 a12 12 0 0 1 16 0"/>
-                <path d="M12 14 a16 16 0 0 1 24 0"/>
-                <path d="M8 10 a20 20 0 0 1 32 0"/>
-                <circle cx="24" cy="40" r="3"/>
-              </svg>
-            </div>
-            <h3 class="plat__step-title">Data Acquisition</h3>
-            <p class="plat__step-desc">Multi-source ingestion from satellites, drones, IoT sensors and ground stations</p>
-          </div>
-
-          <!-- Connector 1→2 -->
-          <div class="plat__connector" aria-hidden="true">
-            <div class="plat__connector-line"></div>
-            <span class="plat__connector-dot plat__connector-dot--1"></span>
-            <span class="plat__connector-dot plat__connector-dot--2"></span>
-            <span class="plat__connector-dot plat__connector-dot--3"></span>
-          </div>
-
-          <!-- Step 02 — Geospatial Processing -->
-          <div class="plat__step plat__step--jade">
-            <span class="plat__step-num">Step 02</span>
-            <div class="plat__step-circle">
-              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <circle cx="16" cy="16" r="7"/>
-                <circle cx="32" cy="16" r="7"/>
-                <circle cx="24" cy="32" r="7"/>
-                <path d="M20.5 20 L21 27"/>
-                <path d="M27.5 20 L27 27"/>
-                <path d="M22 14 h4"/>
-              </svg>
-            </div>
-            <h3 class="plat__step-title">Geospatial Processing</h3>
-            <p class="plat__step-desc">Radiometric correction, orthorectification, and cloud-native data normalization</p>
-          </div>
-
-          <!-- Connector 2→3 -->
-          <div class="plat__connector" aria-hidden="true">
-            <div class="plat__connector-line"></div>
-            <span class="plat__connector-dot plat__connector-dot--1"></span>
-            <span class="plat__connector-dot plat__connector-dot--2"></span>
-            <span class="plat__connector-dot plat__connector-dot--3"></span>
-          </div>
-
-          <!-- Step 03 — AI & ML Analysis -->
-          <div class="plat__step plat__step--amber">
-            <span class="plat__step-num">Step 03</span>
-            <div class="plat__step-circle">
-              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <circle cx="24" cy="8" r="3.5"/>
-                <circle cx="10" cy="20" r="3.5"/>
-                <circle cx="38" cy="20" r="3.5"/>
-                <circle cx="14" cy="36" r="3.5"/>
-                <circle cx="34" cy="36" r="3.5"/>
-                <circle cx="24" cy="24" r="3.5"/>
-                <line x1="24" y1="11.5" x2="24" y2="20.5"/>
-                <line x1="13.5" y1="20" x2="20.5" y2="24"/>
-                <line x1="34.5" y1="20" x2="27.5" y2="24"/>
-                <line x1="14" y1="32.5" x2="21" y2="27"/>
-                <line x1="34" y1="32.5" x2="27" y2="27"/>
-              </svg>
-            </div>
-            <h3 class="plat__step-title">AI &amp; ML Analysis</h3>
-            <p class="plat__step-desc">Deep learning models detect patterns in multispectral, thermal, and LiDAR datasets</p>
-          </div>
-
-          <!-- Connector 3→4 -->
-          <div class="plat__connector" aria-hidden="true">
-            <div class="plat__connector-line"></div>
-            <span class="plat__connector-dot plat__connector-dot--1"></span>
-            <span class="plat__connector-dot plat__connector-dot--2"></span>
-            <span class="plat__connector-dot plat__connector-dot--3"></span>
-          </div>
-
-          <!-- Step 04 — Insight Generation -->
-          <div class="plat__step plat__step--sky">
-            <span class="plat__step-num">Step 04</span>
-            <div class="plat__step-circle">
-              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <rect x="8" y="12" width="32" height="22" rx="3"/>
-                <rect x="11" y="16" width="26" height="14" rx="2"/>
-                <rect x="14" y="20" width="20" height="6" rx="1"/>
-                <circle cx="24" cy="10" r="1.5" fill="currentColor" stroke="none"/>
-                <circle cx="18" cy="10" r="1.5" fill="currentColor" stroke="none"/>
-                <line x1="20" y1="38" x2="28" y2="38"/>
-                <line x1="16" y1="42" x2="32" y2="42"/>
-              </svg>
-            </div>
-            <h3 class="plat__step-title">Insight Generation</h3>
-            <p class="plat__step-desc">Sector-specific dashboards, alerts, risk scores, and decision-ready reports</p>
-          </div>
-
-          <!-- Connector 4→5 -->
-          <div class="plat__connector" aria-hidden="true">
-            <div class="plat__connector-line"></div>
-            <span class="plat__connector-dot plat__connector-dot--1"></span>
-            <span class="plat__connector-dot plat__connector-dot--2"></span>
-            <span class="plat__connector-dot plat__connector-dot--3"></span>
-          </div>
-
-          <!-- Step 05 — Client Delivery -->
-          <div class="plat__step plat__step--sand">
-            <span class="plat__step-num">Step 05</span>
-            <div class="plat__step-circle">
-              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <circle cx="24" cy="24" r="16"/>
-                <ellipse cx="24" cy="24" rx="16" ry="7"/>
-                <path d="M8 24 c0 -9 7 -16 16 -16"/>
-                <circle cx="10" cy="14" r="2.5"/>
-                <circle cx="38" cy="18" r="2.5"/>
-                <circle cx="16" cy="38" r="2.5"/>
-                <circle cx="36" cy="32" r="2.5"/>
-              </svg>
-            </div>
-            <h3 class="plat__step-title">Client Delivery</h3>
-            <p class="plat__step-desc">API integrations, web portals, mobile alerts, and embedded GIS tools</p>
-          </div>
-
-        </div>
-
-        <!-- Tech Stack Strip -->
-        <div class="plat__tech animate-fade-up">
-          <span class="plat__tech-label">Powered By</span>
-          <div class="plat__tech-list">
-            <span class="plat__tech-item">Google Earth Engine</span>
-            <span class="plat__tech-sep" aria-hidden="true"></span>
-            <span class="plat__tech-item">AWS SageMaker</span>
-            <span class="plat__tech-sep" aria-hidden="true"></span>
-            <span class="plat__tech-item">QGIS</span>
-            <span class="plat__tech-sep" aria-hidden="true"></span>
-            <span class="plat__tech-item">Sentinel-2</span>
-            <span class="plat__tech-sep" aria-hidden="true"></span>
-            <span class="plat__tech-item">TensorFlow</span>
-            <span class="plat__tech-sep" aria-hidden="true"></span>
-            <span class="plat__tech-item">PostGIS</span>
-          </div>
-        </div>
-
-        <!-- Bottom CTA -->
-        <div class="plat__cta animate-fade-up">
-          <h3 class="plat__cta-title">See the platform in action.</h3>
-          <a href="#contact" class="btn plat__cta-btn">Request a Demo &rarr;</a>
-          <p class="plat__cta-note">Available for enterprise pilots and government procurement programs.</p>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- Sectors / Industries Served -->
-    <section id="sectors" class="sect" data-observe-section>
-      <div class="container">
-
-        <!-- ── Header ── -->
-        <header class="sect__header animate-fade-up">
-          <div class="sect__eyebrow">
-            <span class="sect__eyebrow-line" aria-hidden="true"></span>
-            <span class="sect__eyebrow-text">Who We Serve</span>
-          </div>
-          <h2 class="sect__title">
-            Built for the Sectors<br>
-            That <span class="sect__title--gradient">Sustain the World</span>
+          <h2 class="t-h2 platform__title">
+            From Raw Signal<br>
+            to <span class="t-grad">Clear Decision</span>
           </h2>
-          <p class="sect__subtitle">
-            Governments, enterprises, and research institutions
-            trust Flahtik's spatial intelligence to make
-            critical decisions with confidence.
+          <p class="t-body platform__desc">
+            A five-stage pipeline transforms raw Earth observation data
+            into actionable intelligence — fully automated, fully auditable.
           </p>
-        </header>
-
-        <!-- Divider -->
-        <div class="sect__divider animate-fade-in" aria-hidden="true"></div>
-
-      </div>
-
-      <!-- ── Bands (full width, outside container) ── -->
-      <div class="sect__bands animate-fade-up">
-
-        <!-- Band 01 — Government -->
-        <div class="sect__band sect__band--cyan is-active" data-accent="cyan">
-          <button class="sect__band-header" aria-expanded="true">
-            <div class="sect__band-left">
-              <span class="sect__band-num">01</span>
-              <span class="sect__band-name">Government &amp; Public Sector</span>
-            </div>
-            <span class="sect__band-toggle" aria-hidden="true">+</span>
-          </button>
-          <div class="sect__band-body">
-            <div class="sect__band-content">
-              <div class="sect__band-text">
-                <p class="sect__band-desc">
-                  National mapping agencies, ministries of agriculture
-                  and environment, and urban planning authorities rely on Flahtik
-                  to monitor borders, manage land use, and respond to climate crises
-                  with verified spatial evidence.
-                </p>
-                <div class="sect__band-tags">
-                  <span class="sect__band-tag">Land Administration</span>
-                  <span class="sect__band-tag">Border Monitoring</span>
-                  <span class="sect__band-tag">Climate Policy</span>
-                </div>
-                <a href="#" class="sect__band-cta">View Case Studies &rarr;</a>
-              </div>
-              <div class="sect__band-stat">
-                <span class="sect__band-stat-value">60+</span>
-                <span class="sect__band-stat-label">Government clients active</span>
-              </div>
-            </div>
-          </div>
         </div>
 
-        <!-- Band 02 — Agribusiness -->
-        <div class="sect__band sect__band--amber" data-accent="amber">
-          <button class="sect__band-header" aria-expanded="false">
-            <div class="sect__band-left">
-              <span class="sect__band-num">02</span>
-              <span class="sect__band-name">Agribusiness &amp; Food Systems</span>
+        <!-- Pipeline steps -->
+        <div class="platform__pipeline" data-reveal>
+
+          <div class="platform__step">
+            <div class="platform__step-num">01</div>
+            <div class="platform__step-connector" aria-hidden="true">
+              <div class="platform__step-dot"></div>
+              <div class="platform__step-line"></div>
             </div>
-            <span class="sect__band-toggle" aria-hidden="true">+</span>
-          </button>
-          <div class="sect__band-body">
-            <div class="sect__band-content">
-              <div class="sect__band-text">
-                <p class="sect__band-desc">
-                  From smallholder cooperatives to multinational food
-                  producers, our precision agriculture tools deliver actionable crop
-                  intelligence that cuts input waste, boosts yields, and certifies
-                  sustainable sourcing.
-                </p>
-                <div class="sect__band-tags">
-                  <span class="sect__band-tag">Precision Farming</span>
-                  <span class="sect__band-tag">Supply Chain</span>
-                  <span class="sect__band-tag">Sustainability Audit</span>
-                </div>
-                <a href="#" class="sect__band-cta">View Case Studies &rarr;</a>
-              </div>
-              <div class="sect__band-stat">
-                <span class="sect__band-stat-value">2.4M ha</span>
-                <span class="sect__band-stat-label">Farmland under active monitoring</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Band 03 — Water -->
-        <div class="sect__band sect__band--sky" data-accent="sky">
-          <button class="sect__band-header" aria-expanded="false">
-            <div class="sect__band-left">
-              <span class="sect__band-num">03</span>
-              <span class="sect__band-name">Water Utilities &amp; River Authorities</span>
-            </div>
-            <span class="sect__band-toggle" aria-hidden="true">+</span>
-          </button>
-          <div class="sect__band-body">
-            <div class="sect__band-content">
-              <div class="sect__band-text">
-                <p class="sect__band-desc">
-                  Utilities managing reservoirs, irrigation networks,
-                  and coastal zones use Flahtik's hydrological AI to predict demand
-                  cycles, detect pipeline stress, and prepare for extreme weather events
-                  weeks in advance.
-                </p>
-                <div class="sect__band-tags">
-                  <span class="sect__band-tag">Hydrological Modeling</span>
-                  <span class="sect__band-tag">Flood Prediction</span>
-                  <span class="sect__band-tag">SCADA Integration</span>
-                </div>
-                <a href="#" class="sect__band-cta">View Case Studies &rarr;</a>
-              </div>
-              <div class="sect__band-stat">
-                <span class="sect__band-stat-value">98%</span>
-                <span class="sect__band-stat-label">Flood event prediction accuracy</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Band 04 — Environment -->
-        <div class="sect__band sect__band--jade" data-accent="jade">
-          <button class="sect__band-header" aria-expanded="false">
-            <div class="sect__band-left">
-              <span class="sect__band-num">04</span>
-              <span class="sect__band-name">Environmental &amp; Conservation</span>
-            </div>
-            <span class="sect__band-toggle" aria-hidden="true">+</span>
-          </button>
-          <div class="sect__band-body">
-            <div class="sect__band-content">
-              <div class="sect__band-text">
-                <p class="sect__band-desc">
-                  NGOs, research institutions, and conservation agencies
-                  deploy Flahtik to track deforestation in real time, measure biodiversity
-                  loss, and generate verified carbon credit reports for international
-                  climate frameworks.
-                </p>
-                <div class="sect__band-tags">
-                  <span class="sect__band-tag">Deforestation Alerts</span>
-                  <span class="sect__band-tag">Carbon Credits</span>
-                  <span class="sect__band-tag">Biodiversity Index</span>
-                </div>
-                <a href="#" class="sect__band-cta">View Case Studies &rarr;</a>
-              </div>
-              <div class="sect__band-stat">
-                <span class="sect__band-stat-value">1.2B</span>
-                <span class="sect__band-stat-label">Hectares under environmental watch</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Band 05 — Energy -->
-        <div class="sect__band sect__band--sand" data-accent="sand">
-          <button class="sect__band-header" aria-expanded="false">
-            <div class="sect__band-left">
-              <span class="sect__band-num">05</span>
-              <span class="sect__band-name">Energy &amp; Infrastructure</span>
-            </div>
-            <span class="sect__band-toggle" aria-hidden="true">+</span>
-          </button>
-          <div class="sect__band-body">
-            <div class="sect__band-content">
-              <div class="sect__band-text">
-                <p class="sect__band-desc">
-                  Renewable energy developers, pipeline operators, and
-                  civil engineers use our site suitability analysis, terrain modeling,
-                  and risk mapping to plan, build, and maintain critical infrastructure
-                  with spatial precision.
-                </p>
-                <div class="sect__band-tags">
-                  <span class="sect__band-tag">Site Suitability</span>
-                  <span class="sect__band-tag">Terrain Analysis</span>
-                  <span class="sect__band-tag">Risk Mapping</span>
-                </div>
-                <a href="#" class="sect__band-cta">View Case Studies &rarr;</a>
-              </div>
-              <div class="sect__band-stat">
-                <span class="sect__band-stat-value">340+</span>
-                <span class="sect__band-stat-label">Infrastructure projects mapped</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Bottom row -->
-        <div class="sect__bottom">
-          <span class="sect__bottom-text">Working in a different sector?</span>
-          <a href="#contact" class="btn sect__bottom-btn">Let's Talk &rarr;</a>
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- Stats / Impact Numbers -->
-    <section id="impact" class="impact" data-observe-section>
-
-      <!-- Background glow -->
-      <div class="impact__glow" aria-hidden="true"></div>
-
-      <div class="container">
-
-        <!-- ── Header ── -->
-        <header class="impact__header animate-fade-up">
-          <div class="impact__eyebrow">
-            <span class="impact__eyebrow-line" aria-hidden="true"></span>
-            <span class="impact__eyebrow-text">Our Impact</span>
-          </div>
-          <h2 class="impact__title">
-            Numbers That<br>
-            <span class="impact__title--gradient">Speak for Themselves</span>
-          </h2>
-        </header>
-
-        <!-- ── Counter row ── -->
-        <div class="impact__counters animate-fade-up">
-
-          <div class="impact__counter impact__counter--jade">
-            <div class="impact__counter-value">
-              <span class="stat-counter" data-target="180" data-decimal="0">0</span><span class="impact__counter-suffix">+</span>
-            </div>
-            <span class="impact__counter-label">Countries Monitored</span>
-            <span class="impact__counter-bar" aria-hidden="true"></span>
-          </div>
-
-          <div class="impact__counter-divider" aria-hidden="true"></div>
-
-          <div class="impact__counter impact__counter--cyan">
-            <div class="impact__counter-value">
-              <span class="stat-counter" data-target="2.4" data-decimal="1">0</span><span class="impact__counter-suffix">M ha</span>
-            </div>
-            <span class="impact__counter-label">Farmland Optimized</span>
-            <span class="impact__counter-bar" aria-hidden="true"></span>
-          </div>
-
-          <div class="impact__counter-divider" aria-hidden="true"></div>
-
-          <div class="impact__counter impact__counter--amber">
-            <div class="impact__counter-value">
-              <span class="stat-counter" data-target="98" data-decimal="0">0</span><span class="impact__counter-suffix">%</span>
-            </div>
-            <span class="impact__counter-label">Prediction Accuracy</span>
-            <span class="impact__counter-bar" aria-hidden="true"></span>
-          </div>
-
-          <div class="impact__counter-divider" aria-hidden="true"></div>
-
-          <div class="impact__counter impact__counter--sky">
-            <div class="impact__counter-value">
-              <span class="stat-counter" data-target="40" data-decimal="0">0</span><span class="impact__counter-suffix">+</span>
-            </div>
-            <span class="impact__counter-label">Enterprise Clients</span>
-            <span class="impact__counter-bar" aria-hidden="true"></span>
-          </div>
-
-        </div>
-
-        <!-- ── World map zone ── -->
-        <div class="impact__map animate-fade-in">
-
-          <!-- Edge fades -->
-          <div class="impact__map-fade impact__map-fade--top" aria-hidden="true"></div>
-          <div class="impact__map-fade impact__map-fade--bottom" aria-hidden="true"></div>
-          <div class="impact__map-fade impact__map-fade--left" aria-hidden="true"></div>
-          <div class="impact__map-fade impact__map-fade--right" aria-hidden="true"></div>
-
-          <!-- Simplified world map SVG -->
-          <svg class="impact__map-svg" viewBox="0 0 1000 500" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <!-- North America -->
-            <path d="M120 100 C130 80, 170 60, 220 70 C250 75, 270 90, 280 110 C290 130, 270 150, 260 170 C250 190, 220 200, 200 210 C180 220, 160 210, 150 200 C140 190, 130 170, 120 150 C110 130, 110 120, 120 100Z" stroke="currentColor" stroke-width="0.8"/>
-            <!-- Central America -->
-            <path d="M200 210 C210 220, 220 230, 215 245 C210 260, 200 265, 195 270" stroke="currentColor" stroke-width="0.8"/>
-            <!-- South America -->
-            <path d="M220 270 C240 265, 260 280, 270 310 C280 340, 285 370, 275 400 C265 420, 250 440, 235 445 C220 450, 210 430, 215 410 C220 390, 225 370, 220 340 C215 310, 200 290, 220 270Z" stroke="currentColor" stroke-width="0.8"/>
-            <!-- Europe -->
-            <path d="M420 70 C440 60, 470 65, 485 80 C500 95, 495 110, 490 125 C485 140, 470 145, 455 140 C440 135, 430 120, 420 105 C410 90, 410 80, 420 70Z" stroke="currentColor" stroke-width="0.8"/>
-            <!-- UK & Scandinavia -->
-            <path d="M410 75 C405 65, 415 55, 425 60" stroke="currentColor" stroke-width="0.8"/>
-            <path d="M460 40 C470 30, 490 35, 495 50 C500 65, 490 70, 480 65" stroke="currentColor" stroke-width="0.8"/>
-            <!-- Africa -->
-            <path d="M440 160 C460 155, 500 160, 520 180 C540 200, 550 230, 555 260 C560 290, 555 320, 540 345 C525 370, 500 385, 480 375 C460 365, 445 340, 440 310 C435 280, 440 250, 445 220 C450 190, 440 170, 440 160Z" stroke="currentColor" stroke-width="0.8"/>
-            <!-- Middle East -->
-            <path d="M530 130 C545 125, 570 135, 580 155 C590 175, 575 190, 555 185 C535 180, 525 160, 530 130Z" stroke="currentColor" stroke-width="0.8"/>
-            <!-- Central Asia -->
-            <path d="M570 80 C600 70, 640 75, 660 90 C680 105, 670 120, 650 115 C630 110, 590 105, 570 80Z" stroke="currentColor" stroke-width="0.8"/>
-            <!-- South Asia (India) -->
-            <path d="M620 140 C640 130, 670 140, 680 165 C690 190, 680 220, 665 235 C650 250, 630 245, 625 225 C620 205, 615 170, 620 140Z" stroke="currentColor" stroke-width="0.8"/>
-            <!-- Southeast Asia -->
-            <path d="M700 180 C720 170, 745 180, 750 200 C755 220, 740 235, 720 230 C700 225, 690 200, 700 180Z" stroke="currentColor" stroke-width="0.8"/>
-            <!-- China / East Asia -->
-            <path d="M680 80 C710 65, 760 70, 780 90 C800 110, 790 140, 770 150 C750 160, 720 155, 700 140 C680 125, 670 100, 680 80Z" stroke="currentColor" stroke-width="0.8"/>
-            <!-- Japan -->
-            <path d="M800 90 C810 80, 820 85, 818 100 C816 115, 808 120, 802 110" stroke="currentColor" stroke-width="0.8"/>
-            <!-- Australia -->
-            <path d="M750 320 C780 305, 830 310, 850 335 C870 360, 860 390, 835 400 C810 410, 770 400, 755 380 C740 360, 740 335, 750 320Z" stroke="currentColor" stroke-width="0.8"/>
-            <!-- Indonesia archipelago -->
-            <path d="M720 260 L740 258 M745 262 L760 260 M765 265 L775 263" stroke="currentColor" stroke-width="0.8"/>
-          </svg>
-
-          <!-- Hotspots -->
-          <div class="impact__hotspots">
-
-            <div class="impact__hotspot impact__hotspot--cyan" style="left:38%;top:28%">
-              <span class="impact__hotspot-ring" aria-hidden="true"></span>
-              <span class="impact__hotspot-dot"></span>
-              <span class="impact__hotspot-tip">Western Europe</span>
-            </div>
-
-            <div class="impact__hotspot impact__hotspot--amber" style="left:55%;top:38%">
-              <span class="impact__hotspot-ring" aria-hidden="true"></span>
-              <span class="impact__hotspot-dot"></span>
-              <span class="impact__hotspot-tip">Middle East &amp; Gulf</span>
-            </div>
-
-            <div class="impact__hotspot impact__hotspot--jade" style="left:65%;top:42%">
-              <span class="impact__hotspot-ring" aria-hidden="true"></span>
-              <span class="impact__hotspot-dot"></span>
-              <span class="impact__hotspot-tip">South Asia</span>
-            </div>
-
-            <div class="impact__hotspot impact__hotspot--sky" style="left:73%;top:50%">
-              <span class="impact__hotspot-ring" aria-hidden="true"></span>
-              <span class="impact__hotspot-dot"></span>
-              <span class="impact__hotspot-tip">Southeast Asia</span>
-            </div>
-
-            <div class="impact__hotspot impact__hotspot--jade" style="left:53%;top:55%">
-              <span class="impact__hotspot-ring" aria-hidden="true"></span>
-              <span class="impact__hotspot-dot"></span>
-              <span class="impact__hotspot-tip">East Africa</span>
-            </div>
-
-            <div class="impact__hotspot impact__hotspot--amber" style="left:43%;top:52%">
-              <span class="impact__hotspot-ring" aria-hidden="true"></span>
-              <span class="impact__hotspot-dot"></span>
-              <span class="impact__hotspot-tip">West Africa</span>
-            </div>
-
-            <div class="impact__hotspot impact__hotspot--cyan" style="left:47%;top:35%">
-              <span class="impact__hotspot-ring" aria-hidden="true"></span>
-              <span class="impact__hotspot-dot"></span>
-              <span class="impact__hotspot-tip">North Africa</span>
-            </div>
-
-            <div class="impact__hotspot impact__hotspot--sand" style="left:62%;top:30%">
-              <span class="impact__hotspot-ring" aria-hidden="true"></span>
-              <span class="impact__hotspot-dot"></span>
-              <span class="impact__hotspot-tip">Central Asia</span>
-            </div>
-
-          </div>
-
-        </div>
-
-        <!-- ── Logo strip ── -->
-        <div class="impact__logos animate-fade-up">
-          <span class="impact__logos-label">Trusted By Leading Organizations</span>
-          <div class="impact__logos-track">
-            <div class="impact__logos-fade impact__logos-fade--left" aria-hidden="true"></div>
-            <div class="impact__logos-fade impact__logos-fade--right" aria-hidden="true"></div>
-            <div class="impact__logos-scroll">
-              <div class="impact__logos-set">
-                <span class="impact__logo-pill">Ministry of Agriculture</span>
-                <span class="impact__logo-pill">National Water Authority</span>
-                <span class="impact__logo-pill">UN Environment Programme</span>
-                <span class="impact__logo-pill">Regional Land Agency</span>
-                <span class="impact__logo-pill">AgriBusiness Corp</span>
-                <span class="impact__logo-pill">Hydro Infrastructure Ltd</span>
-                <span class="impact__logo-pill">GeoIntelligence Bureau</span>
-                <span class="impact__logo-pill">Climate Research Institute</span>
-              </div>
-              <div class="impact__logos-set" aria-hidden="true">
-                <span class="impact__logo-pill">Ministry of Agriculture</span>
-                <span class="impact__logo-pill">National Water Authority</span>
-                <span class="impact__logo-pill">UN Environment Programme</span>
-                <span class="impact__logo-pill">Regional Land Agency</span>
-                <span class="impact__logo-pill">AgriBusiness Corp</span>
-                <span class="impact__logo-pill">Hydro Infrastructure Ltd</span>
-                <span class="impact__logo-pill">GeoIntelligence Bureau</span>
-                <span class="impact__logo-pill">Climate Research Institute</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ── Bottom statement ── -->
-        <div class="impact__statement animate-fade-up">
-          <p class="impact__statement-text">
-            "We don't just deliver data — we deliver the confidence
-            to act on it."
-          </p>
-          <div class="impact__statement-attr">
-            <span>— ISO 27001 Certified</span>
-            <span class="impact__statement-dot" aria-hidden="true"></span>
-            <span>SOC 2 Type II Compliant</span>
-          </div>
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- About / Mission & Story -->
-    <section id="about" class="about" data-observe-section>
-
-      <!-- Diagonal gradient overlay -->
-      <div class="about__gradient" aria-hidden="true"></div>
-
-      <div class="container">
-
-        <!-- ══ ZONE 1 — Mission Statement ══ -->
-        <div class="about__mission animate-fade-up">
-
-          <div class="about__mission-eyebrow">
-            <span class="about__mission-eyebrow-line" aria-hidden="true"></span>
-            <span class="about__mission-eyebrow-text">Our Mission</span>
-          </div>
-
-          <blockquote class="about__quote">
-            <span class="about__quote-line animate-fade-up">We exist to close the gap between</span>
-            <span class="about__quote-line about__quote-line--gradient animate-fade-up">what the Earth is telling us</span>
-            <span class="about__quote-line animate-fade-up">and what decisions get made.</span>
-          </blockquote>
-
-          <div class="about__mission-rule animate-fade-in" aria-hidden="true"></div>
-
-          <p class="about__mission-body animate-fade-up">
-            Founded at the intersection of geospatial science and
-            applied AI, Flahtik was built for a world where the
-            cost of environmental uncertainty is no longer acceptable.
-          </p>
-
-        </div>
-
-        <!-- ══ ZONE 2 — Founding Story ══ -->
-        <div class="about__story">
-
-          <div class="about__story-grid">
-
-            <!-- Left — Image placeholder -->
-            <div class="about__image-placeholder animate-fade-up">
-              <!-- Replace with actual team/office photo when available -->
-              <span class="about__image-watermark" aria-hidden="true">2019</span>
-              <div class="about__image-center">
-                <span class="about__image-tag">Founded</span>
-                <span class="about__image-city">Riyadh, Saudi Arabia</span>
-                <p class="about__image-note">
-                  Born from the need to give
-                  the Arabian Peninsula's planners
-                  a ground-truth data advantage.
-                </p>
-              </div>
-              <div class="about__image-hq">
-                <span class="about__image-hq-dot" aria-hidden="true"></span>
-                <span class="about__image-hq-label">HQ: Riyadh, KSA</span>
-              </div>
-            </div>
-
-            <!-- Right — Text -->
-            <div class="about__story-text animate-fade-up">
-
-              <span class="about__story-eyebrow">Our Story</span>
-
-              <h3 class="about__story-headline">
-                Built in the Region.<br>
-                Built for the Planet.
-              </h3>
-
-              <div class="about__story-body">
-                <p>
-                  Flahtik emerged from a simple observation:
-                  the most consequential decisions about land, water,
-                  and food are still being made without reliable spatial
-                  data. Governments were guessing. Farmers were reacting.
-                  Utilities were failing to anticipate.
-                </p>
-                <p>
-                  We set out to change that — combining satellite earth
-                  observation, ground-sensor networks, and machine learning
-                  into a single intelligence platform purpose-built for
-                  the environmental challenges of the 21st century.
-                </p>
-                <p>
-                  Today, Flahtik operates across three continents,
-                  partnering with governments, agribusinesses, and
-                  water utilities to turn planetary signals into
-                  decisions that matter.
-                </p>
-              </div>
-
-              <div class="about__story-stats">
-                <div class="about__story-stat about__story-stat--jade">
-                  <span class="about__story-stat-value">2019</span>
-                  <span class="about__story-stat-label">Year Founded</span>
-                </div>
-                <div class="about__story-stat about__story-stat--cyan">
-                  <span class="about__story-stat-value">3</span>
-                  <span class="about__story-stat-label">Continents Active</span>
-                </div>
-              </div>
-
-              <a href="#" class="about__story-link">Meet the leadership team &rarr;</a>
-
-            </div>
-
-          </div>
-
-        </div>
-
-        <!-- ══ ZONE 3 — Values Strip ══ -->
-        <div class="about__values animate-fade-up">
-
-          <!-- Value 01 -->
-          <div class="about__value about__value--jade">
-            <div class="about__value-icon">
-              <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <circle cx="20" cy="20" r="8"/>
-                <circle cx="20" cy="20" r="3"/>
-                <line x1="20" y1="4" x2="20" y2="10"/>
-                <line x1="20" y1="30" x2="20" y2="36"/>
-                <line x1="4" y1="20" x2="10" y2="20"/>
-                <line x1="30" y1="20" x2="36" y2="20"/>
+            <div class="platform__step-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M6.3 6.3a8 8 0 0 0 0 11.4"/>
+                <path d="M17.7 6.3a8 8 0 0 1 0 11.4"/>
+                <path d="M3.5 3.5a13 13 0 0 0 0 17"/>
+                <path d="M20.5 3.5a13 13 0 0 1 0 17"/>
               </svg>
             </div>
-            <h4 class="about__value-name">Ground Truth</h4>
-            <p class="about__value-desc">
-              Every insight we deliver is anchored
-              in verified, multi-source data — never assumptions.
-            </p>
-          </div>
-
-          <!-- Value 02 -->
-          <div class="about__value about__value--cyan">
-            <div class="about__value-icon">
-              <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <circle cx="16" cy="20" r="10"/>
-                <circle cx="24" cy="20" r="10"/>
-              </svg>
-            </div>
-            <h4 class="about__value-name">Systems Thinking</h4>
-            <p class="about__value-desc">
-              We model ecosystems, not just datasets —
-              because nature does not operate in silos.
-            </p>
-          </div>
-
-          <!-- Value 03 -->
-          <div class="about__value about__value--amber">
-            <div class="about__value-icon">
-              <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M20 4 L34 14 L34 30 L20 36 L6 30 L6 14 Z"/>
-                <path d="M20 16 C18 16, 14 18, 14 22 C14 26, 18 28, 20 30 C22 28, 26 26, 26 22 C26 18, 22 16, 20 16Z"/>
-                <line x1="20" y1="22" x2="20" y2="26"/>
-              </svg>
-            </div>
-            <h4 class="about__value-name">Planetary Stewardship</h4>
-            <p class="about__value-desc">
-              Our technology exists in service
-              of the environment it monitors — not at its expense.
-            </p>
-          </div>
-
-          <!-- Value 04 -->
-          <div class="about__value about__value--sky">
-            <div class="about__value-icon">
-              <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <polyline points="4,32 14,24 22,28 36,12"/>
-                <polyline points="28,12 36,12 36,20"/>
-              </svg>
-            </div>
-            <h4 class="about__value-name">Decision Velocity</h4>
-            <p class="about__value-desc">
-              The window between signal and crisis is
-              narrowing. We engineer for speed without sacrificing depth.
-            </p>
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- Insights / Blog & News -->
-    <section id="insights" class="ins" data-observe-section>
-      <div class="container">
-
-        <!-- ── Header row ── -->
-        <div class="ins__header animate-fade-up">
-          <div class="ins__header-left">
-            <div class="ins__eyebrow">
-              <span class="ins__eyebrow-line" aria-hidden="true"></span>
-              <span class="ins__eyebrow-text">Insights</span>
-            </div>
-            <h2 class="ins__title">Intelligence Briefings</h2>
-          </div>
-          <div class="ins__header-right">
-            <a href="#" class="btn ins__header-btn">View All Articles &rarr;</a>
-            <span class="ins__header-note">Updated weekly</span>
-          </div>
-        </div>
-
-        <!-- ── Row 1 — Featured + 3 small ── -->
-        <div class="ins__row1 animate-fade-up">
-
-          <!-- Featured card -->
-          <article class="ins__featured">
-            <div class="ins__featured-visual">
-              <span class="ins__pill ins__pill--jade">Remote Sensing</span>
-              <div class="ins__featured-rings" aria-hidden="true">
-                <span class="ins__ring ins__ring--1"></span>
-                <span class="ins__ring ins__ring--2"></span>
-                <span class="ins__ring ins__ring--3"></span>
-              </div>
-            </div>
-            <div class="ins__featured-body">
-              <span class="ins__meta">8 min read</span>
-              <h3 class="ins__featured-title">
-                The Next Frontier: How Hyperspectral
-                Imaging Is Redefining Crop Intelligence
-              </h3>
-              <p class="ins__featured-excerpt">
-                Beyond RGB and multispectral — the rise of
-                400-band hyperspectral satellites is unlocking
-                soil chemistry analysis at continental scale.
+            <div class="platform__step-body">
+              <h3 class="t-h3">Data Acquisition</h3>
+              <p class="t-body">
+                Satellite constellations, IoT ground sensors, drone
+                surveys, and open-source datasets ingested in real time.
               </p>
-              <div class="ins__author">
-                <span class="ins__author-avatar">FK</span>
-                <span class="ins__author-name">Flahtik Research Team</span>
-                <span class="ins__author-sep" aria-hidden="true"></span>
-                <span class="ins__meta">March 2026</span>
+              <div class="platform__step-tags">
+                <span>Sentinel-2</span><span>Landsat</span><span>IoT Sensors</span>
               </div>
-              <a href="#" class="ins__read-link">Read Article &rarr;</a>
             </div>
-          </article>
+          </div>
 
-          <!-- 3 small cards -->
-          <div class="ins__side">
-
-            <article class="ins__small ins__small--amber">
-              <div class="ins__small-accent" aria-hidden="true"></div>
-              <div class="ins__small-content">
-                <span class="ins__pill ins__pill--amber">Agriculture</span>
-                <h4 class="ins__small-title">
-                  Sentinel-2 vs. Planet Labs:
-                  Which Satellite Wins for Crop Monitoring?
-                </h4>
-                <span class="ins__meta">Feb 2026</span>
+          <div class="platform__step">
+            <div class="platform__step-num">02</div>
+            <div class="platform__step-connector" aria-hidden="true">
+              <div class="platform__step-dot"></div>
+              <div class="platform__step-line"></div>
+            </div>
+            <div class="platform__step-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="2" y="3" width="20" height="18" rx="2"/>
+                <path d="M8 3v18M16 3v18M2 9h20M2 15h20"/>
+              </svg>
+            </div>
+            <div class="platform__step-body">
+              <h3 class="t-h3">Geospatial Processing</h3>
+              <p class="t-body">
+                Radiometric correction, cloud masking, orthorectification,
+                and fusion across multi-source datasets at planetary scale.
+              </p>
+              <div class="platform__step-tags">
+                <span>QGIS</span><span>PostGIS</span><span>Google Earth Engine</span>
               </div>
-              <span class="ins__small-time">5 min</span>
-            </article>
+            </div>
+          </div>
 
-            <article class="ins__small ins__small--sky">
-              <div class="ins__small-accent" aria-hidden="true"></div>
-              <div class="ins__small-content">
-                <span class="ins__pill ins__pill--sky">Water</span>
-                <h4 class="ins__small-title">
-                  Predicting Drought 90 Days Out:
-                  Flahtik's Hydrological Model Explained
-                </h4>
-                <span class="ins__meta">Feb 2026</span>
+          <div class="platform__step">
+            <div class="platform__step-num">03</div>
+            <div class="platform__step-connector" aria-hidden="true">
+              <div class="platform__step-dot"></div>
+              <div class="platform__step-line"></div>
+            </div>
+            <div class="platform__step-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                <path d="M2 17l10 5 10-5"/>
+                <path d="M2 12l10 5 10-5"/>
+              </svg>
+            </div>
+            <div class="platform__step-body">
+              <h3 class="t-h3">AI Analysis</h3>
+              <p class="t-body">
+                Deep learning models trained on domain-specific datasets
+                detect anomalies, classify land cover, and forecast outcomes.
+              </p>
+              <div class="platform__step-tags">
+                <span>TensorFlow</span><span>PyTorch</span><span>AWS SageMaker</span>
               </div>
-              <span class="ins__small-time">6 min</span>
-            </article>
+            </div>
+          </div>
 
-            <article class="ins__small ins__small--cyan">
-              <div class="ins__small-accent" aria-hidden="true"></div>
-              <div class="ins__small-content">
-                <span class="ins__pill ins__pill--cyan">Spatial Tech</span>
-                <h4 class="ins__small-title">
-                  Why GeoParquet Is Replacing Shapefiles
-                  in Enterprise GIS Workflows
-                </h4>
-                <span class="ins__meta">Jan 2026</span>
+          <div class="platform__step">
+            <div class="platform__step-num">04</div>
+            <div class="platform__step-connector" aria-hidden="true">
+              <div class="platform__step-dot"></div>
+              <div class="platform__step-line"></div>
+            </div>
+            <div class="platform__step-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M18 20V10M12 20V4M6 20v-6"/>
+                <path d="M2 20h20"/>
+              </svg>
+            </div>
+            <div class="platform__step-body">
+              <h3 class="t-h3">Insight Generation</h3>
+              <p class="t-body">
+                Processed intelligence surfaces as interactive dashboards,
+                automated alerts, and structured reports tied to KPIs.
+              </p>
+              <div class="platform__step-tags">
+                <span>Live Dashboards</span><span>API Feeds</span><span>Auto Reports</span>
               </div>
-              <span class="ins__small-time">4 min</span>
-            </article>
+            </div>
+          </div>
 
+          <div class="platform__step platform__step--last">
+            <div class="platform__step-num">05</div>
+            <div class="platform__step-connector" aria-hidden="true">
+              <div class="platform__step-dot platform__step-dot--final"></div>
+            </div>
+            <div class="platform__step-icon platform__step-icon--final">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+            </div>
+            <div class="platform__step-body">
+              <h3 class="t-h3">Client Delivery</h3>
+              <p class="t-body">
+                Secure web portal, REST API, or embedded integration —
+                decisions reached faster, with full audit trail and traceability.
+              </p>
+              <div class="platform__step-tags">
+                <span>REST API</span><span>Web Portal</span><span>White-label</span>
+              </div>
+            </div>
           </div>
 
         </div>
 
-        <!-- ── Row 2 — 3 equal cards ── -->
-        <div class="ins__row2 animate-fade-up">
+        <!-- Tech stack strip -->
+        <div class="platform__stack" data-reveal>
+          <p class="platform__stack-label t-eyebrow">Powered by</p>
+          <div class="platform__stack-items">
+            <span>Google Earth Engine</span>
+            <span>AWS SageMaker</span>
+            <span>QGIS</span>
+            <span>Sentinel-2</span>
+            <span>TensorFlow</span>
+            <span>PostGIS</span>
+            <span>Copernicus</span>
+            <span>Planet Labs</span>
+          </div>
+        </div>
 
-          <article class="ins__card ins__card--jade">
-            <div class="ins__card-top-line" aria-hidden="true"></div>
-            <span class="ins__pill ins__pill--jade">Environment</span>
-            <h4 class="ins__card-title">
-              Measuring Carbon in Real Time:
-              From Forest Canopy to Credit Registry
-            </h4>
-            <p class="ins__card-excerpt">
-              How satellite-derived biomass estimates
-              are bridging the gap between field surveys and
-              carbon market verification.
+        <!-- Demo CTA -->
+        <div class="platform__demo" data-reveal>
+          <div class="platform__demo-text">
+            <h3 class="t-h3">See the platform in action</h3>
+            <p class="t-body">
+              Book a 30-minute walkthrough with our solutions team.
+              No commitment required.
             </p>
-            <div class="ins__card-footer">
-              <span class="ins__meta">Jan 2026 &middot; 7 min read</span>
-              <span class="ins__card-arrow">&rarr;</span>
-            </div>
-          </article>
+          </div>
+          <a href="#contact" class="btn-primary">
+            Request a Demo
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2.5">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
 
-          <article class="ins__card ins__card--amber">
-            <div class="ins__card-top-line" aria-hidden="true"></div>
-            <span class="ins__pill ins__pill--amber">Policy</span>
-            <h4 class="ins__card-title">
-              SDG 15 and Spatial Data:
-              How Governments Are Closing the Gap
-            </h4>
-            <p class="ins__card-excerpt">
-              A review of how national statistical
-              offices are integrating earth observation data
-              into sustainable development reporting frameworks.
-            </p>
-            <div class="ins__card-footer">
-              <span class="ins__meta">Dec 2025 &middot; 9 min read</span>
-              <span class="ins__card-arrow">&rarr;</span>
-            </div>
-          </article>
+      </div>
+    </section>
 
-          <article class="ins__card ins__card--sky">
-            <div class="ins__card-top-line" aria-hidden="true"></div>
-            <span class="ins__pill ins__pill--sky">Infrastructure</span>
-            <h4 class="ins__card-title">
-              Digital Twins for River Basins:
-              The New Standard in Water Governance
-            </h4>
-            <p class="ins__card-excerpt">
-              Basin-scale hydrological digital twins
-              are moving from research pilots to operational
-              decision-support systems across arid regions.
-            </p>
-            <div class="ins__card-footer">
-              <span class="ins__meta">Nov 2025 &middot; 6 min read</span>
-              <span class="ins__card-arrow">&rarr;</span>
+    <!-- Sectors -->
+    <section id="sectors" class="sectors">
+      <div class="section-divider"></div>
+      <div class="sectors__inner">
+
+        <!-- Header -->
+        <div class="sectors__header" data-reveal>
+          <div class="badge">
+            <div class="badge-dot"></div>
+            <span>Who We Serve</span>
+          </div>
+          <h2 class="t-h2 sectors__title">
+            Built for the Sectors<br>
+            <span class="t-grad">That Shape the Planet</span>
+          </h2>
+        </div>
+
+        <!-- Layout: accordion left + visual right -->
+        <div class="sectors__layout">
+
+          <!-- Accordion -->
+          <div class="sectors__accordion" role="list">
+
+            <div class="sectors__item sectors__item--open" role="listitem">
+              <button class="sectors__trigger" aria-expanded="true">
+                <div class="sectors__trigger-left">
+                  <span class="sectors__trigger-num">01</span>
+                  <span class="sectors__trigger-name">Government &amp; Public Sector</span>
+                </div>
+                <svg class="sectors__chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="sectors__panel">
+                <p class="t-body sectors__panel-body">
+                  Ministries, municipalities, and national agencies rely on
+                  Flahtik for land use planning, infrastructure monitoring,
+                  disaster response, and environmental compliance — all
+                  backed by satellite-verified data.
+                </p>
+                <ul class="sectors__panel-list">
+                  <li>Land use &amp; urban planning</li>
+                  <li>Disaster risk reduction</li>
+                  <li>National environmental reporting</li>
+                  <li>Border &amp; coastline monitoring</li>
+                </ul>
+                <a href="#contact" class="sectors__panel-link">
+                  Explore government solutions
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+              </div>
             </div>
-          </article>
+
+            <div class="sectors__item" role="listitem">
+              <button class="sectors__trigger" aria-expanded="false">
+                <div class="sectors__trigger-left">
+                  <span class="sectors__trigger-num">02</span>
+                  <span class="sectors__trigger-name">Agribusiness</span>
+                </div>
+                <svg class="sectors__chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="sectors__panel">
+                <p class="t-body sectors__panel-body">
+                  From smallholder cooperatives to multinational
+                  agribusinesses, Flahtik delivers field-level crop
+                  intelligence that reduces input costs, improves yield
+                  forecasting, and enables sustainable certification.
+                </p>
+                <ul class="sectors__panel-list">
+                  <li>Crop health &amp; stress monitoring</li>
+                  <li>Yield forecasting &amp; harvest planning</li>
+                  <li>Sustainable sourcing verification</li>
+                  <li>Insurance &amp; risk assessment</li>
+                </ul>
+                <a href="#contact" class="sectors__panel-link">
+                  Explore agribusiness solutions
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+              </div>
+            </div>
+
+            <div class="sectors__item" role="listitem">
+              <button class="sectors__trigger" aria-expanded="false">
+                <div class="sectors__trigger-left">
+                  <span class="sectors__trigger-num">03</span>
+                  <span class="sectors__trigger-name">Water Utilities</span>
+                </div>
+                <svg class="sectors__chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="sectors__panel">
+                <p class="t-body sectors__panel-body">
+                  Water authorities and utilities use Flahtik to monitor
+                  reservoir levels, track watershed health, model flood
+                  risk, and manage water stress across entire basin systems
+                  in real time.
+                </p>
+                <ul class="sectors__panel-list">
+                  <li>Reservoir &amp; dam monitoring</li>
+                  <li>Flood risk modelling &amp; early warning</li>
+                  <li>Water quality remote sensing</li>
+                  <li>Groundwater &amp; aquifer tracking</li>
+                </ul>
+                <a href="#contact" class="sectors__panel-link">
+                  Explore water solutions
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+              </div>
+            </div>
+
+            <div class="sectors__item" role="listitem">
+              <button class="sectors__trigger" aria-expanded="false">
+                <div class="sectors__trigger-left">
+                  <span class="sectors__trigger-num">04</span>
+                  <span class="sectors__trigger-name">Environmental &amp; Conservation</span>
+                </div>
+                <svg class="sectors__chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="sectors__panel">
+                <p class="t-body sectors__panel-body">
+                  Conservation organisations, NGOs, and development banks
+                  leverage Flahtik for biodiversity mapping, deforestation
+                  alerts, carbon stock assessment, and nature-based
+                  solutions monitoring at landscape scale.
+                </p>
+                <ul class="sectors__panel-list">
+                  <li>Deforestation &amp; land degradation alerts</li>
+                  <li>Biodiversity &amp; habitat corridors</li>
+                  <li>Carbon stock &amp; sequestration</li>
+                  <li>Nature-based solutions monitoring</li>
+                </ul>
+                <a href="#contact" class="sectors__panel-link">
+                  Explore conservation solutions
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+              </div>
+            </div>
+
+            <div class="sectors__item" role="listitem">
+              <button class="sectors__trigger" aria-expanded="false">
+                <div class="sectors__trigger-left">
+                  <span class="sectors__trigger-num">05</span>
+                  <span class="sectors__trigger-name">Energy &amp; Infrastructure</span>
+                </div>
+                <svg class="sectors__chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="sectors__panel">
+                <p class="t-body sectors__panel-body">
+                  Energy developers and infrastructure operators use
+                  Flahtik for site feasibility, environmental impact
+                  monitoring, pipeline and grid corridor surveillance,
+                  and renewable energy resource assessment.
+                </p>
+                <ul class="sectors__panel-list">
+                  <li>Solar &amp; wind site feasibility</li>
+                  <li>Pipeline &amp; grid corridor monitoring</li>
+                  <li>Environmental impact assessment</li>
+                  <li>Asset change detection</li>
+                </ul>
+                <a href="#contact" class="sectors__panel-link">
+                  Explore energy solutions
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Visual panel -->
+          <div class="sectors__visual" aria-hidden="true">
+            <div class="sectors__visual-card" id="sectorsVisual">
+
+              <div class="sectors__vis sectors__vis--gov active">
+                <div class="sectors__vis-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+                    <rect x="2" y="7" width="20" height="15" rx="1"/>
+                    <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
+                    <line x1="12" y1="12" x2="12" y2="16"/>
+                    <line x1="10" y1="14" x2="14" y2="14"/>
+                  </svg>
+                </div>
+                <div class="sectors__vis-stat">
+                  <div class="sectors__vis-num">40+</div>
+                  <div class="sectors__vis-label">Government clients</div>
+                </div>
+                <div class="sectors__vis-tags">
+                  <span>Land Planning</span><span>Disaster Response</span><span>Compliance</span>
+                </div>
+              </div>
+
+              <div class="sectors__vis sectors__vis--agri">
+                <div class="sectors__vis-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+                    <rect x="2" y="3" width="20" height="4" rx="1"/>
+                    <rect x="2" y="10" width="20" height="4" rx="1"/>
+                    <rect x="2" y="17" width="20" height="4" rx="1"/>
+                  </svg>
+                </div>
+                <div class="sectors__vis-stat">
+                  <div class="sectors__vis-num">2.4M ha</div>
+                  <div class="sectors__vis-label">Under crop monitoring</div>
+                </div>
+                <div class="sectors__vis-tags">
+                  <span>Crop Analytics</span><span>Yield AI</span><span>Insurance</span>
+                </div>
+              </div>
+
+              <div class="sectors__vis sectors__vis--water">
+                <div class="sectors__vis-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+                    <path d="M12 2L6 10a6 6 0 1 0 12 0L12 2z"/>
+                  </svg>
+                </div>
+                <div class="sectors__vis-stat">
+                  <div class="sectors__vis-num">98%</div>
+                  <div class="sectors__vis-label">Flood prediction accuracy</div>
+                </div>
+                <div class="sectors__vis-tags">
+                  <span>Watersheds</span><span>Flood Risk</span><span>Aquifers</span>
+                </div>
+              </div>
+
+              <div class="sectors__vis sectors__vis--env">
+                <div class="sectors__vis-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+                    <path d="M12 2C6 2 3 7 3 12c0 4 2.5 7 6 8.5"/>
+                    <path d="M12 2c6 0 9 5 9 10 0 4-2.5 7-6 8.5"/>
+                    <line x1="12" y1="2" x2="12" y2="22"/>
+                  </svg>
+                </div>
+                <div class="sectors__vis-stat">
+                  <div class="sectors__vis-num">180+</div>
+                  <div class="sectors__vis-label">Countries monitored</div>
+                </div>
+                <div class="sectors__vis-tags">
+                  <span>Carbon</span><span>Biodiversity</span><span>Deforestation</span>
+                </div>
+              </div>
+
+              <div class="sectors__vis sectors__vis--energy">
+                <div class="sectors__vis-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+                    <circle cx="12" cy="12" r="3"/>
+                    <path d="M6.3 6.3a8 8 0 0 0 0 11.4"/>
+                    <path d="M17.7 6.3a8 8 0 0 1 0 11.4"/>
+                  </svg>
+                </div>
+                <div class="sectors__vis-stat">
+                  <div class="sectors__vis-num">50+</div>
+                  <div class="sectors__vis-label">Infrastructure projects</div>
+                </div>
+                <div class="sectors__vis-tags">
+                  <span>Solar Siting</span><span>Pipelines</span><span>Grid Monitoring</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats -->
+    <section id="stats" class="stats">
+      <div class="section-divider"></div>
+      <div class="stats__inner">
+
+        <!-- Header -->
+        <div class="stats__header" data-reveal>
+          <div class="badge">
+            <div class="badge-dot"></div>
+            <span>Our Impact</span>
+          </div>
+          <h2 class="t-h2 stats__title">
+            Numbers That<br>
+            <span class="t-grad">Speak for Themselves</span>
+          </h2>
+          <p class="t-body stats__desc">
+            Since 2019, Flahtik has delivered spatial intelligence
+            at scale — across continents, sectors, and environments.
+          </p>
+        </div>
+
+        <!-- Counters -->
+        <div class="stats__counters" data-reveal>
+
+          <div class="stats__counter">
+            <div class="stats__counter-top">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/>
+              </svg>
+            </div>
+            <div class="stats__counter-num">
+              <span class="stats__count" data-target="180">0</span>
+              <span class="stats__suffix">+</span>
+            </div>
+            <div class="stats__counter-label">Countries Monitored</div>
+            <div class="stats__counter-sub">Global satellite coverage across every continent</div>
+          </div>
+
+          <div class="stats__counter">
+            <div class="stats__counter-top">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="2" y="3" width="20" height="4" rx="1"/>
+                <rect x="2" y="10" width="20" height="4" rx="1"/>
+                <rect x="2" y="17" width="20" height="4" rx="1"/>
+              </svg>
+            </div>
+            <div class="stats__counter-num">
+              <span class="stats__count" data-target="2.4" data-decimal="1">0</span>
+              <span class="stats__suffix">M ha</span>
+            </div>
+            <div class="stats__counter-label">Hectares Monitored</div>
+            <div class="stats__counter-sub">Active crop and land monitoring across farm portfolios</div>
+          </div>
+
+          <div class="stats__counter">
+            <div class="stats__counter-top">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+            </div>
+            <div class="stats__counter-num">
+              <span class="stats__count" data-target="98">0</span>
+              <span class="stats__suffix">%</span>
+            </div>
+            <div class="stats__counter-label">Prediction Accuracy</div>
+            <div class="stats__counter-sub">Watershed and flood risk model precision rate</div>
+          </div>
+
+          <div class="stats__counter">
+            <div class="stats__counter-top">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="2" y="7" width="20" height="15" rx="1"/>
+                <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
+              </svg>
+            </div>
+            <div class="stats__counter-num">
+              <span class="stats__count" data-target="40">0</span>
+              <span class="stats__suffix">+</span>
+            </div>
+            <div class="stats__counter-label">Enterprise Clients</div>
+            <div class="stats__counter-sub">Governments, utilities, and agribusinesses globally</div>
+          </div>
+
+          <div class="stats__counter">
+            <div class="stats__counter-top">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M6.3 6.3a8 8 0 0 0 0 11.4"/>
+                <path d="M17.7 6.3a8 8 0 0 1 0 11.4"/>
+              </svg>
+            </div>
+            <div class="stats__counter-num">
+              <span class="stats__count" data-target="5">0</span>
+              <span class="stats__suffix">+</span>
+            </div>
+            <div class="stats__counter-label">Years of Operations</div>
+            <div class="stats__counter-sub">Founded in Riyadh in 2019, serving globally since</div>
+          </div>
+
+          <div class="stats__counter">
+            <div class="stats__counter-top">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+              </svg>
+            </div>
+            <div class="stats__counter-num">
+              <span class="stats__count" data-target="99">0</span>
+              <span class="stats__suffix">%</span>
+            </div>
+            <div class="stats__counter-label">Platform Uptime</div>
+            <div class="stats__counter-sub">Enterprise-grade reliability with 24/7 monitoring</div>
+          </div>
 
         </div>
 
-        <!-- ── Newsletter signup ── -->
-        <div class="ins__newsletter animate-fade-up">
-          <div class="ins__newsletter-text">
-            <h3 class="ins__newsletter-title">Stay Briefed</h3>
-            <p class="ins__newsletter-desc">
-              Weekly spatial intelligence insights delivered
-              to your inbox — no noise, only signal.
-            </p>
+        <!-- Trust strip -->
+        <div class="stats__trust" data-reveal>
+          <p class="stats__trust-label t-eyebrow">Trusted &amp; Certified</p>
+          <div class="stats__trust-badges">
+
+            <div class="stats__trust-badge">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <polyline points="9 12 11 14 15 10"/>
+              </svg>
+              <div>
+                <div class="stats__trust-badge-name">ISO 27001</div>
+                <div class="stats__trust-badge-sub">Information Security</div>
+              </div>
+            </div>
+
+            <div class="stats__trust-badge">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+              <div>
+                <div class="stats__trust-badge-name">SOC 2 Type II</div>
+                <div class="stats__trust-badge-sub">Security &amp; Availability</div>
+              </div>
+            </div>
+
+            <div class="stats__trust-badge">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="3" y="11" width="18" height="11" rx="2"/>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+              </svg>
+              <div>
+                <div class="stats__trust-badge-name">GDPR Compliant</div>
+                <div class="stats__trust-badge-sub">Data Privacy</div>
+              </div>
+            </div>
+
+            <div class="stats__trust-badge">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+              </svg>
+              <div>
+                <div class="stats__trust-badge-name">Saudi PDPL</div>
+                <div class="stats__trust-badge-sub">Local Compliance</div>
+              </div>
+            </div>
+
           </div>
-          <form id="newsletterForm" class="ins__newsletter-form" action="https://formspree.io/f/xaqpqenq" method="POST" novalidate>
-            <input type="hidden" name="_subject" value="New Newsletter Subscriber — Flahtik Digest" />
-            <input type="hidden" name="_template" value="table" />
-            <input type="hidden" name="_autoresponse" value="Welcome to the Flahtik Intelligence Digest. Your first briefing arrives next Monday." />
-            <input type="text" name="_gotcha" style="display:none" />
-            <input type="email" name="email" class="ins__newsletter-input" placeholder="your@email.com" aria-label="Email address" required>
-            <button type="submit" class="btn ins__newsletter-btn">Subscribe &rarr;</button>
-          </form>
-          <div class="ins__newsletter-success" style="display:none" role="alert" aria-live="polite">
-            <p class="ins__success-title">You're on the list. &#10003;</p>
-            <p class="ins__success-body">First digest arrives next Monday.</p>
+        </div>
+
+        <!-- Pull quote -->
+        <div class="stats__quote" data-reveal>
+          <div class="stats__quote-mark">"</div>
+          <blockquote class="stats__quote-text">
+            We exist to close the gap between what the Earth
+            is telling us — and what decisions actually get made.
+          </blockquote>
+          <div class="stats__quote-source">
+            <div class="stats__quote-line"></div>
+            <span>Flahtik founding mission, Riyadh 2019</span>
           </div>
         </div>
 
       </div>
     </section>
 
-    <!-- Contact / CTA -->
-    <section id="contact" class="cta" data-observe-section>
+    <!-- About -->
+    <section id="about" class="about">
+      <div class="section-divider"></div>
+      <div class="about__inner">
 
-      <!-- Background glow -->
-      <div class="cta__glow" aria-hidden="true"></div>
-
-      <div class="container">
-
-        <!-- ── Header ── -->
-        <header class="cta__header animate-fade-up">
-          <div class="cta__eyebrow">
-            <span class="cta__eyebrow-line" aria-hidden="true"></span>
-            <span class="cta__eyebrow-text">Get In Touch</span>
+        <!-- Header -->
+        <div class="about__header" data-reveal>
+          <div class="badge">
+            <div class="badge-dot"></div>
+            <span>Who We Are</span>
           </div>
-          <h2 class="cta__title">
-            Ready to See<br>
-            <span class="cta__title--gradient">Your World</span> Differently?
+          <h2 class="t-h2 about__title">
+            Built in the Region.<br>
+            <span class="t-grad">Built for the Planet.</span>
           </h2>
-          <p class="cta__subtitle">
-            Whether you're exploring a pilot project,
-            evaluating our platform, or ready to deploy —
+        </div>
+
+        <!-- Story grid -->
+        <div class="about__story" data-reveal>
+          <div class="about__story-left">
+            <p class="about__story-body">
+              Flahtik was founded in Riyadh in 2019 with a single
+              conviction — that the gap between what the Earth is
+              telling us and what decisions get made is a problem
+              worth solving. We started in the Middle East because
+              the region's challenges are the world's challenges:
+              water scarcity, desertification, food security, and
+              the pressure to grow sustainably in an arid environment.
+            </p>
+            <p class="about__story-body">
+              Today we operate across four domains and six continents,
+              delivering spatial intelligence to governments, agribusinesses,
+              water utilities, and environmental organisations. Every
+              model we build, every map we produce, every alert we send
+              is rooted in one purpose — helping people make better
+              decisions about the living planet.
+            </p>
+            <div class="about__story-meta">
+              <div class="about__meta-item">
+                <span class="about__meta-num">2019</span>
+                <span class="about__meta-label">Founded in Riyadh, KSA</span>
+              </div>
+              <div class="about__meta-item">
+                <span class="about__meta-num">6</span>
+                <span class="about__meta-label">Continents served</span>
+              </div>
+              <div class="about__meta-item">
+                <span class="about__meta-num">4</span>
+                <span class="about__meta-label">Core domains</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="about__story-right">
+            <div class="about__image-block">
+              <div class="about__image-placeholder">
+                <svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1">
+                  <circle cx="40" cy="40" r="30"/>
+                  <circle cx="40" cy="40" r="20"/>
+                  <circle cx="40" cy="40" r="10"/>
+                  <line x1="10" y1="40" x2="70" y2="40"/>
+                  <line x1="40" y1="10" x2="40" y2="70"/>
+                </svg>
+                <span>Riyadh HQ — Est. 2019</span>
+              </div>
+              <div class="about__image-tag">
+                <div class="about__image-tag-dot"></div>
+                <span>Headquartered in Saudi Arabia</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Values -->
+        <div class="about__values" data-reveal>
+          <p class="t-eyebrow about__values-label">Our Values</p>
+          <div class="about__values-grid">
+
+            <div class="about__value">
+              <div class="about__value-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <circle cx="12" cy="12" r="3"/>
+                  <path d="M6.3 6.3a8 8 0 0 0 0 11.4"/>
+                  <path d="M17.7 6.3a8 8 0 0 1 0 11.4"/>
+                </svg>
+              </div>
+              <h3 class="t-h3 about__value-title">Ground Truth</h3>
+              <p class="t-body about__value-body">
+                Every insight we deliver is anchored in
+                verifiable, satellite-observed reality.
+                We never confuse models for facts.
+              </p>
+            </div>
+
+            <div class="about__value">
+              <div class="about__value-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                  <path d="M2 17l10 5 10-5"/>
+                  <path d="M2 12l10 5 10-5"/>
+                </svg>
+              </div>
+              <h3 class="t-h3 about__value-title">Systems Thinking</h3>
+              <p class="t-body about__value-body">
+                We see land, water, climate, and food as
+                one interconnected system — and we build
+                tools that reflect that complexity.
+              </p>
+            </div>
+
+            <div class="about__value">
+              <div class="about__value-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M12 2C6 2 3 7 3 12c0 4 2.5 7 6 8.5"/>
+                  <path d="M12 2c6 0 9 5 9 10 0 4-2.5 7-6 8.5"/>
+                  <line x1="12" y1="2" x2="12" y2="22"/>
+                </svg>
+              </div>
+              <h3 class="t-h3 about__value-title">Planetary Stewardship</h3>
+              <p class="t-body about__value-body">
+                We measure success not just in contracts
+                closed, but in ecosystems protected and
+                resources preserved for future generations.
+              </p>
+            </div>
+
+            <div class="about__value">
+              <div class="about__value-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <polyline points="13 2 13 9 20 9"/>
+                  <path d="M20 14v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h7"/>
+                  <polyline points="10 14 12 16 16 12"/>
+                </svg>
+              </div>
+              <h3 class="t-h3 about__value-title">Decision Velocity</h3>
+              <p class="t-body about__value-body">
+                The value of intelligence is measured by
+                the speed and confidence with which it
+                enables action. We optimise for both.
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Team CTA -->
+        <div class="about__cta" data-reveal>
+          <div class="about__cta-text">
+            <h3 class="t-h3">Join the team building
+              spatial intelligence for the planet</h3>
+            <p class="t-body">
+              We are always looking for exceptional people
+              in geospatial science, AI, and climate tech.
+            </p>
+          </div>
+          <div class="about__cta-actions">
+            <a href="mailto:hello@flahtik.com" class="btn-primary">
+              View Open Roles
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+            <a href="mailto:hello@flahtik.com" class="btn-outline">
+              hello@flahtik.com
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Insights -->
+    <section id="insights" class="insights">
+      <div class="section-divider"></div>
+      <div class="insights__inner">
+
+        <!-- Header -->
+        <div class="insights__header" data-reveal>
+          <div class="insights__header-left">
+            <div class="badge">
+              <div class="badge-dot"></div>
+              <span>Insights</span>
+            </div>
+            <h2 class="t-h2 insights__title">
+              Intelligence from<br>
+              <span class="t-grad">the Field</span>
+            </h2>
+          </div>
+          <div class="insights__header-right">
+            <p class="t-body insights__desc">
+              Research, case studies, and perspectives
+              from the Flahtik team on spatial technology,
+              climate, and the future of Earth intelligence.
+            </p>
+            <a href="#" class="btn-outline insights__all-link">
+              View All Articles
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Featured article -->
+        <div class="insights__featured" data-reveal>
+          <div class="insights__featured-visual">
+            <div class="insights__feat-placeholder">
+              <svg viewBox="0 0 120 80" fill="none" stroke="currentColor" stroke-width="0.5">
+                <circle cx="60" cy="40" r="35" stroke-dasharray="4 3"/>
+                <circle cx="60" cy="40" r="25" stroke-dasharray="3 4"/>
+                <circle cx="60" cy="40" r="15"/>
+                <circle cx="60" cy="40" r="5" fill="currentColor" fill-opacity="0.3"/>
+                <line x1="25" y1="40" x2="95" y2="40"/>
+                <line x1="60" y1="5" x2="60" y2="75"/>
+              </svg>
+            </div>
+            <div class="insights__feat-tag">
+              <span>Featured</span>
+            </div>
+          </div>
+          <div class="insights__featured-body">
+            <div class="insights__article-meta">
+              <span class="insights__article-cat">Spatial Technology</span>
+              <span class="insights__article-dot"></span>
+              <span class="insights__article-date">March 2025</span>
+              <span class="insights__article-dot"></span>
+              <span class="insights__article-read">8 min read</span>
+            </div>
+            <h3 class="insights__featured-title">
+              Hyperspectral Imaging and the Future
+              of Precision Agriculture in Arid Regions
+            </h3>
+            <p class="t-body insights__featured-excerpt">
+              New advances in hyperspectral satellite sensors are enabling
+              crop stress detection at field scale across desert-edge
+              agricultural zones — transforming how food security is
+              monitored in water-scarce environments across the Middle
+              East, North Africa, and Central Asia.
+            </p>
+            <div class="insights__featured-footer">
+              <div class="insights__author">
+                <div class="insights__author-avatar"></div>
+                <div>
+                  <div class="insights__author-name">Flahtik Research</div>
+                  <div class="insights__author-role">Geospatial Intelligence Team</div>
+                </div>
+              </div>
+              <a href="#" class="insights__read-link">
+                Read Article
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Article grid -->
+        <div class="insights__grid" data-reveal>
+
+          <article class="insights__card">
+            <div class="insights__card-visual insights__card-visual--blue">
+              <svg viewBox="0 0 60 40" fill="none" stroke="currentColor" stroke-width="0.8">
+                <path d="M5 35 Q15 10 30 20 Q45 30 55 5"/>
+                <circle cx="30" cy="20" r="3" fill="currentColor" fill-opacity="0.4"/>
+              </svg>
+            </div>
+            <div class="insights__card-body">
+              <div class="insights__article-meta">
+                <span class="insights__article-cat">Water</span>
+                <span class="insights__article-dot"></span>
+                <span class="insights__article-date">Feb 2025</span>
+              </div>
+              <h4 class="insights__card-title">
+                Satellite-Based Flood Forecasting:
+                48-Hour Early Warning at Basin Scale
+              </h4>
+              <p class="insights__card-excerpt">
+                How synthetic aperture radar combined with
+                hydrological AI models is delivering actionable
+                flood warnings days before traditional systems.
+              </p>
+              <a href="#" class="insights__card-link">
+                Read more
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </a>
+            </div>
+          </article>
+
+          <article class="insights__card">
+            <div class="insights__card-visual insights__card-visual--navy">
+              <svg viewBox="0 0 60 40" fill="none" stroke="currentColor" stroke-width="0.8">
+                <rect x="5" y="5" width="50" height="30" rx="2" stroke-dasharray="3 2"/>
+                <line x1="20" y1="5" x2="20" y2="35"/>
+                <line x1="40" y1="5" x2="40" y2="35"/>
+                <line x1="5" y1="20" x2="55" y2="20"/>
+              </svg>
+            </div>
+            <div class="insights__card-body">
+              <div class="insights__article-meta">
+                <span class="insights__article-cat">Agriculture</span>
+                <span class="insights__article-dot"></span>
+                <span class="insights__article-date">Jan 2025</span>
+              </div>
+              <h4 class="insights__card-title">
+                NDVI to Neural Nets: The Evolution
+                of Crop Intelligence from Space
+              </h4>
+              <p class="insights__card-excerpt">
+                A technical deep-dive into how vegetation
+                indices gave way to deep learning classifiers
+                for multi-crop, multi-season monitoring.
+              </p>
+              <a href="#" class="insights__card-link">
+                Read more
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </a>
+            </div>
+          </article>
+
+          <article class="insights__card">
+            <div class="insights__card-visual insights__card-visual--cyan">
+              <svg viewBox="0 0 60 40" fill="none" stroke="currentColor" stroke-width="0.8">
+                <circle cx="30" cy="20" r="15"/>
+                <circle cx="30" cy="20" r="8"/>
+                <circle cx="30" cy="20" r="2" fill="currentColor" fill-opacity="0.5"/>
+              </svg>
+            </div>
+            <div class="insights__card-body">
+              <div class="insights__article-meta">
+                <span class="insights__article-cat">Environment</span>
+                <span class="insights__article-dot"></span>
+                <span class="insights__article-date">Dec 2024</span>
+              </div>
+              <h4 class="insights__card-title">
+                Carbon Credit Integrity: Why
+                Satellite Verification Changes Everything
+              </h4>
+              <p class="insights__card-excerpt">
+                The voluntary carbon market is under scrutiny.
+                Here is how continuous satellite monitoring
+                is restoring trust in nature-based solutions.
+              </p>
+              <a href="#" class="insights__card-link">
+                Read more
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </a>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- Newsletter strip -->
+        <div class="insights__newsletter" data-reveal>
+          <div class="insights__newsletter-text">
+            <h3 class="t-h3">Stay ahead of the field</h3>
+            <p class="t-body">
+              Monthly intelligence briefings — satellite insights,
+              platform updates, and spatial tech perspectives.
+              No noise. Unsubscribe anytime.
+            </p>
+          </div>
+          <form class="insights__newsletter-form"
+                id="newsletterForm"
+                action="https://formspree.io/f/xaqpqenq">
+            <input type="hidden" name="_subject" value="New Flahtik Newsletter Subscriber"/>
+            <input type="text" name="_gotcha" style="display:none" tabindex="-1"/>
+            <div class="insights__newsletter-fields">
+              <input type="email" name="email" class="insights__newsletter-input" placeholder="your@email.com" required aria-label="Email address"/>
+              <button type="submit" class="btn-primary">
+                Subscribe
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </button>
+            </div>
+            <p class="insights__newsletter-legal">
+              By subscribing you agree to our Privacy Policy. We never share your data.
+            </p>
+          </form>
+          <div class="ins__newsletter-success" style="display:none">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+              <polyline points="22 4 12 14.01 9 11.01"/>
+            </svg>
+            <span>You are on the list. Welcome aboard.</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact">
+      <div class="section-divider"></div>
+      <div class="contact__inner">
+
+        <!-- Header -->
+        <div class="contact__header" data-reveal>
+          <div class="badge">
+            <div class="badge-dot"></div>
+            <span>Get In Touch</span>
+          </div>
+          <h2 class="t-h2 contact__title">
+            Let's Build Something<br>
+            <span class="t-grad">That Matters</span>
+          </h2>
+          <p class="t-body contact__desc">
+            Whether you need a platform demo, want to explore
+            an enterprise partnership, or just have a question -
             our team responds within one business day.
           </p>
-        </header>
+        </div>
 
-        <!-- ── Two-column split ── -->
-        <div class="cta__grid">
+        <!-- Layout -->
+        <div class="contact__layout" data-reveal>
 
-          <!-- Left column -->
-          <div class="cta__left animate-fade-up">
-
-            <!-- Inquiry selector -->
-            <span class="cta__selector-label">I'm interested in...</span>
-
-            <div class="cta__selector">
-              <button class="cta__option is-active" data-inquiry="demo" type="button">
-                <span class="cta__radio" aria-hidden="true"><span class="cta__radio-fill"></span></span>
-                <div class="cta__option-text">
-                  <span class="cta__option-title">Platform Demo</span>
-                  <span class="cta__option-sub">See Flahtik in action with your data</span>
-                </div>
-              </button>
-              <button class="cta__option" data-inquiry="pilot" type="button">
-                <span class="cta__radio" aria-hidden="true"><span class="cta__radio-fill"></span></span>
-                <div class="cta__option-text">
-                  <span class="cta__option-title">Enterprise Pilot</span>
-                  <span class="cta__option-sub">Run a scoped proof-of-concept project</span>
-                </div>
-              </button>
-              <button class="cta__option" data-inquiry="general" type="button">
-                <span class="cta__radio" aria-hidden="true"><span class="cta__radio-fill"></span></span>
-                <div class="cta__option-text">
-                  <span class="cta__option-title">General Inquiry</span>
-                  <span class="cta__option-sub">Questions, partnerships, or press</span>
-                </div>
-              </button>
-            </div>
-
-            <!-- Contact details -->
-            <div class="cta__details">
-
-              <div class="cta__detail">
-                <div class="cta__detail-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M12 2C8 2 5 5.6 5 10c0 5.4 7 12 7 12s7-6.6 7-12c0-4.4-3-8-7-8Z"/>
-                    <circle cx="12" cy="10" r="3"/>
-                  </svg>
-                </div>
-                <div class="cta__detail-text">
-                  <span class="cta__detail-label">Headquarters</span>
-                  <span class="cta__detail-value">Riyadh, Saudi Arabia</span>
+          <!-- Inquiry type selector -->
+          <div class="contact__selectors">
+            <button class="contact__selector contact__selector--active"
+                    data-type="demo">
+              <div class="contact__selector-icon">
+                <svg viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="1.5">
+                  <rect x="2" y="3" width="20" height="14" rx="2"/>
+                  <path d="M8 21h8M12 17v4"/>
+                </svg>
+              </div>
+              <div>
+                <div class="contact__selector-name">Platform Demo</div>
+                <div class="contact__selector-sub">
+                  30-min walkthrough with our team
                 </div>
               </div>
+            </button>
 
-              <div class="cta__detail">
-                <div class="cta__detail-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <rect x="2" y="4" width="20" height="16" rx="2"/>
-                    <path d="M22 4 12 13 2 4"/>
-                  </svg>
-                </div>
-                <div class="cta__detail-text">
-                  <span class="cta__detail-label">Email Us</span>
-                  <a href="mailto:hello@flahtik.com" class="cta__detail-value cta__detail-link">hello@flahtik.com</a>
+            <button class="contact__selector" data-type="pilot">
+              <div class="contact__selector-icon">
+                <svg viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="1.5">
+                  <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                  <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                </svg>
+              </div>
+              <div>
+                <div class="contact__selector-name">Enterprise Pilot</div>
+                <div class="contact__selector-sub">
+                  Custom scoped project for your organisation
                 </div>
               </div>
+            </button>
 
-              <div class="cta__detail">
-                <div class="cta__detail-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <circle cx="12" cy="12" r="10"/>
-                    <path d="M2 12h20"/>
-                    <ellipse cx="12" cy="12" rx="4" ry="10"/>
-                  </svg>
-                </div>
-                <div class="cta__detail-text">
-                  <span class="cta__detail-label">Response Time</span>
-                  <span class="cta__detail-value">Within 1 business day</span>
+            <button class="contact__selector" data-type="general">
+              <div class="contact__selector-icon">
+                <svg viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="1.5">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                </svg>
+              </div>
+              <div>
+                <div class="contact__selector-name">General Inquiry</div>
+                <div class="contact__selector-sub">
+                  Any other question or collaboration idea
                 </div>
               </div>
-
-            </div>
-
-            <!-- Social row -->
-            <div class="cta__social">
-              <span class="cta__social-label">Follow</span>
-              <div class="cta__social-icons">
-                <a href="#" class="cta__social-btn" aria-label="LinkedIn">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6Z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-                </a>
-                <a href="#" class="cta__social-btn" aria-label="X / Twitter">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l6.5 8L4 20h2l5.5-6.8L16 20h4l-6.8-8.5L20 4h-2l-5.2 6.3L8 4H4Z"/></svg>
-                </a>
-                <a href="#" class="cta__social-btn" aria-label="GitHub">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69C6.73 19.91 6.14 18 6.14 18c-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0 1 12 6.8c.85 0 1.7.11 2.5.34 1.9-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.75c0 .27.16.59.67.5A10 10 0 0 0 22 12c0-5.52-4.48-10-10-10Z"/></svg>
-                </a>
-                <a href="#" class="cta__social-btn" aria-label="ResearchGate">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12h4m0 0V8m0 4c2 0 4 1 4 3s-2 3-4 3"/><path d="M8 8v8"/></svg>
-                </a>
-              </div>
-            </div>
-
+            </button>
           </div>
 
-          <!-- Right column — Form -->
-          <div class="cta__right animate-fade-up">
+          <!-- Form -->
+          <form class="contact__form" id="contactForm"
+                action="https://formspree.io/f/mjgagykv">
 
-            <form id="contactForm" class="cta__form" action="https://formspree.io/f/mjgagykv" method="POST" novalidate>
+            <input type="hidden" name="_subject"
+                   value="New Flahtik Contact Form Submission"/>
+            <input type="hidden" name="_template" value="table"/>
+            <input type="hidden" name="inquiry_type" id="inquiryType"
+                   value="Platform Demo"/>
+            <input type="text" name="_gotcha"
+                   style="display:none" tabindex="-1"/>
 
-              <input type="hidden" name="_subject" value="New Flahtik Inquiry" />
-              <input type="hidden" name="_template" value="table" />
-              <input type="hidden" name="_autoresponse" value="Thank you for reaching out to Flahtik. A member of our team will respond within one business day." />
-              <input type="text" name="_gotcha" style="display:none" />
-              <input type="hidden" id="inquiryType" name="inquiry_type" value="Platform Demo" />
-
-              <div class="cta__form-row">
-                <div class="cta__field">
-                  <label class="cta__label" for="ctaName">Full Name</label>
-                  <input type="text" id="ctaName" name="full_name" class="cta__input" placeholder="Jane Doe" required>
-                </div>
-                <div class="cta__field">
-                  <label class="cta__label" for="ctaOrg">Organization</label>
-                  <input type="text" id="ctaOrg" name="organization" class="cta__input" placeholder="Ministry of Agriculture" required>
-                </div>
+            <div class="contact__form-row">
+              <div class="contact__field">
+                <label class="contact__label" for="full_name">
+                  Full Name <span>*</span>
+                </label>
+                <input class="contact__input" type="text"
+                       id="full_name" name="full_name"
+                       placeholder="Your full name" required/>
+                <span class="field-error"></span>
               </div>
-
-              <div class="cta__form-row">
-                <div class="cta__field">
-                  <label class="cta__label" for="ctaTitle">Job Title</label>
-                  <input type="text" id="ctaTitle" name="job_title" class="cta__input" placeholder="Director of GIS" required>
-                </div>
-                <div class="cta__field">
-                  <label class="cta__label" for="ctaCountry">Country</label>
-                  <input type="text" id="ctaCountry" name="country" class="cta__input" placeholder="Saudi Arabia" required>
-                </div>
+              <div class="contact__field">
+                <label class="contact__label" for="organization">
+                  Organisation <span>*</span>
+                </label>
+                <input class="contact__input" type="text"
+                       id="organization" name="organization"
+                       placeholder="Your organisation" required/>
+                <span class="field-error"></span>
               </div>
-
-              <div class="cta__field">
-                <label class="cta__label" for="ctaEmail">Work Email</label>
-                <input type="email" id="ctaEmail" name="email" class="cta__input" placeholder="jane@gov.sa" required>
-              </div>
-
-              <div class="cta__field">
-                <label class="cta__label" for="ctaMessage">Message</label>
-                <textarea id="ctaMessage" name="message" class="cta__input cta__textarea" placeholder="Tell us about your challenge, dataset, or geographic area of interest..." required></textarea>
-              </div>
-
-              <button type="submit" class="btn cta__submit">Send Inquiry &rarr;</button>
-
-            </form>
-
-            <div class="cta__success" style="display:none" role="alert" aria-live="polite">
-              <div class="cta__success-icon" aria-hidden="true">&#10003;</div>
-              <h3 class="cta__success-title">Message received.</h3>
-              <p class="cta__success-text">
-                A member of our team will reach out
-                within one business day.
-              </p>
             </div>
 
+            <div class="contact__form-row">
+              <div class="contact__field">
+                <label class="contact__label" for="job_title">
+                  Job Title
+                </label>
+                <input class="contact__input" type="text"
+                       id="job_title" name="job_title"
+                       placeholder="Your role"/>
+              </div>
+              <div class="contact__field">
+                <label class="contact__label" for="country">
+                  Country <span>*</span>
+                </label>
+                <input class="contact__input" type="text"
+                       id="country" name="country"
+                       placeholder="Your country" required/>
+                <span class="field-error"></span>
+              </div>
+            </div>
+
+            <div class="contact__field">
+              <label class="contact__label" for="email">
+                Work Email <span>*</span>
+              </label>
+              <input class="contact__input" type="email"
+                     id="email" name="email"
+                     placeholder="your@organisation.com" required/>
+              <span class="field-error"></span>
+            </div>
+
+            <div class="contact__field">
+              <label class="contact__label" for="message">
+                Message <span>*</span>
+              </label>
+              <textarea class="contact__input contact__textarea"
+                        id="message" name="message"
+                        placeholder="Tell us about your project, data needs, or question..."
+                        rows="5" required></textarea>
+              <span class="field-error"></span>
+            </div>
+
+            <div class="contact__form-footer">
+              <p class="contact__form-legal">
+                By submitting you agree to our Privacy Policy.
+                We will respond within one business day.
+              </p>
+              <button type="submit" class="btn-primary contact__submit">
+                <span class="contact__submit-text">Send Message</span>
+                <svg width="14" height="14" viewBox="0 0 24 24"
+                     fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </button>
+            </div>
+
+          </form>
+
+          <!-- Success state -->
+          <div class="contact__success" style="display:none">
+            <div class="contact__success-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24"
+                   fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+            </div>
+            <h3 class="t-h3">Message received.</h3>
+            <p class="t-body">
+              Thank you for reaching out. A member of the Flahtik
+              team will be in touch within one business day.
+            </p>
+            <div class="contact__success-meta">
+              <span>hello@flahtik.com</span>
+              <span>Riyadh, Saudi Arabia</span>
+            </div>
           </div>
 
         </div>
 
-      </div>
+        <!-- Contact details strip -->
+        <div class="contact__details" data-reveal>
+          <div class="contact__detail">
+            <svg width="18" height="18" viewBox="0 0 24 24"
+                 fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            <div>
+              <div class="contact__detail-label">Headquarters</div>
+              <div class="contact__detail-value">Riyadh, Saudi Arabia</div>
+            </div>
+          </div>
+          <div class="contact__detail">
+            <svg width="18" height="18" viewBox="0 0 24 24"
+                 fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22 6 12 13 2 6"/>
+            </svg>
+            <div>
+              <div class="contact__detail-label">Email</div>
+              <div class="contact__detail-value">
+                <a href="mailto:hello@flahtik.com">hello@flahtik.com</a>
+              </div>
+            </div>
+          </div>
+          <div class="contact__detail">
+            <svg width="18" height="18" viewBox="0 0 24 24"
+                 fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
+            <div>
+              <div class="contact__detail-label">Response Time</div>
+              <div class="contact__detail-value">Within 1 business day</div>
+            </div>
+          </div>
+          <div class="contact__detail">
+            <svg width="18" height="18" viewBox="0 0 24 24"
+                 fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/>
+            </svg>
+            <div>
+              <div class="contact__detail-label">Coverage</div>
+              <div class="contact__detail-value">Serving 180+ countries</div>
+            </div>
+          </div>
+        </div>
 
+      </div>
     </section>
 
   </main>
@@ -1560,97 +1652,114 @@
   <!-- ============================================
        FOOTER
        ============================================ -->
-  <footer class="foot" data-observe-section>
-    <div class="container">
-
-      <!-- ── Top grid ── -->
-      <div class="foot__grid animate-fade-up">
+  <footer class="footer">
+    <div class="footer__top">
+      <div class="footer__inner">
 
         <!-- Brand -->
-        <div class="foot__brand">
-          <a href="#hero" class="footer-logo" aria-label="Flahtik — Back to top">
-            <img
-              src="assets/images/flahtik-logo.png"
-              alt="Flahtik"
-              class="footer-logo__img"
-              width="130"
-              height="37"
-            />
+        <div class="footer__brand">
+          <a href="/" class="footer__logo">
+            <img src="assets/images/flahtik-logo.png"
+                 alt="Flahtik" class="footer__logo-img"/>
           </a>
-          <p class="foot__tagline">
-            Spatial intelligence for governments,
-            agribusinesses, and water authorities
-            building a resilient planet.
+          <p class="footer__tagline">
+            Spatial intelligence for the living planet.
+            Built in Riyadh. Deployed globally.
           </p>
-          <div class="foot__badges">
-            <span class="foot__badge">ISO 27001</span>
-            <span class="foot__badge">SOC 2 Type II</span>
+          <div class="footer__social">
+            <a href="https://github.com/housemdaaji"
+               class="footer__social-link" aria-label="GitHub"
+               target="_blank" rel="noopener">
+              <svg width="16" height="16" viewBox="0 0 24 24"
+                   fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+              </svg>
+            </a>
+            <a href="mailto:hello@flahtik.com"
+               class="footer__social-link" aria-label="Email">
+              <svg width="16" height="16" viewBox="0 0 24 24"
+                   fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22 6 12 13 2 6"/>
+              </svg>
+            </a>
+            <a href="https://www.linkedin.com/in/housem-daaji"
+               class="footer__social-link" aria-label="LinkedIn"
+               target="_blank" rel="noopener">
+              <svg width="16" height="16" viewBox="0 0 24 24"
+                   fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                <rect x="2" y="9" width="4" height="12"/>
+                <circle cx="4" cy="4" r="2"/>
+              </svg>
+            </a>
           </div>
         </div>
 
-        <!-- Solutions -->
-        <div class="foot__col">
-          <h4 class="foot__heading">Solutions</h4>
-          <a href="#services" class="foot__link">Spatial Technology</a>
-          <a href="#services" class="foot__link">Environmental Intelligence</a>
-          <a href="#services" class="foot__link">Precision Agriculture</a>
-          <a href="#services" class="foot__link">Water Management</a>
-          <a href="#platform" class="foot__link">Platform Overview</a>
+        <!-- Links -->
+        <div class="footer__col">
+          <h4 class="footer__col-title">Solutions</h4>
+          <ul class="footer__links">
+            <li><a href="#services">Spatial Technology</a></li>
+            <li><a href="#services">Environmental Intel</a></li>
+            <li><a href="#services">Precision Agriculture</a></li>
+            <li><a href="#services">Water Management</a></li>
+          </ul>
         </div>
 
-        <!-- Company -->
-        <div class="foot__col">
-          <h4 class="foot__heading">Company</h4>
-          <a href="#about" class="foot__link">About Flahtik</a>
-          <a href="#about" class="foot__link">Our Mission</a>
-          <a href="#" class="foot__link">Leadership</a>
-          <a href="#" class="foot__link">Careers</a>
-          <a href="#" class="foot__link">Press &amp; Media</a>
+        <div class="footer__col">
+          <h4 class="footer__col-title">Platform</h4>
+          <ul class="footer__links">
+            <li><a href="#platform">How It Works</a></li>
+            <li><a href="#platform">Data Pipeline</a></li>
+            <li><a href="#platform">AI Models</a></li>
+            <li><a href="#contact">Request Demo</a></li>
+          </ul>
         </div>
 
-        <!-- Resources -->
-        <div class="foot__col">
-          <h4 class="foot__heading">Resources</h4>
-          <a href="#insights" class="foot__link">Insights Blog</a>
-          <a href="#" class="foot__link">Case Studies</a>
-          <a href="#" class="foot__link">Documentation</a>
-          <a href="#" class="foot__link">API Reference</a>
-          <a href="#" class="foot__link">Research Papers</a>
+        <div class="footer__col">
+          <h4 class="footer__col-title">Sectors</h4>
+          <ul class="footer__links">
+            <li><a href="#sectors">Government</a></li>
+            <li><a href="#sectors">Agribusiness</a></li>
+            <li><a href="#sectors">Water Utilities</a></li>
+            <li><a href="#sectors">Conservation</a></li>
+            <li><a href="#sectors">Energy</a></li>
+          </ul>
         </div>
 
-        <!-- Sectors -->
-        <div class="foot__col">
-          <h4 class="foot__heading">Sectors</h4>
-          <a href="#sectors" class="foot__link">Government</a>
-          <a href="#sectors" class="foot__link">Agribusiness</a>
-          <a href="#sectors" class="foot__link">Water Utilities</a>
-          <a href="#sectors" class="foot__link">Environmental Orgs</a>
-          <a href="#sectors" class="foot__link">Energy &amp; Infrastructure</a>
+        <div class="footer__col">
+          <h4 class="footer__col-title">Company</h4>
+          <ul class="footer__links">
+            <li><a href="#about">About Flahtik</a></li>
+            <li><a href="#insights">Insights</a></li>
+            <li><a href="#contact">Careers</a></li>
+            <li><a href="mailto:hello@flahtik.com">Contact</a></li>
+          </ul>
         </div>
 
       </div>
-
-      <!-- Divider -->
-      <div class="foot__divider" aria-hidden="true"></div>
-
-      <!-- ── Bottom bar ── -->
-      <div class="foot__bottom">
-        <span class="foot__copy">&copy; 2026 Flahtik. All rights reserved.</span>
-        <div class="foot__legal">
-          <a href="#" class="foot__legal-link">Privacy Policy</a>
-          <span class="foot__legal-dot" aria-hidden="true">&middot;</span>
-          <a href="#" class="foot__legal-link">Terms of Service</a>
-          <span class="foot__legal-dot" aria-hidden="true">&middot;</span>
-          <a href="#" class="foot__legal-link">Cookie Policy</a>
-        </div>
-        <span class="foot__credit">Designed &amp; Built with <span class="foot__credit-accent">Spatial Precision</span>.</span>
-      </div>
-
     </div>
+
+    <!-- Bottom bar -->
+    <div class="footer__bottom">
+      <div class="footer__bottom-inner">
+        <p class="footer__copy">
+          &copy; 2025 Flahtik. All rights reserved.
+          Founded in Riyadh, Saudi Arabia.
+        </p>
+        <div class="footer__bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Cookie Policy</a>
+        </div>
+      </div>
+    </div>
+
   </footer>
 
   <!-- Scripts -->
-  <script type="module" src="js/main.js"></script>
+  <script src="js/main.js" defer></script>
 
 </body>
 </html>

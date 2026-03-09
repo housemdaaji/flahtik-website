@@ -1,342 +1,256 @@
-/**
- * Flahtik — entry point.
- * Initialises all modules once the DOM is ready.
- */
-
-import Cursor from './cursor.js';
-import Canvas from './canvas.js';
-import Nav    from './nav.js';
-
-document.addEventListener('DOMContentLoaded', () => {
-  Nav.init();
-  Canvas.init();
-  Cursor.init();
-  document.body.classList.add('page-loading');
-  initScrollAnimations();
-  initSmoothScroll();
-  initScrollProgress();
-  initSectorsAccordion();
-  initStatsCounters();
-  initContactForm();
-  initNewsletterForm();
+// Scroll progress
+window.addEventListener('scroll', () => {
+  const p = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+  document.getElementById('scrollProgress').style.width = p + '%';
 });
 
-// PAGE LOAD SEQUENCE
+// Page loader
 window.addEventListener('load', () => {
-  const loader = document.getElementById('pageLoader');
-  const nav = document.querySelector('.nav');
-
   setTimeout(() => {
-    if (loader) loader.classList.add('is-hidden');
-
-    setTimeout(() => {
-      document.body.classList.remove('page-loading');
-      document.body.classList.add('page-ready');
-      if (nav) nav.classList.add('nav-visible');
-
-      setTimeout(() => initHeroAnimations(), 200);
-    }, 500);
-  }, 800);
+    document.getElementById('pageLoader').classList.add('hidden');
+    // Trigger hero animations after loader hides
+    document.querySelectorAll('.anim-fadeup').forEach((el, i) => {
+      el.style.animationPlayState = 'running';
+    });
+  }, 900);
 });
 
-function initHeroAnimations() {
-  const heroEls = document.querySelectorAll('.hero .animate-fade-up');
-  heroEls.forEach(el => {
-    const delay = parseFloat(el.style.transitionDelay) || 0;
-    setTimeout(() => el.classList.add('in-view'), delay * 1000);
-  });
-}
+// Pause hero animations until loader done
+document.querySelectorAll('.anim-fadeup').forEach(el => {
+  el.style.animationPlayState = 'paused';
+});
 
-function initScrollAnimations() {
-  const animTargets = document.querySelectorAll(
-    '.animate-fade-up:not(.hero .animate-fade-up), .animate-fade-in, .animate-stagger'
-  );
-
-  const sectionTargets = document.querySelectorAll('[data-observe-section]');
-
-  const all = [...animTargets, ...sectionTargets];
-  if (!all.length) return;
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in-view');
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.15 }
-  );
-
-  all.forEach(el => observer.observe(el));
-}
-
-// SMOOTH SCROLL
-function initSmoothScroll() {
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', (e) => {
-      const href = anchor.getAttribute('href');
-      if (href === '#' || href.length < 2) return;
-      const target = document.querySelector(href);
-      if (!target) return;
-
-      e.preventDefault();
-      const top = target.getBoundingClientRect().top + window.scrollY - 80;
-      window.scrollTo({ top, behavior: 'smooth' });
-    });
-  });
-}
-
-// SCROLL PROGRESS
-function initScrollProgress() {
-  const bar = document.getElementById('scrollProgress');
-  if (!bar) return;
-
-  function update() {
-    const scrollY = window.scrollY;
-    const docHeight = document.documentElement.scrollHeight;
-    const winHeight = window.innerHeight;
-    const pct = (scrollY / (docHeight - winHeight)) * 100;
-    bar.style.width = pct + '%';
-  }
-
-  window.addEventListener('scroll', update, { passive: true });
-  update();
-}
-
-// SECTORS ACCORDION
-function initSectorsAccordion() {
-  const bands = document.querySelectorAll('.sect__band');
-  if (!bands.length) return;
-
-  bands.forEach(band => {
-    const btn = band.querySelector('.sect__band-header');
-    if (!btn) return;
-
-    btn.addEventListener('click', () => {
-      const isActive = band.classList.contains('is-active');
-      bands.forEach(b => {
-        b.classList.remove('is-active');
-        const toggle = b.querySelector('.sect__band-header');
-        if (toggle) toggle.setAttribute('aria-expanded', 'false');
-      });
-      if (!isActive) {
-        band.classList.add('is-active');
-        btn.setAttribute('aria-expanded', 'true');
-      }
-    });
-  });
-
-  const section = document.getElementById('sectors');
-  if (!section) return;
-
-  const openFirst = new IntersectionObserver(
-    (entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          setTimeout(() => {
-            const first = bands[0];
-            if (!first.classList.contains('is-active')) {
-              first.classList.add('is-active');
-              const btn = first.querySelector('.sect__band-header');
-              if (btn) btn.setAttribute('aria-expanded', 'true');
-            }
-          }, 500);
-          openFirst.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.15 }
-  );
-
-  openFirst.observe(section);
-}
-
-// STATS COUNTERS
-function initStatsCounters() {
-  const counters = document.querySelectorAll('.stat-counter');
-  if (!counters.length) return;
-
-  const easeOutExpo = t => t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
-  const DURATION = 1500;
-
-  function animateCounter(el) {
-    const target = parseFloat(el.dataset.target);
-    const decimals = parseInt(el.dataset.decimal, 10) || 0;
-    const start = performance.now();
-
-    function tick(now) {
-      const elapsed = Math.min((now - start) / DURATION, 1);
-      const progress = easeOutExpo(elapsed);
-      const value = progress * target;
-      el.textContent = decimals > 0 ? value.toFixed(decimals) : Math.round(value);
-      if (elapsed < 1) {
-        requestAnimationFrame(tick);
-      } else {
-        el.textContent = decimals > 0 ? target.toFixed(decimals) : target;
-        const card = el.closest('.impact__counter');
-        if (card) card.classList.add('count-done');
-      }
+// Reveal on scroll
+const revealEls = document.querySelectorAll('[data-reveal]');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      // Stagger siblings within same parent
+      const siblings = [...e.target.parentElement
+        .querySelectorAll('[data-reveal]')];
+      const idx = siblings.indexOf(e.target);
+      setTimeout(() => {
+        e.target.classList.add('revealed');
+      }, idx * 80);
+      revealObserver.unobserve(e.target);
     }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+revealEls.forEach(el => revealObserver.observe(el));
 
-    requestAnimationFrame(tick);
-  }
+// Nav scroll state
+const nav = document.getElementById('siteNav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+});
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const els = entry.target.querySelectorAll('.stat-counter');
-          els.forEach((el, i) => {
-            setTimeout(() => animateCounter(el), i * 150);
-          });
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.2 }
-  );
+// Active nav link via IntersectionObserver
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav__link');
+const sectionObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      navLinks.forEach(l => l.classList.remove('active'));
+      const active = document.querySelector(`.nav__link[href="#${e.target.id}"]`);
+      if (active) active.classList.add('active');
+    }
+  });
+}, { threshold: 0.4 });
+sections.forEach(s => sectionObserver.observe(s));
 
-  const section = document.querySelector('.impact__counters');
-  if (section) observer.observe(section);
+// Mobile burger
+const burger = document.querySelector('.nav__burger');
+const mobileMenu = document.querySelector('.nav__mobile');
+burger.addEventListener('click', () => {
+  const open = burger.classList.toggle('open');
+  mobileMenu.classList.toggle('open', open);
+  burger.setAttribute('aria-expanded', open);
+  mobileMenu.setAttribute('aria-hidden', !open);
+});
+
+// Close mobile menu on link click
+mobileMenu.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    burger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    burger.setAttribute('aria-expanded', false);
+    mobileMenu.setAttribute('aria-hidden', true);
+  });
+});
+
+// Sectors accordion
+const sectorItems = document.querySelectorAll('.sectors__item');
+const visCards = document.querySelectorAll('.sectors__vis');
+const visMap = ['gov', 'agri', 'water', 'env', 'energy'];
+
+sectorItems.forEach((item, i) => {
+  const btn = item.querySelector('.sectors__trigger');
+  btn.addEventListener('click', () => {
+    const isOpen = item.classList.contains('sectors__item--open');
+    sectorItems.forEach(s => {
+      s.classList.remove('sectors__item--open');
+      s.querySelector('.sectors__trigger').setAttribute('aria-expanded', false);
+    });
+    if (!isOpen) {
+      item.classList.add('sectors__item--open');
+      btn.setAttribute('aria-expanded', true);
+      visCards.forEach(v => v.classList.remove('active'));
+      const target = document.querySelector(`.sectors__vis--${visMap[i]}`);
+      if (target) target.classList.add('active');
+    }
+  });
+});
+
+// Stats counters
+function easeOutExpo(t) {
+  return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
 }
 
-// CONTACT FORM
+function animateCounter(el) {
+  const target  = parseFloat(el.dataset.target);
+  const decimal = parseInt(el.dataset.decimal || 0);
+  const dur     = 1800;
+  const start   = performance.now();
+
+  function step(now) {
+    const elapsed  = now - start;
+    const progress = Math.min(elapsed / dur, 1);
+    const eased    = easeOutExpo(progress);
+    const value    = target * eased;
+    el.textContent = decimal > 0
+      ? value.toFixed(decimal)
+      : Math.floor(value).toString();
+    if (progress < 1) requestAnimationFrame(step);
+    else el.textContent = decimal > 0
+      ? target.toFixed(decimal) : target.toString();
+  }
+  requestAnimationFrame(step);
+}
+
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.stats__count').forEach(animateCounter);
+      counterObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.3 });
+
+const statsSection = document.querySelector('.stats__counters');
+if (statsSection) counterObserver.observe(statsSection);
+
+// Inquiry type selector
+const selectors = document.querySelectorAll('.contact__selector');
+const inquiryInput = document.getElementById('inquiryType');
+selectors.forEach(sel => {
+  sel.addEventListener('click', () => {
+    selectors.forEach(s => s.classList.remove('contact__selector--active'));
+    sel.classList.add('contact__selector--active');
+    if (inquiryInput) {
+      const map = { demo: 'Platform Demo', pilot: 'Enterprise Pilot', general: 'General Inquiry' };
+      inquiryInput.value = map[sel.dataset.type] || 'General Inquiry';
+    }
+  });
+});
+
+// Contact form submission
 function initContactForm() {
   const form = document.getElementById('contactForm');
+  const success = document.querySelector('.contact__success');
   if (!form) return;
-
-  const successState = form.parentElement.querySelector('.cta__success');
-
-  const inquiryInput = document.getElementById('inquiryType');
-  document.querySelectorAll('.cta__option').forEach(card => {
-    card.addEventListener('click', () => {
-      document.querySelectorAll('.cta__option').forEach(o => o.classList.remove('is-active'));
-      card.classList.add('is-active');
-      const title = card.querySelector('.cta__option-title');
-      if (inquiryInput && title) {
-        inquiryInput.value = title.textContent.trim();
-      }
-    });
-  });
-
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
-
-    form.querySelectorAll('.field-error').forEach(el => el.remove());
-    form.querySelectorAll('.has-error').forEach(el => el.classList.remove('has-error'));
-
-    const required = form.querySelectorAll('input[required], textarea[required]');
     let valid = true;
-
-    required.forEach(field => {
+    form.querySelectorAll('[required]').forEach(field => {
+      const err = field.nextElementSibling;
       if (!field.value.trim()) {
-        valid = false;
         field.classList.add('has-error');
-        const err = document.createElement('span');
-        err.className = 'field-error';
-        err.textContent = 'This field is required';
-        field.parentNode.appendChild(err);
+        if (err) err.textContent = 'This field is required.';
+        valid = false;
+      } else {
+        field.classList.remove('has-error');
+        if (err) err.textContent = '';
       }
     });
-
-    const emailField = form.querySelector('input[type="email"]');
-    if (emailField && emailField.value && !emailField.classList.contains('has-error')) {
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailField.value)) {
-        valid = false;
-        emailField.classList.add('has-error');
-        const err = document.createElement('span');
-        err.className = 'field-error';
-        err.textContent = 'Please enter a valid email';
-        emailField.parentNode.appendChild(err);
-      }
-    }
-
     if (!valid) return;
-
-    const submitBtn = form.querySelector('button[type="submit"]');
-    const originalText = submitBtn.textContent;
-    submitBtn.textContent = 'Sending...';
-    submitBtn.disabled = true;
-
+    const btn = form.querySelector('.contact__submit');
+    btn.disabled = true;
+    btn.querySelector('.contact__submit-text').textContent = 'Sending...';
     try {
-      const response = await fetch(form.action, {
+      const res = await fetch(form.action, {
         method: 'POST',
         body: new FormData(form),
         headers: { 'Accept': 'application/json' }
       });
-
-      if (response.ok) {
+      if (res.ok) {
         form.style.display = 'none';
-        if (successState) successState.style.display = 'flex';
+        if (success) success.style.display = 'flex';
       } else {
-        const data = await response.json();
-        throw new Error(data.error || 'Submission failed');
+        throw new Error();
       }
-    } catch (err) {
-      submitBtn.textContent = originalText;
-      submitBtn.disabled = false;
-      let formErr = form.querySelector('.form-error');
-      if (!formErr) {
-        formErr = document.createElement('p');
-        formErr.className = 'form-error';
-        form.appendChild(formErr);
-      }
-      formErr.textContent = 'Something went wrong. Please try again or email us at hello@flahtik.com';
+    } catch {
+      btn.disabled = false;
+      btn.querySelector('.contact__submit-text').textContent = 'Send Message';
+      alert('Something went wrong. Please email us directly at hello@flahtik.com');
     }
   });
 }
 
-// NEWSLETTER FORM
+// Newsletter form submission
 function initNewsletterForm() {
   const form = document.getElementById('newsletterForm');
+  const success = document.querySelector('.ins__newsletter-success');
   if (!form) return;
-
-  const successState = document.querySelector('.ins__newsletter-success');
-
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
-
-    const emailField = form.querySelector('input[type="email"]');
-    form.querySelectorAll('.field-error').forEach(el => el.remove());
-    emailField.classList.remove('has-error');
-
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailField.value)) {
-      emailField.classList.add('has-error');
-      const err = document.createElement('span');
-      err.className = 'field-error';
-      err.textContent = 'Please enter a valid email';
-      emailField.parentNode.appendChild(err);
-      return;
-    }
-
-    const submitBtn = form.querySelector('button[type="submit"]');
-    const originalText = submitBtn.textContent;
-    submitBtn.textContent = 'Subscribing...';
-    submitBtn.disabled = true;
-
+    const btn = form.querySelector('button[type="submit"]');
+    btn.disabled = true;
+    btn.textContent = 'Subscribing...';
     try {
-      const response = await fetch(form.action, {
+      const res = await fetch(form.action, {
         method: 'POST',
         body: new FormData(form),
         headers: { 'Accept': 'application/json' }
       });
-
-      if (response.ok) {
+      if (res.ok) {
         form.style.display = 'none';
-        if (successState) successState.style.display = 'block';
+        if (success) success.style.display = 'flex';
       } else {
-        throw new Error('Submission failed');
+        throw new Error();
       }
-    } catch (err) {
-      submitBtn.textContent = originalText;
-      submitBtn.disabled = false;
-      emailField.classList.add('has-error');
-      const err2 = document.createElement('span');
-      err2.className = 'field-error';
-      err2.textContent = 'Could not subscribe. Try again shortly.';
-      emailField.parentNode.appendChild(err2);
+    } catch {
+      btn.disabled = false;
+      btn.textContent = 'Subscribe';
+      alert('Something went wrong. Please try again.');
     }
   });
 }
+
+initContactForm();
+initNewsletterForm();
+
+// Smooth scroll offset for fixed nav
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    const target = document.querySelector(this.getAttribute('href'));
+    if (!target) return;
+    e.preventDefault();
+    const offset = target.getBoundingClientRect().top
+      + window.scrollY - 68;
+    window.scrollTo({ top: offset, behavior: 'smooth' });
+    // Close mobile menu if open
+    const burger = document.querySelector('.nav__burger');
+    const mobile = document.querySelector('.nav__mobile');
+    if (burger && burger.classList.contains('open')) {
+      burger.classList.remove('open');
+      mobile.classList.remove('open');
+      burger.setAttribute('aria-expanded', false);
+    }
+  });
+});
+
+// Pause canvas/animations when tab not visible
+document.addEventListener('visibilitychange', () => {
+  document.body.classList.toggle('tab-hidden',
+    document.hidden);
+});

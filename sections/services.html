@@ -1,151 +1,160 @@
-<!-- SECTION: Services / Solutions -->
-<section id="services" class="svc">
+<section id="services" class="services">
+  <div class="section-divider"></div>
+  <div class="services__inner">
 
-  <!-- Subtle horizontal gradient bg -->
-  <div class="svc__bg" aria-hidden="true"></div>
-
-  <div class="container">
-
-    <!-- ── Section Header ── -->
-    <header class="svc__header animate-fade-up">
-      <div class="svc__eyebrow">
-        <span class="svc__eyebrow-line" aria-hidden="true"></span>
-        <span class="svc__eyebrow-text">What We Do</span>
+    <!-- Header -->
+    <div class="services__header" data-reveal>
+      <div class="badge">
+        <div class="badge-dot"></div>
+        <span>What We Do</span>
       </div>
-      <h2 class="svc__title">
-        Four Pillars of<br>
-        <span class="svc__title--gradient">Planetary Intelligence</span>
+      <h2 class="t-h2 services__title">
+        Four Domains.<br>
+        <span class="t-grad">One Platform.</span>
       </h2>
-      <p class="svc__subtitle">
-        From orbit to ground level — Flahtik integrates satellite data,
-        IoT sensors, and AI models to serve the sectors that sustain life.
+      <p class="t-body services__desc">
+        Flahtik brings together the most complex environmental
+        data streams into a single, decision-ready intelligence layer.
       </p>
-    </header>
+    </div>
 
-    <!-- ── 2×2 Card Grid ── -->
-    <div class="svc__grid animate-stagger">
+    <!-- Cards grid -->
+    <div class="services__grid">
 
-      <!-- Card 01 — Spatial Technology -->
-      <article class="svc__card svc__card--cyan" data-cursor="pointer">
-        <div class="svc__card-top-line" aria-hidden="true"></div>
-        <div class="svc__card-glow" aria-hidden="true"></div>
-        <span class="svc__card-num">01</span>
-        <div class="svc__card-icon">
-          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <circle cx="32" cy="32" r="6"/>
-            <ellipse cx="32" cy="32" rx="28" ry="12" transform="rotate(-30 32 32)"/>
-            <ellipse cx="32" cy="32" rx="28" ry="12" transform="rotate(30 32 32)"/>
-            <circle cx="32" cy="4" r="2.5"/>
+      <div class="services__card" data-reveal>
+        <div class="services__card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M6.3 6.3a8 8 0 0 0 0 11.4"/>
+            <path d="M17.7 6.3a8 8 0 0 1 0 11.4"/>
+            <path d="M3.5 3.5a13 13 0 0 0 0 17"/>
+            <path d="M20.5 3.5a13 13 0 0 1 0 17"/>
           </svg>
         </div>
-        <h3 class="svc__card-title">Spatial Technology</h3>
-        <p class="svc__card-desc">
-          High-resolution satellite imagery, LiDAR point clouds, and
-          real-time geospatial processing pipelines that turn raw Earth
-          observation data into actionable intelligence.
+        <div class="services__card-tag">01</div>
+        <h3 class="t-h3 services__card-title">Spatial Technology</h3>
+        <p class="t-body services__card-body">
+          High-resolution satellite imagery, LiDAR point clouds,
+          and real-time GIS processing — delivering precise spatial
+          context at any scale, anywhere on Earth.
         </p>
-        <div class="svc__card-tags">
-          <span class="svc__tag">Remote Sensing</span>
-          <span class="svc__tag">GIS Analytics</span>
-          <span class="svc__tag">LiDAR</span>
-        </div>
-        <span class="svc__card-arrow" aria-hidden="true">Explore &rarr;</span>
-      </article>
+        <ul class="services__card-list">
+          <li>Remote sensing &amp; imagery analysis</li>
+          <li>GIS mapping &amp; spatial modelling</li>
+          <li>Change detection &amp; monitoring</li>
+        </ul>
+        <a href="#contact" class="services__card-link">
+          Learn more
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2.5">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
 
-      <!-- Card 02 — Environment -->
-      <article class="svc__card svc__card--jade" data-cursor="pointer">
-        <div class="svc__card-top-line" aria-hidden="true"></div>
-        <div class="svc__card-glow" aria-hidden="true"></div>
-        <span class="svc__card-num">02</span>
-        <div class="svc__card-icon">
-          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M32 58V28"/>
-            <path d="M32 28C32 18 22 8 12 14c-4 10 4 20 20 14"/>
-            <path d="M32 36C32 26 42 16 52 22c4 10-4 20-20 14"/>
-            <path d="M22 22c5 4 8 8 10 12"/>
-            <path d="M42 28c-5 4-8 6-10 10"/>
+      <div class="services__card services__card--accent" data-reveal>
+        <div class="services__card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 2C6 2 3 7 3 12c0 4 2.5 7 6 8.5"/>
+            <path d="M12 2c6 0 9 5 9 10 0 4-2.5 7-6 8.5"/>
+            <line x1="12" y1="2" x2="12" y2="22"/>
+            <path d="M4.5 9h15M4.5 15h15"/>
           </svg>
         </div>
-        <h3 class="svc__card-title">Environmental Intelligence</h3>
-        <p class="svc__card-desc">
-          Continuous monitoring of air quality, land degradation,
-          biodiversity indices, and carbon sequestration — enabling
-          evidence-based policy and ESG compliance at scale.
+        <div class="services__card-tag">02</div>
+        <h3 class="t-h3 services__card-title">Environmental Intelligence</h3>
+        <p class="t-body services__card-body">
+          Carbon stock assessment, biodiversity mapping, and ESG
+          reporting frameworks grounded in satellite-verified
+          ground truth data.
         </p>
-        <div class="svc__card-tags">
-          <span class="svc__tag">Carbon Monitoring</span>
-          <span class="svc__tag">Biodiversity</span>
-          <span class="svc__tag">ESG</span>
-        </div>
-        <span class="svc__card-arrow" aria-hidden="true">Explore &rarr;</span>
-      </article>
+        <ul class="services__card-list">
+          <li>Carbon monitoring &amp; verification</li>
+          <li>Biodiversity &amp; habitat mapping</li>
+          <li>ESG compliance reporting</li>
+        </ul>
+        <a href="#contact" class="services__card-link">
+          Learn more
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2.5">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
 
-      <!-- Card 03 — Agriculture -->
-      <article class="svc__card svc__card--amber" data-cursor="pointer">
-        <div class="svc__card-top-line" aria-hidden="true"></div>
-        <div class="svc__card-glow" aria-hidden="true"></div>
-        <span class="svc__card-num">03</span>
-        <div class="svc__card-icon">
-          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <rect x="8" y="8" width="48" height="48" rx="4"/>
-            <line x1="8" y1="20" x2="56" y2="20"/>
-            <line x1="8" y1="32" x2="56" y2="32"/>
-            <line x1="8" y1="44" x2="56" y2="44"/>
-            <line x1="20" y1="8" x2="20" y2="56"/>
-            <line x1="32" y1="8" x2="32" y2="56"/>
-            <line x1="44" y1="8" x2="44" y2="56"/>
-            <circle cx="26" cy="26" r="2" fill="currentColor" stroke="none"/>
-            <circle cx="38" cy="38" r="2" fill="currentColor" stroke="none"/>
-            <circle cx="50" cy="14" r="2" fill="currentColor" stroke="none"/>
-            <circle cx="14" cy="50" r="2" fill="currentColor" stroke="none"/>
+      <div class="services__card" data-reveal>
+        <div class="services__card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="2" y="3" width="20" height="4" rx="1"/>
+            <rect x="2" y="10" width="20" height="4" rx="1"/>
+            <rect x="2" y="17" width="20" height="4" rx="1"/>
+            <circle cx="19" cy="5" r="2" fill="currentColor" stroke="none"/>
           </svg>
         </div>
-        <h3 class="svc__card-title">Precision Agriculture</h3>
-        <p class="svc__card-desc">
-          Soil health mapping, crop stress detection, irrigation
-          optimization, and yield forecasting powered by multispectral
-          analysis and machine learning models.
+        <div class="services__card-tag">03</div>
+        <h3 class="t-h3 services__card-title">Precision Agriculture</h3>
+        <p class="t-body services__card-body">
+          AI-powered crop health monitoring, yield prediction,
+          and irrigation optimisation — turning field data into
+          season-defining decisions.
         </p>
-        <div class="svc__card-tags">
-          <span class="svc__tag">Crop Analytics</span>
-          <span class="svc__tag">Soil Mapping</span>
-          <span class="svc__tag">Yield AI</span>
-        </div>
-        <span class="svc__card-arrow" aria-hidden="true">Explore &rarr;</span>
-      </article>
+        <ul class="services__card-list">
+          <li>Multispectral crop analytics</li>
+          <li>Yield forecasting &amp; risk modelling</li>
+          <li>Irrigation &amp; resource optimisation</li>
+        </ul>
+        <a href="#contact" class="services__card-link">
+          Learn more
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2.5">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
 
-      <!-- Card 04 — Water Management -->
-      <article class="svc__card svc__card--sky" data-cursor="pointer">
-        <div class="svc__card-top-line" aria-hidden="true"></div>
-        <div class="svc__card-glow" aria-hidden="true"></div>
-        <span class="svc__card-num">04</span>
-        <div class="svc__card-icon">
-          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M32 6S14 28 14 40a18 18 0 0 0 36 0C50 28 32 6 32 6Z"/>
-            <path d="M20 42c4-3 8-3 12 0s8 3 12 0"/>
-            <path d="M22 50c3-2 6-2 10 0s7 2 10 0"/>
+      <div class="services__card" data-reveal>
+        <div class="services__card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 2L6 10a6 6 0 1 0 12 0L12 2z"/>
+            <path d="M8 14c1-1 2-1.5 4-1.5s3 .5 4 1.5"/>
+            <line x1="12" y1="16" x2="12" y2="20"/>
           </svg>
         </div>
-        <h3 class="svc__card-title">Water Management</h3>
-        <p class="svc__card-desc">
-          Watershed modeling, aquifer depletion tracking, flood risk
-          prediction, and irrigation efficiency analysis for water-scarce
-          regions and utility operators.
+        <div class="services__card-tag">04</div>
+        <h3 class="t-h3 services__card-title">Water Management</h3>
+        <p class="t-body services__card-body">
+          Watershed intelligence, flood risk modelling, and
+          aquifer monitoring at basin scale — built for utilities,
+          governments, and infrastructure planners.
         </p>
-        <div class="svc__card-tags">
-          <span class="svc__tag">Watershed AI</span>
-          <span class="svc__tag">Flood Risk</span>
-          <span class="svc__tag">Aquifer Tracking</span>
-        </div>
-        <span class="svc__card-arrow" aria-hidden="true">Explore &rarr;</span>
-      </article>
+        <ul class="services__card-list">
+          <li>Watershed &amp; basin monitoring</li>
+          <li>Flood risk prediction &amp; mapping</li>
+          <li>Aquifer &amp; groundwater analysis</li>
+        </ul>
+        <a href="#contact" class="services__card-link">
+          Learn more
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2.5">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
 
     </div>
 
-    <!-- ── Bottom Strip ── -->
-    <div class="svc__strip animate-fade-up">
-      <p class="svc__strip-text">Not sure which solution fits your challenge?</p>
-      <a href="#contact" class="btn svc__strip-btn">Talk to Our Team &rarr;</a>
+    <!-- Bottom CTA strip -->
+    <div class="services__cta-strip" data-reveal>
+      <p class="t-body">
+        Not sure which solution fits your needs?
+      </p>
+      <a href="#contact" class="btn-primary">
+        Talk to Our Team
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2.5">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
     </div>
 
   </div>

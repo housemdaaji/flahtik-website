@@ -1,189 +1,182 @@
-<!-- SECTION: Platform / How It Works -->
-<section id="platform" class="plat" data-observe-section>
+<section id="platform" class="platform">
+  <div class="section-divider"></div>
+  <div class="platform__inner">
 
-  <!-- Scan line — sweeps left→right once on scroll entry -->
-  <div class="plat__scanline" aria-hidden="true"></div>
+    <!-- Header -->
+    <div class="platform__header" data-reveal>
+      <div class="badge">
+        <div class="badge-dot"></div>
+        <span>How It Works</span>
+      </div>
+      <h2 class="t-h2 platform__title">
+        From Raw Signal<br>
+        to <span class="t-grad">Clear Decision</span>
+      </h2>
+      <p class="t-body platform__desc">
+        A five-stage pipeline transforms raw Earth observation data
+        into actionable intelligence — fully automated, fully auditable.
+      </p>
+    </div>
 
-  <div class="container">
+    <!-- Pipeline steps -->
+    <div class="platform__pipeline" data-reveal>
 
-    <!-- ── Section Header (left-aligned) ── -->
-    <div class="plat__header animate-fade-up">
-      <div class="plat__header-left">
-        <div class="plat__eyebrow">
-          <span class="plat__eyebrow-line" aria-hidden="true"></span>
-          <span class="plat__eyebrow-text">How It Works</span>
+      <div class="platform__step">
+        <div class="platform__step-num">01</div>
+        <div class="platform__step-connector" aria-hidden="true">
+          <div class="platform__step-dot"></div>
+          <div class="platform__step-line"></div>
         </div>
-        <h2 class="plat__title">
-          From Raw Signal<br>
-          to <span class="plat__title--gradient">Smart Decision</span>
-        </h2>
-        <p class="plat__subtitle">
-          A vertically integrated pipeline — from orbital data
-          capture to AI-driven insight delivery — built for
-          real-world planetary challenges.
+        <div class="platform__step-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M6.3 6.3a8 8 0 0 0 0 11.4"/>
+            <path d="M17.7 6.3a8 8 0 0 1 0 11.4"/>
+            <path d="M3.5 3.5a13 13 0 0 0 0 17"/>
+            <path d="M20.5 3.5a13 13 0 0 1 0 17"/>
+          </svg>
+        </div>
+        <div class="platform__step-body">
+          <h3 class="t-h3">Data Acquisition</h3>
+          <p class="t-body">
+            Satellite constellations, IoT ground sensors, drone
+            surveys, and open-source datasets ingested in real time.
+          </p>
+          <div class="platform__step-tags">
+            <span>Sentinel-2</span><span>Landsat</span><span>IoT Sensors</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="platform__step">
+        <div class="platform__step-num">02</div>
+        <div class="platform__step-connector" aria-hidden="true">
+          <div class="platform__step-dot"></div>
+          <div class="platform__step-line"></div>
+        </div>
+        <div class="platform__step-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="2" y="3" width="20" height="18" rx="2"/>
+            <path d="M8 3v18M16 3v18M2 9h20M2 15h20"/>
+          </svg>
+        </div>
+        <div class="platform__step-body">
+          <h3 class="t-h3">Geospatial Processing</h3>
+          <p class="t-body">
+            Radiometric correction, cloud masking, orthorectification,
+            and fusion across multi-source datasets at planetary scale.
+          </p>
+          <div class="platform__step-tags">
+            <span>QGIS</span><span>PostGIS</span><span>Google Earth Engine</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="platform__step">
+        <div class="platform__step-num">03</div>
+        <div class="platform__step-connector" aria-hidden="true">
+          <div class="platform__step-dot"></div>
+          <div class="platform__step-line"></div>
+        </div>
+        <div class="platform__step-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+            <path d="M2 17l10 5 10-5"/>
+            <path d="M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <div class="platform__step-body">
+          <h3 class="t-h3">AI Analysis</h3>
+          <p class="t-body">
+            Deep learning models trained on domain-specific datasets
+            detect anomalies, classify land cover, and forecast outcomes.
+          </p>
+          <div class="platform__step-tags">
+            <span>TensorFlow</span><span>PyTorch</span><span>AWS SageMaker</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="platform__step">
+        <div class="platform__step-num">04</div>
+        <div class="platform__step-connector" aria-hidden="true">
+          <div class="platform__step-dot"></div>
+          <div class="platform__step-line"></div>
+        </div>
+        <div class="platform__step-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M18 20V10M12 20V4M6 20v-6"/>
+            <path d="M2 20h20"/>
+          </svg>
+        </div>
+        <div class="platform__step-body">
+          <h3 class="t-h3">Insight Generation</h3>
+          <p class="t-body">
+            Processed intelligence surfaces as interactive dashboards,
+            automated alerts, and structured reports tied to KPIs.
+          </p>
+          <div class="platform__step-tags">
+            <span>Live Dashboards</span><span>API Feeds</span><span>Auto Reports</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="platform__step platform__step--last">
+        <div class="platform__step-num">05</div>
+        <div class="platform__step-connector" aria-hidden="true">
+          <div class="platform__step-dot platform__step-dot--final"></div>
+        </div>
+        <div class="platform__step-icon platform__step-icon--final">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+            <polyline points="22 4 12 14.01 9 11.01"/>
+          </svg>
+        </div>
+        <div class="platform__step-body">
+          <h3 class="t-h3">Client Delivery</h3>
+          <p class="t-body">
+            Secure web portal, REST API, or embedded integration —
+            decisions reached faster, with full audit trail and traceability.
+          </p>
+          <div class="platform__step-tags">
+            <span>REST API</span><span>Web Portal</span><span>White-label</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Tech stack strip -->
+    <div class="platform__stack" data-reveal>
+      <p class="platform__stack-label t-eyebrow">Powered by</p>
+      <div class="platform__stack-items">
+        <span>Google Earth Engine</span>
+        <span>AWS SageMaker</span>
+        <span>QGIS</span>
+        <span>Sentinel-2</span>
+        <span>TensorFlow</span>
+        <span>PostGIS</span>
+        <span>Copernicus</span>
+        <span>Planet Labs</span>
+      </div>
+    </div>
+
+    <!-- Demo CTA -->
+    <div class="platform__demo" data-reveal>
+      <div class="platform__demo-text">
+        <h3 class="t-h3">See the platform in action</h3>
+        <p class="t-body">
+          Book a 30-minute walkthrough with our solutions team.
+          No commitment required.
         </p>
       </div>
-      <div class="plat__header-right">
-        <div class="plat__live-badge">
-          <span class="plat__live-dot" aria-hidden="true"></span>
-          <span class="plat__live-text">Live Pipeline</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- ── Pipeline Flow ── -->
-    <div class="plat__flow animate-stagger">
-
-      <!-- Step 01 — Data Acquisition -->
-      <div class="plat__step plat__step--cyan">
-        <span class="plat__step-num">Step 01</span>
-        <div class="plat__step-circle">
-          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M24 38v-8"/>
-            <path d="M24 30 C20 26 14 24 10 28"/>
-            <path d="M24 30 C28 26 34 24 38 28"/>
-            <path d="M16 18 a12 12 0 0 1 16 0"/>
-            <path d="M12 14 a16 16 0 0 1 24 0"/>
-            <path d="M8 10 a20 20 0 0 1 32 0"/>
-            <circle cx="24" cy="40" r="3"/>
-          </svg>
-        </div>
-        <h3 class="plat__step-title">Data Acquisition</h3>
-        <p class="plat__step-desc">Multi-source ingestion from satellites, drones, IoT sensors and ground stations</p>
-      </div>
-
-      <!-- Connector 1→2 -->
-      <div class="plat__connector" aria-hidden="true">
-        <div class="plat__connector-line"></div>
-        <span class="plat__connector-dot plat__connector-dot--1"></span>
-        <span class="plat__connector-dot plat__connector-dot--2"></span>
-        <span class="plat__connector-dot plat__connector-dot--3"></span>
-      </div>
-
-      <!-- Step 02 — Geospatial Processing -->
-      <div class="plat__step plat__step--jade">
-        <span class="plat__step-num">Step 02</span>
-        <div class="plat__step-circle">
-          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <circle cx="16" cy="16" r="7"/>
-            <circle cx="32" cy="16" r="7"/>
-            <circle cx="24" cy="32" r="7"/>
-            <path d="M20.5 20 L21 27"/>
-            <path d="M27.5 20 L27 27"/>
-            <path d="M22 14 h4"/>
-          </svg>
-        </div>
-        <h3 class="plat__step-title">Geospatial Processing</h3>
-        <p class="plat__step-desc">Radiometric correction, orthorectification, and cloud-native data normalization</p>
-      </div>
-
-      <!-- Connector 2→3 -->
-      <div class="plat__connector" aria-hidden="true">
-        <div class="plat__connector-line"></div>
-        <span class="plat__connector-dot plat__connector-dot--1"></span>
-        <span class="plat__connector-dot plat__connector-dot--2"></span>
-        <span class="plat__connector-dot plat__connector-dot--3"></span>
-      </div>
-
-      <!-- Step 03 — AI & ML Analysis -->
-      <div class="plat__step plat__step--amber">
-        <span class="plat__step-num">Step 03</span>
-        <div class="plat__step-circle">
-          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <circle cx="24" cy="8" r="3.5"/>
-            <circle cx="10" cy="20" r="3.5"/>
-            <circle cx="38" cy="20" r="3.5"/>
-            <circle cx="14" cy="36" r="3.5"/>
-            <circle cx="34" cy="36" r="3.5"/>
-            <circle cx="24" cy="24" r="3.5"/>
-            <line x1="24" y1="11.5" x2="24" y2="20.5"/>
-            <line x1="13.5" y1="20" x2="20.5" y2="24"/>
-            <line x1="34.5" y1="20" x2="27.5" y2="24"/>
-            <line x1="14" y1="32.5" x2="21" y2="27"/>
-            <line x1="34" y1="32.5" x2="27" y2="27"/>
-          </svg>
-        </div>
-        <h3 class="plat__step-title">AI &amp; ML Analysis</h3>
-        <p class="plat__step-desc">Deep learning models detect patterns in multispectral, thermal, and LiDAR datasets</p>
-      </div>
-
-      <!-- Connector 3→4 -->
-      <div class="plat__connector" aria-hidden="true">
-        <div class="plat__connector-line"></div>
-        <span class="plat__connector-dot plat__connector-dot--1"></span>
-        <span class="plat__connector-dot plat__connector-dot--2"></span>
-        <span class="plat__connector-dot plat__connector-dot--3"></span>
-      </div>
-
-      <!-- Step 04 — Insight Generation -->
-      <div class="plat__step plat__step--sky">
-        <span class="plat__step-num">Step 04</span>
-        <div class="plat__step-circle">
-          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <rect x="8" y="12" width="32" height="22" rx="3"/>
-            <rect x="11" y="16" width="26" height="14" rx="2"/>
-            <rect x="14" y="20" width="20" height="6" rx="1"/>
-            <circle cx="24" cy="10" r="1.5" fill="currentColor" stroke="none"/>
-            <circle cx="18" cy="10" r="1.5" fill="currentColor" stroke="none"/>
-            <line x1="20" y1="38" x2="28" y2="38"/>
-            <line x1="16" y1="42" x2="32" y2="42"/>
-          </svg>
-        </div>
-        <h3 class="plat__step-title">Insight Generation</h3>
-        <p class="plat__step-desc">Sector-specific dashboards, alerts, risk scores, and decision-ready reports</p>
-      </div>
-
-      <!-- Connector 4→5 -->
-      <div class="plat__connector" aria-hidden="true">
-        <div class="plat__connector-line"></div>
-        <span class="plat__connector-dot plat__connector-dot--1"></span>
-        <span class="plat__connector-dot plat__connector-dot--2"></span>
-        <span class="plat__connector-dot plat__connector-dot--3"></span>
-      </div>
-
-      <!-- Step 05 — Client Delivery -->
-      <div class="plat__step plat__step--sand">
-        <span class="plat__step-num">Step 05</span>
-        <div class="plat__step-circle">
-          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <circle cx="24" cy="24" r="16"/>
-            <ellipse cx="24" cy="24" rx="16" ry="7"/>
-            <path d="M8 24 c0 -9 7 -16 16 -16"/>
-            <circle cx="10" cy="14" r="2.5"/>
-            <circle cx="38" cy="18" r="2.5"/>
-            <circle cx="16" cy="38" r="2.5"/>
-            <circle cx="36" cy="32" r="2.5"/>
-          </svg>
-        </div>
-        <h3 class="plat__step-title">Client Delivery</h3>
-        <p class="plat__step-desc">API integrations, web portals, mobile alerts, and embedded GIS tools</p>
-      </div>
-
-    </div>
-
-    <!-- ── Tech Stack Strip ── -->
-    <div class="plat__tech animate-fade-up">
-      <span class="plat__tech-label">Powered By</span>
-      <div class="plat__tech-list">
-        <span class="plat__tech-item">Google Earth Engine</span>
-        <span class="plat__tech-sep" aria-hidden="true"></span>
-        <span class="plat__tech-item">AWS SageMaker</span>
-        <span class="plat__tech-sep" aria-hidden="true"></span>
-        <span class="plat__tech-item">QGIS</span>
-        <span class="plat__tech-sep" aria-hidden="true"></span>
-        <span class="plat__tech-item">Sentinel-2</span>
-        <span class="plat__tech-sep" aria-hidden="true"></span>
-        <span class="plat__tech-item">TensorFlow</span>
-        <span class="plat__tech-sep" aria-hidden="true"></span>
-        <span class="plat__tech-item">PostGIS</span>
-      </div>
-    </div>
-
-    <!-- ── Bottom CTA ── -->
-    <div class="plat__cta animate-fade-up">
-      <h3 class="plat__cta-title">See the platform in action.</h3>
-      <a href="#contact" class="btn plat__cta-btn">Request a Demo &rarr;</a>
-      <p class="plat__cta-note">Available for enterprise pilots and government procurement programs.</p>
+      <a href="#contact" class="btn-primary">
+        Request a Demo
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2.5">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
     </div>
 
   </div>

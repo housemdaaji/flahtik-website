@@ -1,37 +1,112 @@
-/* ===== Flahtik — Main Stylesheet ===== */
-
 @import 'reset.css';
 @import 'variables.css';
 @import 'typography.css';
-@import 'layout.css';
 @import 'components.css';
 @import 'animations.css';
+@import 'nav.css';
+@import 'hero.css';
+@import 'services.css';
+@import 'platform.css';
+@import 'sectors.css';
+@import 'stats.css';
+@import 'about.css';
+@import 'insights.css';
+@import 'contact.css';
+@import 'footer.css';
 
-/* ===== Section transition bleeds ===== */
-
-#services::before,
-#platform::before,
-#sectors::before,
-#impact::before,
-#about::before,
-#insights::before,
-#contact::before,
-.foot::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 120px;
-  pointer-events: none;
-  z-index: 1;
+/* Scroll progress bar */
+#scrollProgress {
+  position: fixed; top: 0; left: 0; height: 2px; width: 0%;
+  background: var(--blue-grad); z-index: 9999;
+  transition: width 0.1s linear;
 }
 
-#services::before  { background: linear-gradient(to bottom, var(--void), transparent); }
-#platform::before  { background: linear-gradient(to bottom, var(--deep), transparent); }
-#sectors::before   { background: linear-gradient(to bottom, var(--void), transparent); }
-#impact::before    { background: linear-gradient(to bottom, var(--deep), transparent); }
-#about::before     { background: linear-gradient(to bottom, var(--void), transparent); }
-#insights::before  { background: linear-gradient(to bottom, var(--deep), transparent); }
-#contact::before   { background: linear-gradient(to bottom, var(--void), transparent); }
-.foot::before      { background: linear-gradient(to bottom, var(--deep), transparent); }
+/* Page loader */
+#pageLoader {
+  position: fixed; inset: 0;
+  background: #fff;
+  display: flex; align-items: center; justify-content: center;
+  z-index: 9998;
+  transition: opacity 0.6s var(--ease), visibility 0.6s;
+}
+#pageLoader.hidden {
+  opacity: 0; visibility: hidden; pointer-events: none;
+}
+.loader__inner {
+  display: flex; flex-direction: column;
+  align-items: center; gap: 24px;
+}
+.page-loader__motif {
+  width: 52px; height: auto;
+  mix-blend-mode: multiply;
+  animation: loaderPulse 1.2s ease-in-out infinite;
+}
+@keyframes loaderPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(0.92); }
+}
+.loader__bar {
+  width: 120px; height: 2px;
+  background: var(--border); overflow: hidden;
+}
+.loader__bar-fill {
+  height: 100%;
+  background: var(--blue-grad);
+  animation: loaderFill 0.9s var(--ease) forwards;
+}
+@keyframes loaderFill {
+  from { width: 0; }
+  to   { width: 100%; }
+}
+
+/* -- SECTION RHYTHM -- */
+section { position: relative; }
+
+/* Alternating section backgrounds already set per section.
+   Add a subtle top-fade bleed between white and ice sections */
+.services::before,
+.stats::before,
+.insights::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 1px;
+  background: var(--border);
+  pointer-events: none;
+}
+
+/* -- SELECTION COLOUR -- */
+::selection {
+  background: rgba(37,99,235,0.15);
+  color: var(--navy);
+}
+
+/* -- FOCUS RING -- */
+:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+}
+
+/* -- SMOOTH IMAGE RENDERING -- */
+img {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+/* -- SCROLLBAR (webkit) -- */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #f0f4ff; }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #2563eb, #06b6d4);
+  border-radius: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
