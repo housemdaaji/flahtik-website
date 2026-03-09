@@ -34,16 +34,16 @@ export default function Nav({ scrolled }) {
             style={{ height: '160px', mixBlendMode: 'multiply' }} />
         </a>
 
-        <ul style={{ display: 'flex', gap: '32px', listStyle: 'none' }}
+        <ul style={{ display: 'flex', gap: '44px', listStyle: 'none' }}
           className="nav-links">
           {links.map(l => (
             <li key={l.href}>
               <a href={l.href} style={{
-                fontSize: '0.8rem', color: '#475569', fontWeight: 400,
+                fontSize: '1rem', color: '#0a1628', fontWeight: 600,
                 transition: 'color 0.2s', letterSpacing: '0.02em',
               }}
-                onMouseEnter={e => e.target.style.color = '#0a1628'}
-                onMouseLeave={e => e.target.style.color = '#475569'}>
+                onMouseEnter={e => e.target.style.color = '#2563eb'}
+                onMouseLeave={e => e.target.style.color = '#0a1628'}>
                 {l.label}
               </a>
             </li>
