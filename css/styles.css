@@ -122,7 +122,8 @@ button { border: none; background: none; cursor: pointer; font: inherit; }
 .anim-delay-3 { animation-delay: 0.3s; }
 .anim-delay-4 { animation-delay: 0.4s; }
 [data-reveal] {
-  opacity: 1; transform: none;
+  opacity: 1;
+  transform: none;
 }
 [data-reveal].revealed {
   opacity: 1; transform: none;
