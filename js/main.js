@@ -1,15 +1,15 @@
-// Scroll progress
+// -- SCROLL PROGRESS --
 window.addEventListener('scroll', () => {
-  const p = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+  const p = (window.scrollY /
+    (document.body.scrollHeight - window.innerHeight)) * 100;
   document.getElementById('scrollProgress').style.width = p + '%';
 });
 
-// Page loader
+// -- PAGE LOADER --
 window.addEventListener('load', () => {
   setTimeout(() => {
     document.getElementById('pageLoader').classList.add('hidden');
-    // Trigger hero animations after loader hides
-    document.querySelectorAll('.anim-fadeup').forEach((el, i) => {
+    document.querySelectorAll('.anim-fadeup').forEach(el => {
       el.style.animationPlayState = 'running';
     });
   }, 900);
@@ -249,7 +249,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-// Pause canvas/animations when tab not visible
+// Pause animations when tab not visible
 document.addEventListener('visibilitychange', () => {
   document.body.classList.toggle('tab-hidden',
     document.hidden);
