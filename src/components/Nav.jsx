@@ -8,7 +8,7 @@ const links = [
   { label: 'Insights', href: '#insights' },
 ]
 
-export default function Nav({ scrolled }) {
+export default function Nav({ scrolled, dark = false, setDark = () => {} }) {
   const [open, setOpen] = useState(false)
 
   const navStyle = {
@@ -50,17 +50,65 @@ export default function Nav({ scrolled }) {
           ))}
         </ul>
 
-        <a href="#contact" style={{
-          padding: '9px 22px',
-          background: 'linear-gradient(135deg,#2563eb,#06b6d4)',
-          color: '#fff', fontSize: '0.75rem', fontWeight: 600,
-          textTransform: 'uppercase', letterSpacing: '0.1em',
-          transition: 'opacity 0.2s',
-        }}
-          onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
-          onMouseLeave={e => e.currentTarget.style.opacity = '1'}>
-          Get In Touch
-        </a>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+          <button
+            onClick={() => setDark(!dark)}
+            title={dark ? 'Switch to light mode' : 'Switch to dark mode'}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              padding: '8px 16px',
+              border: `2px solid ${dark ? '#3b82f6' : '#e2e8f0'}`,
+              borderRadius: '999px',
+              background: dark ? 'rgba(59,130,246,0.15)' : '#f8fafc',
+              cursor: 'pointer',
+              transition: 'all 0.2s',
+              flexShrink: 0,
+            }}
+          >
+            {dark ? (
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="#93c5fd" strokeWidth="2" strokeLinecap="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+              </svg>
+            ) : (
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="#f59e0b" strokeWidth="2" strokeLinecap="round">
+                <circle cx="12" cy="12" r="5"/>
+                <line x1="12" y1="1" x2="12" y2="3"/>
+                <line x1="12" y1="21" x2="12" y2="23"/>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                <line x1="1" y1="12" x2="3" y2="12"/>
+                <line x1="21" y1="12" x2="23" y2="12"/>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+              </svg>
+            )}
+            <span style={{
+              fontSize: '0.78rem',
+              fontWeight: 600,
+              color: dark ? '#93c5fd' : '#475569',
+              letterSpacing: '0.05em',
+              textTransform: 'uppercase',
+            }}>
+              {dark ? 'Dark' : 'Light'}
+            </span>
+          </button>
+
+          <a href="#contact" style={{
+            padding: '9px 22px',
+            background: 'linear-gradient(135deg,#2563eb,#06b6d4)',
+            color: '#fff', fontSize: '0.75rem', fontWeight: 600,
+            textTransform: 'uppercase', letterSpacing: '0.1em',
+            transition: 'opacity 0.2s',
+          }}
+            onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
+            onMouseLeave={e => e.currentTarget.style.opacity = '1'}>
+            Get In Touch
+          </a>
+        </div>
       </div>
 
       <style>{`
