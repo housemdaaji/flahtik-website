@@ -1,0 +1,65 @@
+@import '@fontsource/bricolage-grotesque/300.css';
+@import '@fontsource/bricolage-grotesque/400.css';
+@import '@fontsource/bricolage-grotesque/500.css';
+@import '@fontsource/bricolage-grotesque/600.css';
+@import '@fontsource/bricolage-grotesque/700.css';
+@import '@fontsource/bricolage-grotesque/800.css';
+@import '@fontsource/outfit/300.css';
+@import '@fontsource/outfit/400.css';
+@import '@fontsource/outfit/500.css';
+@import '@fontsource/outfit/600.css';
+@import '@fontsource/outfit/700.css';
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --white: #ffffff;
+  --ice: #f0f6ff;
+  --mist: #e8f0fb;
+  --navy: #0a1628;
+  --steel: #64748b;
+  --muted: #94a3b8;
+  --border: #e2e8f0;
+  --blue: #2563eb;
+  --blue-light: #3b82f6;
+  --cyan: #06b6d4;
+  --grad: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
+  --display: 'Bricolage Grotesque', sans-serif;
+  --body: 'Outfit', sans-serif;
+  --max: 1280px;
+  --nav-h: 68px;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --shadow: 0 4px 24px rgba(37,99,235,0.08);
+  --shadow-lg: 0 12px 48px rgba(37,99,235,0.14);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--body);
+  background: #fff;
+  color: var(--navy);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.6;
+}
+
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+button { border: none; background: none; cursor: pointer; font: inherit; }
+
+::selection { background: rgba(37,99,235,0.12); }
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--ice); }
+::-webkit-scrollbar-thumb { background: var(--grad); border-radius: 2px; }
+
+.container {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 64px;
+}
+
+@media (max-width: 768px) {
+  .container { padding: 0 24px; }
+}

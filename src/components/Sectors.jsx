@@ -1,0 +1,116 @@
+import { useState } from 'react'
+
+const sectors = [
+  { id: 'gov', num: '01', name: 'Government & Public Sector', body: 'Ministries, municipalities, and national agencies rely on Flahtik for land use planning, infrastructure monitoring, disaster response, and environmental compliance.', items: ['Land use & urban planning', 'Disaster risk reduction', 'National environmental reporting', 'Border & coastline monitoring'], tags: ['Land Planning', 'Disaster Response', 'Compliance'] },
+  { id: 'agri', num: '02', name: 'Agribusiness', body: 'From smallholder cooperatives to multinational agribusinesses, Flahtik delivers field-level crop intelligence that reduces input costs and improves yield forecasting.', items: ['Crop health & stress monitoring', 'Yield forecasting & harvest planning', 'Sustainable sourcing verification', 'Insurance & risk assessment'], tags: ['Crop Analytics', 'Yield AI', 'Insurance'] },
+  { id: 'water', num: '03', name: 'Water Utilities', body: 'Water authorities and utilities use Flahtik to monitor reservoir levels, track watershed health, model flood risk, and manage water stress across entire basin systems.', items: ['Reservoir & dam monitoring', 'Flood risk modelling & early warning', 'Water quality remote sensing', 'Groundwater & aquifer tracking'], tags: ['Watersheds', 'Flood Risk', 'Aquifers'] },
+  { id: 'env', num: '04', name: 'Environmental & Conservation', body: 'Conservation organisations and development banks leverage Flahtik for biodiversity mapping, deforestation alerts, carbon stock assessment, and nature-based solutions monitoring.', items: ['Deforestation & land degradation alerts', 'Biodiversity & habitat corridors', 'Carbon stock & sequestration', 'Nature-based solutions monitoring'], tags: ['Carbon', 'Biodiversity', 'Deforestation'] },
+  { id: 'energy', num: '05', name: 'Energy & Infrastructure', body: 'Energy developers and infrastructure operators use Flahtik for site feasibility, environmental impact monitoring, and pipeline and grid corridor surveillance.', items: ['Solar & wind site feasibility', 'Pipeline & grid corridor monitoring', 'Environmental impact assessment', 'Asset change detection'], tags: ['Solar Siting', 'Pipelines', 'Grid Monitoring'] },
+]
+
+export default function Sectors() {
+  const [open, setOpen] = useState('gov')
+
+  const active = sectors.find(s => s.id === open)
+
+  return (
+    <section id="sectors" style={{ background: '#f0f6ff' }}>
+      <div style={{ height: '1px', background: '#e2e8f0' }} />
+      <div className="container" style={{ paddingTop: '96px', paddingBottom: '96px' }}>
+        <div style={{ marginBottom: '56px' }}>
+          <div style={{
+            display: 'inline-flex', alignItems: 'center', gap: '8px',
+            background: '#eff6ff', padding: '5px 14px', borderRadius: '100px', marginBottom: '20px',
+          }}>
+            <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#2563eb' }} />
+            <span style={{ fontSize: '0.62rem', letterSpacing: '0.25em', textTransform: 'uppercase', color: '#2563eb', fontWeight: 600 }}>Who We Serve</span>
+          </div>
+          <h2 style={{
+            fontFamily: "'Bricolage Grotesque', sans-serif",
+            fontSize: 'clamp(2rem, 3.5vw, 3.2rem)', fontWeight: 700,
+            lineHeight: 1.1, letterSpacing: '-0.025em', color: '#0a1628', maxWidth: '560px',
+          }}>
+            Built for the Sectors<br />
+            <span style={{ background: 'linear-gradient(135deg,#2563eb,#06b6d4)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+              That Shape the Planet
+            </span>
+          </h2>
+        </div>
+
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 360px', gap: '64px', alignItems: 'start' }}>
+          {/* Accordion */}
+          <div>
+            {sectors.map(s => (
+              <div key={s.id} style={{ borderBottom: '1px solid #e2e8f0' }}>
+                <button onClick={() => setOpen(s.id === open ? null : s.id)} style={{
+                  width: '100%', padding: '22px 0',
+                  display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                  cursor: 'pointer', background: 'none', textAlign: 'left',
+                }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+                    <span style={{ fontSize: '0.62rem', letterSpacing: '0.2em', color: '#94a3b8', fontWeight: 600, minWidth: '24px' }}>{s.num}</span>
+                    <span style={{
+                      fontFamily: "'Bricolage Grotesque', sans-serif",
+                      fontSize: '1rem', fontWeight: 600,
+                      color: open === s.id ? '#2563eb' : '#0a1628',
+                      transition: 'color 0.2s',
+                    }}>{s.name}</span>
+                  </div>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={open === s.id ? '#2563eb' : '#94a3b8'} strokeWidth="1.5"
+                    style={{ transform: open === s.id ? 'rotate(180deg)' : 'none', transition: 'transform 0.3s', flexShrink: 0 }}>
+                    <polyline points="6 9 12 15 18 9" />
+                  </svg>
+                </button>
+                {open === s.id && (
+                  <div style={{ paddingLeft: '44px', paddingBottom: '24px' }}>
+                    <p style={{ fontSize: '0.88rem', color: '#64748b', lineHeight: 1.75, marginBottom: '16px', fontWeight: 300 }}>{s.body}</p>
+                    <ul style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '20px' }}>
+                      {s.items.map(item => (
+                        <li key={item} style={{ fontSize: '0.78rem', color: '#64748b', paddingLeft: '14px', position: 'relative' }}>
+                          <span style={{ position: 'absolute', left: 0, top: '50%', transform: 'translateY(-50%)', width: '4px', height: '4px', borderRadius: '50%', background: '#2563eb', display: 'block' }} />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                    <a href="#contact" style={{ fontSize: '0.75rem', fontWeight: 600, color: '#2563eb', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+                      Explore solutions →
+                    </a>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+
+          {/* Visual card */}
+          {active && (
+            <div style={{
+              background: '#0a1628', padding: '48px 40px',
+              position: 'sticky', top: '88px',
+            }}>
+              <div style={{
+                width: '56px', height: '56px', border: '1px solid rgba(255,255,255,0.1)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '28px',
+              }}>
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" strokeWidth="1.5">
+                  <circle cx="12" cy="12" r="10" /><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20" />
+                </svg>
+              </div>
+              <h3 style={{ fontFamily: "'Bricolage Grotesque', sans-serif", fontSize: '1.1rem', fontWeight: 600, color: '#fff', marginBottom: '24px', lineHeight: 1.3 }}>
+                {active.name}
+              </h3>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
+                {active.tags.map(tag => (
+                  <span key={tag} style={{
+                    padding: '5px 12px', border: '1px solid rgba(255,255,255,0.12)',
+                    fontSize: '0.62rem', letterSpacing: '0.12em', textTransform: 'uppercase',
+                    color: 'rgba(255,255,255,0.55)',
+                  }}>{tag}</span>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+  )
+}

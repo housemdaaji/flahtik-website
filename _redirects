@@ -1,5 +1,0 @@
-# Redirect www to apex domain (update after DNS setup)
-https://www.flahtik.com/* https://flahtik.com/:splat 301!
-
-# Fallback — serve index for all routes
-/*  /index.html  200
