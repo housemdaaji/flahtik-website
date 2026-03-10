@@ -17,7 +17,7 @@ export default function Hero({ dark = false }) {
   }
   return (
     <section style={{
-      minHeight: '85vh', paddingTop: '180px',
+      minHeight: 'auto', paddingTop: '180px', justifyContent: 'flex-start',
       position: 'relative', overflow: 'hidden',
       background: t.bg, display: 'flex',
       alignItems: 'center',
@@ -45,7 +45,7 @@ export default function Hero({ dark = false }) {
         filter: 'blur(60px)', pointerEvents: 'none',
       }} />
 
-      <div className="container" style={{ position: 'relative', zIndex: 1, paddingTop: '24px', paddingBottom: '56px' }}>
+      <div className="container" style={{ position: 'relative', zIndex: 1, paddingTop: '32px', paddingBottom: '40px' }}>
         {/* Badge */}
         <div style={{
           display: 'inline-flex', alignItems: 'center', gap: '8px',
