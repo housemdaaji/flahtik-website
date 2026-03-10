@@ -6,6 +6,7 @@ const links = [
   { label: 'Sectors', href: '#sectors' },
   { label: 'About', href: '#about' },
   { label: 'Insights', href: '#insights' },
+  { label: 'Mago ↗', href: 'https://mago.flahtik.com', external: true },
 ]
 
 export default function Nav({ scrolled, dark = false, setDark = () => {} }) {
