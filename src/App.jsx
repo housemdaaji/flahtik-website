@@ -47,7 +47,7 @@ export default function App() {
         zIndex: 9999, transition: 'width 0.1s linear'
       }} />
       <Nav scrolled={scrolled} dark={dark} setDark={setDark} />
-      <main style={{ paddingTop: '180px' }}>
+      <main style={{ paddingTop: '160px' }}>
         <Hero dark={dark} />
         <Services dark={dark} />
         <Platform dark={dark} />
