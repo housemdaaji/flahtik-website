@@ -43,7 +43,7 @@ export default function About({ dark = false }) {
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: '64px', alignItems: 'start', marginBottom: '48px' }}>
           <div>
             <p style={{ fontSize: '1.05rem', color: t.body, lineHeight: 1.9, marginBottom: '20px', fontWeight: 400 }}>
-              Flahtik was founded in Riyadh in 2019 with a single conviction — that the gap between
+              Flahtik was founded in 2019 with a single conviction — that the gap between
               what the Earth is telling us and what decisions get made is a problem worth solving.
               We started in the Middle East because the region's challenges are the world's challenges:
               water scarcity, desertification, food security, and the pressure to grow sustainably
@@ -63,7 +63,7 @@ export default function About({ dark = false }) {
               <circle cx="12" cy="12" r="10" /><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20" />
             </svg>
             <span style={{ fontSize: '0.62rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.2)' }}>
-              Riyadh HQ — Est. 2019
+              Tunis HQ — Est. 2019
             </span>
           </div>
         </div>

@@ -1,5 +1,5 @@
 const steps = [
-  { num: '01', title: 'Data Acquisition', body: 'Satellite constellations, IoT ground sensors, drone surveys, and open-source datasets ingested in real time.', tags: ['Sentinel-2', 'Landsat', 'IoT Sensors'] },
+  { num: '01', title: 'Data Acquisition', body: 'Satellite constellations, IoT ground sensors, drone surveys, and open-source datasets ingested in real time.', tags: ['Sentinel-2', 'Landsat', 'High-Res Satellite Imagery', 'IoT Sensors'] },
   { num: '02', title: 'Geospatial Processing', body: 'Radiometric correction, cloud masking, orthorectification, and fusion across multi-source datasets at planetary scale.', tags: ['QGIS', 'PostGIS', 'Google Earth Engine'] },
   { num: '03', title: 'AI Analysis', body: 'Deep learning models trained on domain-specific datasets detect anomalies, classify land cover, and forecast outcomes.', tags: ['TensorFlow', 'PyTorch', 'AWS SageMaker'] },
   { num: '04', title: 'Insight Generation', body: 'Processed intelligence surfaces as interactive dashboards, automated alerts, and structured reports tied to KPIs.', tags: ['Live Dashboards', 'API Feeds', 'Auto Reports'] },
@@ -77,9 +77,9 @@ export default function Platform({ dark = false }) {
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginLeft: '-21px' }}>
                 <div style={{
                   width: '10px', height: '10px', borderRadius: '50%',
-                  background: i === steps.length - 1 ? t.cyan : t.blue,
+                  background: t.blue,
                   border: '2px solid #fff',
-                  boxShadow: i === steps.length - 1 ? `0 0 0 2px ${t.cyan}, 0 0 16px rgba(6,182,212,0.4)` : `0 0 0 2px ${t.blue}`,
+                  boxShadow: `0 0 0 2px ${t.blue}`,
                   marginTop: '4px', flexShrink: 0,
                 }} />
                 {i < steps.length - 1 && (
@@ -89,12 +89,12 @@ export default function Platform({ dark = false }) {
               <div>
                 <div style={{
                   width: '40px', height: '40px',
-                  background: i === steps.length - 1 ? '#0a1628' : t.bgAlt,
+                  background: t.bgAlt,
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   marginBottom: '14px',
                 }}>
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-                    stroke={i === steps.length - 1 ? t.cyan : t.blue} strokeWidth="1.5">
+                    stroke={t.blue} strokeWidth="1.5">
                     <circle cx="12" cy="12" r="3" /><path d="M12 2v4M12 18v4M2 12h4M18 12h4" />
                   </svg>
                 </div>

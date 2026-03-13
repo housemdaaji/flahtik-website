@@ -149,7 +149,7 @@ export default function Contact({ dark = false }) {
         {/* Details strip */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1px', background: t.divider, border: `1px solid ${t.border}` }}>
           {[
-            { label: 'Headquarters', value: 'Riyadh, Saudi Arabia' },
+            { label: 'Headquarters', value: 'Tunis, Tunisia' },
             { label: 'Email', value: 'hello@flahtik.com', href: 'mailto:hello@flahtik.com' },
             { label: 'Response Time', value: 'Within 1 business day' },
           ].map(d => (
