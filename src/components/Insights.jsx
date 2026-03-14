@@ -1,10 +1,10 @@
 import { useState } from 'react'
 
 const articles = [
-  { cat: 'Spatial Technology', date: 'March 2025', read: '8 min', title: 'Hyperspectral Imaging and the Future of Precision Agriculture in Arid Regions', excerpt: 'New advances in hyperspectral satellite sensors are enabling crop stress detection at field scale across desert-edge agricultural zones.', featured: true },
-  { cat: 'Water', date: 'Feb 2025', read: '6 min', title: 'Satellite-Based Flood Forecasting: 48-Hour Early Warning at Basin Scale', excerpt: 'How synthetic aperture radar combined with hydrological AI models is delivering actionable flood warnings days before traditional systems.' },
-  { cat: 'Agriculture', date: 'Jan 2025', read: '7 min', title: 'NDVI to Neural Nets: The Evolution of Crop Intelligence from Space', excerpt: 'A technical deep-dive into how vegetation indices gave way to deep learning classifiers for multi-crop, multi-season monitoring.' },
-  { cat: 'Environment', date: 'Dec 2024', read: '5 min', title: 'Carbon Credit Integrity: Why Satellite Verification Changes Everything', excerpt: 'The voluntary carbon market is under scrutiny. Here is how continuous satellite monitoring is restoring trust in nature-based solutions.' },
+  { cat: 'Spatial Technology', date: 'March 2025', read: '8 min', title: 'Hyperspectral Imaging and the Future of Precision Agriculture in Arid Regions', excerpt: 'New advances in hyperspectral satellite sensors are enabling crop stress detection at field scale across desert-edge agricultural zones.', featured: true, image: 'https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=800&q=80', imageAlt: 'Precision agriculture' },
+  { cat: 'Water', date: 'Feb 2025', read: '6 min', title: 'Satellite-Based Flood Forecasting: 48-Hour Early Warning at Basin Scale', excerpt: 'How synthetic aperture radar combined with hydrological AI models is delivering actionable flood warnings days before traditional systems.', image: 'https://images.unsplash.com/photo-1504711331083-9c895941bf81?w=800&q=80', imageAlt: 'Flood forecasting' },
+  { cat: 'Agriculture', date: 'Jan 2025', read: '7 min', title: 'NDVI to Neural Nets: The Evolution of Crop Intelligence from Space', excerpt: 'A technical deep-dive into how vegetation indices gave way to deep learning classifiers for multi-crop, multi-season monitoring.', image: 'https://images.unsplash.com/photo-1560493676-04071c5f467b?w=800&q=80', imageAlt: 'Crop intelligence' },
+  { cat: 'Environment', date: 'Dec 2024', read: '5 min', title: 'Carbon Credit Integrity: Why Satellite Verification Changes Everything', excerpt: 'The voluntary carbon market is under scrutiny. Here is how continuous satellite monitoring is restoring trust in nature-based solutions.', image: 'https://images.unsplash.com/photo-1448375240586-882707db888b?w=800&q=80', imageAlt: 'Carbon credit and environment' },
 ]
 
 export default function Insights({ dark = false }) {
@@ -67,10 +67,14 @@ export default function Insights({ dark = false }) {
 
         {/* Featured */}
         <div style={{ display: 'grid', gridTemplateColumns: '440px 1fr', border: `1px solid ${t.border}`, marginBottom: '16px' }}>
-          <div style={{ background: '#0a1628', display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '280px', position: 'relative' }}>
-            <svg width="120" height="90" viewBox="0 0 120 90" fill="none" stroke="rgba(37,99,235,0.4)" strokeWidth="0.8">
-              <rect x="10" y="10" width="100" height="70" /><path d="M10 40h100M60 10v70M35 25h50M35 55h50" />
-            </svg>
+          <div style={{ position: 'relative', overflow: 'hidden', minHeight: '280px', height: '280px' }}>
+            <div style={{ width: '100%', height: '100%', overflow: 'hidden', borderRadius: 'inherit' }}>
+              <img
+                src={featured.image}
+                alt={featured.imageAlt}
+                style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+              />
+            </div>
             <span style={{ position: 'absolute', top: '16px', left: '16px', padding: '4px 12px', background: t.blue, fontSize: '0.6rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#fff', fontWeight: 600 }}>
               Featured
             </span>
@@ -90,12 +94,14 @@ export default function Insights({ dark = false }) {
 
         {/* 3-card grid */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1px', background: t.divider, border: `1px solid ${t.border}`, marginBottom: '32px' }}>
-          {rest.map((a, i) => (
-            <div key={a.title} style={{ background: t.bgCard, display: 'flex', flexDirection: 'column' }}>
-              <div style={{ height: '120px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: i === 0 ? t.bgAlt : i === 1 ? '#0a1628' : 'linear-gradient(135deg,#0a1628,#0e2d4a)' }}>
-                <svg width="60" height="44" viewBox="0 0 60 44" fill="none" stroke={i === 0 ? t.blue : 'rgba(255,255,255,0.3)'} strokeWidth="0.8">
-                  <rect x="4" y="4" width="52" height="36" /><path d="M4 20h52M30 4v36" />
-                </svg>
+          {rest.map((a) => (
+            <div key={a.title} style={{ background: t.bgCard, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+              <div style={{ width: '100%', height: '120px', overflow: 'hidden', flexShrink: 0 }}>
+                <img
+                  src={a.image}
+                  alt={a.imageAlt}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                />
               </div>
               <div style={{ padding: '24px', flex: 1, display: 'flex', flexDirection: 'column' }}>
                 <div style={{ display: 'flex', gap: '6px', alignItems: 'center', marginBottom: '10px' }}>

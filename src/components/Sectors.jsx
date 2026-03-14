@@ -8,6 +8,14 @@ const sectors = [
   { id: 'energy', num: '05', color: '#ea580c', name: 'Energy & Infrastructure', body: 'Energy developers and infrastructure operators use Flahtik for site feasibility, environmental impact monitoring, and pipeline and grid corridor surveillance.', items: ['Solar & wind site feasibility', 'Pipeline & grid corridor monitoring', 'Environmental impact assessment', 'Asset change detection'], tags: ['Solar Siting', 'Pipelines', 'Grid Monitoring'] },
 ]
 
+const sectorImages = {
+  gov: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80',
+  agri: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&q=80',
+  env: 'https://images.unsplash.com/photo-1542601906897-ecd6c10c2222?w=800&q=80',
+  energy: 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=800&q=80',
+  water: 'https://images.unsplash.com/photo-1611068120813-b0eb72b90aca?w=800&q=80',
+}
+
 export default function Sectors({ dark = false }) {
   const [open, setOpen] = useState('gov')
   const t = {
@@ -99,30 +107,50 @@ export default function Sectors({ dark = false }) {
 
           {/* Visual card */}
           {active && (
-            <div style={{
-              background: '#0a1628', padding: '48px 40px',
-              position: 'sticky', top: '88px',
-              borderLeft: `3px solid ${active.color}`,
-            }}>
-              <div style={{
-                width: '56px', height: '56px', border: '1px solid rgba(255,255,255,0.1)',
-                display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '28px',
-              }}>
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" strokeWidth="1.5">
-                  <circle cx="12" cy="12" r="10" /><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20" />
-                </svg>
-              </div>
-              <h3 style={{ fontFamily: "'Bricolage Grotesque', sans-serif", fontSize: '1.1rem', fontWeight: 600, color: '#fff', marginBottom: '24px', lineHeight: 1.3 }}>
-                {active.name}
-              </h3>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
-                {active.tags.map(tag => (
-                  <span key={tag} style={{
-                    padding: '5px 12px', border: '1px solid rgba(255,255,255,0.12)',
-                    fontSize: '0.62rem', letterSpacing: '0.12em', textTransform: 'uppercase',
-                    color: 'rgba(255,255,255,0.55)',
-                  }}>{tag}</span>
-                ))}
+            <div
+              className="relative overflow-hidden rounded-xl"
+              style={{
+                position: 'sticky',
+                top: '88px',
+                overflow: 'hidden',
+                borderRadius: '0.75rem',
+                backgroundImage: `url(${sectorImages[active.id]})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                borderLeft: `3px solid ${active.color}`,
+              }}
+            >
+              <div
+                style={{
+                  position: 'absolute',
+                  top: 0,
+                  right: 0,
+                  bottom: 0,
+                  left: 0,
+                  background: 'linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7))',
+                }}
+              />
+              <div style={{ position: 'relative', zIndex: 10, padding: '48px 40px' }}>
+                <div style={{
+                  width: '56px', height: '56px', border: '1px solid rgba(255,255,255,0.1)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '28px',
+                }}>
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" strokeWidth="1.5">
+                    <circle cx="12" cy="12" r="10" /><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20" />
+                  </svg>
+                </div>
+                <h3 style={{ fontFamily: "'Bricolage Grotesque', sans-serif", fontSize: '1.1rem', fontWeight: 600, color: '#fff', marginBottom: '24px', lineHeight: 1.3 }}>
+                  {active.name}
+                </h3>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
+                  {active.tags.map(tag => (
+                    <span key={tag} style={{
+                      padding: '5px 12px', border: '1px solid rgba(255,255,255,0.12)',
+                      fontSize: '0.62rem', letterSpacing: '0.12em', textTransform: 'uppercase',
+                      color: 'rgba(255,255,255,0.55)',
+                    }}>{tag}</span>
+                  ))}
+                </div>
               </div>
             </div>
           )}
