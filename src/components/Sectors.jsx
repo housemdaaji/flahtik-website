@@ -9,11 +9,11 @@ const sectors = [
 ]
 
 const sectorImages = {
-  gov: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80',
-  agri: 'https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=800&q=80',
+  gov: 'https://images.unsplash.com/photo-1446776858070-70c3d5ed6758?w=1200&q=80',
+  agri: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80',
   env: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&q=80',
   energy: 'https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=800&q=80',
-  water: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80',
+  water: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&q=80',
 }
 
 export default function Sectors({ dark = false }) {

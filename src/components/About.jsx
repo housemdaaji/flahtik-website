@@ -59,7 +59,7 @@ export default function About({ dark = false }) {
 
           {/* Image placeholder */}
           <div style={{
-            backgroundImage: 'url(https://images.unsplash.com/photo-1512632578888-169bbbc64f33?w=800&q=80)',
+            backgroundImage: 'url(https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=1200&q=80)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             position: 'relative',
