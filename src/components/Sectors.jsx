@@ -10,9 +10,9 @@ const sectors = [
 
 const sectorImages = {
   gov: '/images/satellite-earth.png',
-  agri: '/images/env-conservation.png',
+  agri: '/images/agribusiness.png',
   env: '/images/env-conservation.png',
-  energy: '/images/satellite-earth.png',
+  energy: '/images/energy-infrastructure.png',
   water: '/images/water-utilities.png',
 }
 
