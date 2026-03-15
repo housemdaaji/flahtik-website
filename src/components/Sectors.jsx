@@ -8,13 +8,13 @@ const sectors = [
   { id: 'energy', num: '05', color: '#ea580c', name: 'Energy & Infrastructure', body: 'Energy developers and infrastructure operators use Flahtik for site feasibility, environmental impact monitoring, and pipeline and grid corridor surveillance.', items: ['Solar & wind site feasibility', 'Pipeline & grid corridor monitoring', 'Environmental impact assessment', 'Asset change detection'], tags: ['Solar Siting', 'Pipelines', 'Grid Monitoring'] },
 ]
 
-const sectorImages = {
-  gov: '/images/satellite-earth.png',
-  agri: '/images/agribusiness.png',
-  env: '/images/env-conservation.png',
-  energy: '/images/energy-infrastructure.png',
-  water: '/images/water-utilities.png',
-}
+const sectorVideos = [
+  '/assets/videos/20606524-uhd_3840_2160_24fps.mp4', // 0 Government
+  '/assets/videos/3365440-uhd_3840_2160_30fps.mp4', // 1 Agribusiness
+  '/assets/videos/20606524-uhd_3840_2160_24fps.mp4', // 2 Water
+  '/assets/videos/13359010_1920_1080_50fps.mp4',    // 3 Environmental
+  '/assets/videos/13359010_1920_1080_50fps.mp4',    // 4 Energy
+]
 
 export default function Sectors({ dark = false }) {
   const [open, setOpen] = useState('gov')
@@ -35,34 +35,11 @@ export default function Sectors({ dark = false }) {
     divider:  dark ? '#1e2d45'  : '#e2e8f0',
   }
 
-  const active = sectors.find(s => s.id === open)
+  const activeIndex = open !== null ? sectors.findIndex(s => s.id === open) : 0
+  const activeSector = sectors[activeIndex]
 
   return (
     <section id="sectors" style={{ position: 'relative', overflow: 'hidden', background: t.bgAlt }}>
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        style={{
-          position: 'absolute',
-          top: 0, left: 0,
-          width: '100%', height: '100%',
-          objectFit: 'cover',
-          zIndex: 0,
-          opacity: 0.75,
-        }}
-      >
-        <source src="/assets/videos/20606524-uhd_3840_2160_24fps.mp4" type="video/mp4" />
-      </video>
-      <div style={{
-        position: 'absolute',
-        top: 0, left: 0,
-        width: '100%', height: '100%',
-        background: 'linear-gradient(to right, rgba(255,255,255,0.55) 35%, rgba(255,255,255,0.05) 100%)',
-        zIndex: 0,
-      }} />
-      <div style={{ position: 'relative', zIndex: 1 }}>
       <div style={{ height: '1px', background: t.divider }} />
       <div className="container" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
         <div style={{ marginBottom: '36px' }}>
@@ -85,9 +62,9 @@ export default function Sectors({ dark = false }) {
           </h2>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 360px', gap: '64px', alignItems: 'start' }}>
-          {/* Accordion */}
-          <div>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 45%', gap: '64px', alignItems: 'start' }}>
+          {/* Accordion - max 680px */}
+          <div style={{ maxWidth: '680px' }}>
             {sectors.map(s => (
               <div key={s.id} style={{ borderBottom: `1px solid ${t.border}` }}>
                 <button onClick={() => setOpen(s.id === open ? null : s.id)} style={{
@@ -129,69 +106,55 @@ export default function Sectors({ dark = false }) {
             ))}
           </div>
 
-          {/* Visual card */}
-          {active && (
-            <div
-              className="relative overflow-hidden rounded-xl"
+          {/* Video panel */}
+          <div style={{
+            position: 'sticky',
+            top: '120px',
+            width: '100%',
+            height: '420px',
+            borderRadius: '16px',
+            overflow: 'hidden',
+          }}>
+            <video
+              key={activeIndex}
+              autoPlay
+              loop
+              muted
+              playsInline
               style={{
-                position: 'sticky',
-                top: '88px',
-                overflow: 'hidden',
-                borderRadius: '0.75rem',
-                backgroundImage: `url(${sectorImages[active.id]})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                borderLeft: `3px solid ${active.color}`,
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                display: 'block',
               }}
             >
-              <div
-                style={{
-                  position: 'absolute',
-                  top: 0,
-                  right: 0,
-                  bottom: 0,
-                  left: 0,
-                  background: 'linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7))',
-                }}
-              />
-              <div style={{ position: 'relative', zIndex: 10, padding: '48px 40px' }}>
-                <div style={{
-                  width: '56px', height: '56px', border: '1px solid rgba(255,255,255,0.1)',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '28px',
-                }}>
-                  {active.id === 'gov' && (
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" strokeWidth="1.5"><circle cx="12" cy="12" r="3"/><path d="M6.3 6.3a8 8 0 0 0 0 11.4"/><path d="M17.7 6.3a8 8 0 0 1 0 11.4"/><path d="M3.5 3.5a14 14 0 0 0 0 17"/><path d="M20.5 3.5a14 14 0 0 1 0 17"/></svg>
-                  )}
-                  {active.id === 'agri' && (
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" strokeWidth="1.5"><path d="M12 22V12"/><path d="M12 12C12 7 7 4 3 6c0 4 3 7 9 6"/><path d="M12 12c0-5 5-8 9-6c0 4-3 7-9 6"/></svg>
-                  )}
-                  {active.id === 'water' && (
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" strokeWidth="1.5"><path d="M12 2C6 8 4 12 4 15a8 8 0 0 0 16 0c0-3-2-7-8-13z"/></svg>
-                  )}
-                  {active.id === 'env' && (
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" strokeWidth="1.5"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
-                  )}
-                  {active.id === 'energy' && (
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" strokeWidth="1.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-                  )}
-                </div>
-                <h3 style={{ fontFamily: "'Bricolage Grotesque', sans-serif", fontSize: '1.1rem', fontWeight: 600, color: '#fff', marginBottom: '24px', lineHeight: 1.3 }}>
-                  {active.name}
-                </h3>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
-                  {active.tags.map(tag => (
-                    <span key={tag} style={{
-                      padding: '5px 12px', border: '1px solid rgba(255,255,255,0.12)',
-                      fontSize: '0.62rem', letterSpacing: '0.12em', textTransform: 'uppercase',
-                      color: 'rgba(255,255,255,0.55)',
-                    }}>{tag}</span>
-                  ))}
-                </div>
-              </div>
+              <source src={sectorVideos[activeIndex]} type="video/mp4" />
+            </video>
+            <div style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: '100%',
+              background: 'linear-gradient(to top, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.1) 100%)',
+              zIndex: 1,
+            }} />
+            <div style={{
+              position: 'absolute',
+              bottom: '20px',
+              left: '20px',
+              zIndex: 2,
+              fontFamily: "'Outfit', sans-serif",
+              fontSize: '14px',
+              fontWeight: 600,
+              letterSpacing: '1px',
+              textTransform: 'uppercase',
+              color: '#fff',
+            }}>
+              {activeSector.name}
             </div>
-          )}
+          </div>
         </div>
-      </div>
       </div>
     </section>
   )
