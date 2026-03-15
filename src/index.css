@@ -10,7 +10,7 @@
 @import '@fontsource/outfit/600.css';
 @import '@fontsource/outfit/700.css';
 
-:root, [data-theme="light"] {
+:root {
   --bg:        #ffffff;
   --bg-alt:    #f0f6ff;
   --bg-card:   #ffffff;
@@ -26,24 +26,6 @@
   --orange:    #ea580c;
   --nav-bg:    rgba(255,255,255,0.97);
   --shadow:    0 4px 24px rgba(37,99,235,0.08);
-}
-
-[data-theme="dark"] {
-  --bg:        #080f1e;
-  --bg-alt:    #0d1626;
-  --bg-card:   #111827;
-  --border:    #1e2d45;
-  --navy:      #f0f6ff;
-  --body-text: #e2e8f0;
-  --muted:     #94a3b8;
-  --faint:     #64748b;
-  --blue:      #3b82f6;
-  --cyan:      #22d3ee;
-  --grad:      linear-gradient(135deg, #3b82f6 0%, #22d3ee 100%);
-  --green:     #22c55e;
-  --orange:    #f97316;
-  --nav-bg:    rgba(8,15,30,0.97);
-  --shadow:    0 4px 24px rgba(0,0,0,0.4);
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }

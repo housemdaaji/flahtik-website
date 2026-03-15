@@ -27,28 +27,12 @@ const services = [
   },
 ]
 
-export default function Services({ dark = false }) {
+export default function Services() {
   const [hovered, setHovered] = useState(null)
-  const t = {
-    bg:       dark ? '#080f1e'  : '#ffffff',
-    bgAlt:    dark ? '#0d1626'  : '#f0f6ff',
-    bgCard:   dark ? '#111827'  : '#ffffff',
-    border:   dark ? '#1e2d45'  : '#e2e8f0',
-    heading:  dark ? '#f0f6ff'  : '#0a1628',
-    body:     dark ? '#cbd5e1'  : '#1e293b',
-    muted:    dark ? '#94a3b8'  : '#475569',
-    faint:    dark ? '#64748b'  : '#94a3b8',
-    blue:     dark ? '#3b82f6'  : '#2563eb',
-    cyan:     dark ? '#22d3ee'  : '#06b6d4',
-    green:    dark ? '#22c55e'  : '#16a34a',
-    orange:   dark ? '#f97316'  : '#ea580c',
-    grad:     'linear-gradient(135deg, ' + (dark ? '#3b82f6' : '#2563eb') + ', ' + (dark ? '#22d3ee' : '#06b6d4') + ')',
-    divider:  dark ? '#1e2d45'  : '#e2e8f0',
-  }
 
   return (
-    <section id="services" style={{ background: t.bgAlt, padding: '0' }}>
-      <div style={{ height: '1px', background: t.divider }} />
+    <section id="services" style={{ background: '#f0f6ff', padding: '0' }}>
+      <div style={{ height: '1px', background: '#e2e8f0' }} />
       <div className="container" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
         {/* Header */}
         <div style={{
@@ -58,27 +42,27 @@ export default function Services({ dark = false }) {
           <div>
             <div style={{
               display: 'inline-flex', alignItems: 'center', gap: '8px',
-              background: t.bgCard, padding: '5px 14px', borderRadius: '100px',
+              background: '#ffffff', padding: '5px 14px', borderRadius: '100px',
               marginBottom: '20px',
             }}>
-              <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: t.blue }} />
-              <span style={{ fontSize: '0.62rem', letterSpacing: '0.25em', textTransform: 'uppercase', color: t.blue, fontWeight: 600 }}>
+              <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#2563eb' }} />
+              <span style={{ fontSize: '0.62rem', letterSpacing: '0.25em', textTransform: 'uppercase', color: '#2563eb', fontWeight: 600 }}>
                 What We Do
               </span>
             </div>
             <h2 style={{
               fontFamily: "'Bricolage Grotesque', sans-serif",
               fontSize: 'clamp(2rem, 3.5vw, 3.2rem)', fontWeight: 700,
-              lineHeight: 1.1, letterSpacing: '-0.025em', color: t.heading,
+              lineHeight: 1.1, letterSpacing: '-0.025em', color: '#0a1628',
             }}>
               Four Domains.<br />
               <span style={{
-                background: t.grad,
+                background: 'linear-gradient(135deg, #2563eb, #06b6d4)',
                 WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
               }}>One Platform.</span>
             </h2>
           </div>
-          <p style={{ fontSize: '1.05rem', color: t.body, fontWeight: 400, lineHeight: 1.8, maxWidth: '400px' }}>
+          <p style={{ fontSize: '1.05rem', color: '#1e293b', fontWeight: 400, lineHeight: 1.8, maxWidth: '400px' }}>
             Flahtik brings together the most complex environmental data streams
             into a single, decision-ready intelligence layer.
           </p>
@@ -87,14 +71,14 @@ export default function Services({ dark = false }) {
         {/* Grid */}
         <div style={{
           display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)',
-          gap: '1px', background: t.divider, border: `1px solid ${t.border}`,
+          gap: '1px', background: '#e2e8f0', border: '1px solid #e2e8f0',
         }}>
           {services.map((s, idx) => (
             <div key={s.num}
               onMouseEnter={() => setHovered(idx)}
               onMouseLeave={() => setHovered(null)}
               style={{
-              background: hovered === idx && s.accentBg ? (dark ? t.bgCard : s.accentBg) : t.bgCard,
+              background: hovered === idx && s.accentBg ? s.accentBg : '#ffffff',
               padding: '44px 40px',
               display: 'flex', flexDirection: 'column',
               transition: 'box-shadow 0.3s, background 0.3s, border-color 0.2s',
@@ -111,17 +95,17 @@ export default function Services({ dark = false }) {
               <h3 style={{
                 fontFamily: "'Bricolage Grotesque', sans-serif",
                 fontSize: '1.25rem', fontWeight: 600, lineHeight: 1.3,
-                color: t.heading, marginBottom: '14px',
+                color: '#0a1628', marginBottom: '14px',
               }}>{s.title}</h3>
               <p style={{
-                fontSize: '1rem', color: t.body,
+                fontSize: '1rem', color: '#1e293b',
                 lineHeight: 1.75, marginBottom: '24px', flex: 1, fontWeight: 400,
               }}>{s.body}</p>
               <ul style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '32px' }}>
                 {s.items.map(item => (
                   <li key={item} style={{
                     fontSize: '0.88rem', paddingLeft: '14px', position: 'relative',
-                    color: t.body,
+                    color: '#1e293b',
                   }}>
                     <span style={{
                       position: 'absolute', left: 0, top: '50%', transform: 'translateY(-50%)',
@@ -146,16 +130,16 @@ export default function Services({ dark = false }) {
         {/* CTA strip */}
         <div style={{
           marginTop: '32px', padding: '28px 40px',
-          background: t.bgCard, border: `1px solid ${t.border}`,
+          background: '#ffffff', border: '1px solid #e2e8f0',
           display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '24px', flexWrap: 'wrap',
         }}>
-          <p style={{ fontSize: '1rem', color: t.body, fontWeight: 400 }}>
+          <p style={{ fontSize: '1rem', color: '#1e293b', fontWeight: 400 }}>
             Not sure which solution fits your challenge?
           </p>
           <a href="#contact" style={{
             display: 'inline-flex', alignItems: 'center', gap: '8px',
-            padding: '11px 24px', border: `1.5px solid ${t.blue}`,
-            color: t.blue, fontSize: '0.75rem', fontWeight: 600,
+            padding: '11px 24px', border: '1.5px solid #2563eb',
+            color: '#2563eb', fontSize: '0.75rem', fontWeight: 600,
             textTransform: 'uppercase', letterSpacing: '0.1em',
           }}>
             Talk to Our Team →

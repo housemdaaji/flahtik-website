@@ -12,22 +12,6 @@ import Footer from './components/Footer'
 export default function App() {
   const [scrolled, setScrolled] = useState(false)
   const [progress, setProgress] = useState(0)
-  const [dark, setDark] = useState(false)
-
-  useEffect(() => {
-    const saved = localStorage.getItem('flahtik-theme')
-    if (saved === 'dark') setDark(true)
-  }, [])
-
-  useEffect(() => {
-    document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light')
-    localStorage.setItem('flahtik-theme', dark ? 'dark' : 'light')
-  }, [dark])
-
-  useEffect(() => {
-    document.body.style.background = dark ? '#080f1e' : '#ffffff'
-    document.body.style.color = dark ? '#cbd5e1' : '#1e293b'
-  }, [dark])
 
   useEffect(() => {
     const onScroll = () => {
@@ -46,17 +30,17 @@ export default function App() {
         width: `${progress}%`, background: 'linear-gradient(90deg,#2563eb,#06b6d4)',
         zIndex: 9999, transition: 'width 0.1s linear'
       }} />
-      <Nav scrolled={scrolled} dark={dark} setDark={setDark} />
+      <Nav scrolled={scrolled} />
       <main style={{ paddingTop: '180px' }}>
-        <Hero dark={dark} />
-        <Services dark={dark} />
-        <Platform dark={dark} />
-        <Sectors dark={dark} />
-        <About dark={dark} />
-        <Insights dark={dark} />
-        <Contact dark={dark} />
+        <Hero />
+        <Services />
+        <Platform />
+        <Sectors />
+        <About />
+        <Insights />
+        <Contact />
       </main>
-      <Footer dark={dark} />
+      <Footer />
     </>
   )
 }

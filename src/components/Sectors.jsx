@@ -16,29 +16,13 @@ const sectorVideos = [
   '/assets/videos/energy%20and%20infra.mp4',
 ]
 
-export default function Sectors({ dark = false }) {
+export default function Sectors() {
   const [open, setOpen] = useState('gov')
-  const t = {
-    bg:       dark ? '#080f1e'  : '#ffffff',
-    bgAlt:    dark ? '#0d1626'  : '#f0f6ff',
-    bgCard:   dark ? '#111827'  : '#ffffff',
-    border:   dark ? '#1e2d45'  : '#e2e8f0',
-    heading:  dark ? '#f0f6ff'  : '#0a1628',
-    body:     dark ? '#cbd5e1'  : '#1e293b',
-    muted:    dark ? '#94a3b8'  : '#475569',
-    faint:    dark ? '#64748b'  : '#94a3b8',
-    blue:     dark ? '#3b82f6'  : '#2563eb',
-    cyan:     dark ? '#22d3ee'  : '#06b6d4',
-    green:    dark ? '#22c55e'  : '#16a34a',
-    orange:   dark ? '#f97316'  : '#ea580c',
-    grad:     'linear-gradient(135deg, ' + (dark ? '#3b82f6' : '#2563eb') + ', ' + (dark ? '#22d3ee' : '#06b6d4') + ')',
-    divider:  dark ? '#1e2d45'  : '#e2e8f0',
-  }
 
   const activeIndex = open !== null ? sectors.findIndex(s => s.id === open) : 0
 
   return (
-    <section id="sectors" style={{ position: 'relative', overflow: 'hidden', background: t.bgAlt }}>
+    <section id="sectors" style={{ position: 'relative', overflow: 'hidden', background: '#f0f6ff' }}>
       <video
         key={activeIndex}
         autoPlay
@@ -64,23 +48,23 @@ export default function Sectors({ dark = false }) {
         zIndex: 0,
       }} />
       <div style={{ position: 'relative', zIndex: 1 }}>
-        <div style={{ height: '1px', background: t.divider }} />
+        <div style={{ height: '1px', background: '#e2e8f0' }} />
         <div className="container" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
           <div style={{ marginBottom: '36px' }}>
             <div style={{
               display: 'inline-flex', alignItems: 'center', gap: '8px',
-              background: t.bgCard, padding: '5px 14px', borderRadius: '100px', marginBottom: '20px',
+              background: '#ffffff', padding: '5px 14px', borderRadius: '100px', marginBottom: '20px',
             }}>
-              <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: t.blue }} />
-              <span style={{ fontSize: '0.62rem', letterSpacing: '0.25em', textTransform: 'uppercase', color: t.blue, fontWeight: 600 }}>Who We Serve</span>
+              <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#2563eb' }} />
+              <span style={{ fontSize: '0.62rem', letterSpacing: '0.25em', textTransform: 'uppercase', color: '#2563eb', fontWeight: 600 }}>Who We Serve</span>
             </div>
             <h2 style={{
               fontFamily: "'Bricolage Grotesque', sans-serif",
               fontSize: 'clamp(2rem, 3.5vw, 3.2rem)', fontWeight: 700,
-              lineHeight: 1.1, letterSpacing: '-0.025em', color: t.heading, maxWidth: '560px',
+              lineHeight: 1.1, letterSpacing: '-0.025em', color: '#0a1628', maxWidth: '560px',
             }}>
               Built for the Sectors<br />
-              <span style={{ background: t.grad, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+              <span style={{ background: 'linear-gradient(135deg, #2563eb, #06b6d4)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
                 That Shape the Planet
               </span>
             </h2>
@@ -89,32 +73,32 @@ export default function Sectors({ dark = false }) {
           {/* Accordion - full width */}
           <div>
             {sectors.map(s => (
-              <div key={s.id} style={{ borderBottom: `1px solid ${t.border}` }}>
+              <div key={s.id} style={{ borderBottom: '1px solid #e2e8f0' }}>
                 <button onClick={() => setOpen(s.id === open ? null : s.id)} style={{
                   width: '100%', padding: '22px 0',
                   display: 'flex', alignItems: 'center', justifyContent: 'space-between',
                   cursor: 'pointer', background: 'none', textAlign: 'left',
                 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-                    <span style={{ fontSize: '0.62rem', letterSpacing: '0.2em', color: t.muted, fontWeight: 600, minWidth: '24px' }}>{s.num}</span>
+                    <span style={{ fontSize: '0.62rem', letterSpacing: '0.2em', color: '#475569', fontWeight: 600, minWidth: '24px' }}>{s.num}</span>
                     <span style={{
                       fontFamily: "'Bricolage Grotesque', sans-serif",
                       fontSize: '1rem', fontWeight: 600,
-                      color: open === s.id ? s.color : t.heading,
+                      color: open === s.id ? s.color : '#0a1628',
                       transition: 'color 0.2s',
                     }}>{s.name}</span>
                   </div>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={open === s.id ? s.color : t.muted} strokeWidth="1.5"
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={open === s.id ? s.color : '#475569'} strokeWidth="1.5"
                     style={{ transform: open === s.id ? 'rotate(180deg)' : 'none', transition: 'transform 0.3s', flexShrink: 0 }}>
                     <polyline points="6 9 12 15 18 9" />
                   </svg>
                 </button>
                 {open === s.id && (
                   <div style={{ paddingLeft: '44px', paddingBottom: '24px' }}>
-                    <p style={{ fontSize: '1rem', color: t.body, lineHeight: 1.75, marginBottom: '16px', fontWeight: 400 }}>{s.body}</p>
+                    <p style={{ fontSize: '1rem', color: '#1e293b', lineHeight: 1.75, marginBottom: '16px', fontWeight: 400 }}>{s.body}</p>
                     <ul style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '20px' }}>
                       {s.items.map(item => (
-                        <li key={item} style={{ fontSize: '0.88rem', color: t.body, paddingLeft: '14px', position: 'relative' }}>
+                        <li key={item} style={{ fontSize: '0.88rem', color: '#1e293b', paddingLeft: '14px', position: 'relative' }}>
                           <span style={{ position: 'absolute', left: 0, top: '50%', transform: 'translateY(-50%)', width: '4px', height: '4px', borderRadius: '50%', background: s.color, display: 'block' }} />
                           {item}
                         </li>
