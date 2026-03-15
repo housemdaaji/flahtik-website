@@ -42,7 +42,7 @@ export default function Hero({ dark = false }) {
         position: 'absolute',
         top: 0, left: 0,
         width: '100%', height: '100%',
-        background: 'linear-gradient(to right, rgba(255,255,255,0.55) 35%, rgba(255,255,255,0.05) 100%)',
+        background: 'linear-gradient(to right, rgba(255,255,255,0.82) 40%, rgba(255,255,255,0.1) 100%)',
         zIndex: 0,
       }} />
       <div style={{ position: 'relative', zIndex: 1 }}>
