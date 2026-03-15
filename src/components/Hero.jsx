@@ -1,5 +1,6 @@
 export default function Hero() {
   return (
+    <>
     <section style={{
       minHeight: 'auto', paddingTop: '180px', justifyContent: 'flex-start',
       position: 'relative', overflow: 'hidden',
@@ -140,5 +141,61 @@ export default function Hero() {
       </div>
       </div>
     </section>
+    <div style={{
+      background: '#f8faff',
+      borderTop: '1px solid #e2e8f0',
+      borderBottom: '1px solid #e2e8f0',
+      padding: '24px 0',
+    }}>
+      <div style={{
+        maxWidth: '1200px',
+        margin: '0 auto',
+        padding: '0 48px',
+        display: 'flex',
+        alignItems: 'center',
+        gap: '48px',
+        flexWrap: 'wrap',
+        justifyContent: 'center',
+      }}>
+        <span style={{
+          fontSize: '0.7rem',
+          letterSpacing: '0.15em',
+          textTransform: 'uppercase',
+          color: '#94a3b8',
+          fontWeight: 600,
+          whiteSpace: 'nowrap',
+        }}>Trusted Partners</span>
+        {[
+          { src: '/assets/partners/feedn.png', alt: 'FeedN' },
+          { src: '/assets/partners/smartfarm.png', alt: 'Smart Farm' },
+          { src: '/assets/partners/tec.png', alt: 'TEC' },
+          { src: '/assets/partners/s2t.png', alt: 'S2T' },
+          { src: '/assets/partners/startupnest.png', alt: 'Startup Nest' },
+        ].map(p => (
+          <img
+            key={p.alt}
+            src={p.src}
+            alt={p.alt}
+            style={{
+              height: '36px',
+              width: 'auto',
+              objectFit: 'contain',
+              opacity: 0.65,
+              filter: 'grayscale(100%)',
+              transition: 'opacity 0.2s, filter 0.2s',
+            }}
+            onMouseEnter={e => {
+              e.currentTarget.style.opacity = '1'
+              e.currentTarget.style.filter = 'grayscale(0%)'
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.opacity = '0.65'
+              e.currentTarget.style.filter = 'grayscale(100%)'
+            }}
+          />
+        ))}
+      </div>
+    </div>
+  </>
   )
 }
