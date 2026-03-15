@@ -9,11 +9,11 @@ const sectors = [
 ]
 
 const sectorVideos = [
-  '/assets/videos/20606524-uhd_3840_2160_24fps.mp4', // 0 Government
-  '/assets/videos/3365440-uhd_3840_2160_30fps.mp4', // 1 Agribusiness
-  '/assets/videos/20606524-uhd_3840_2160_24fps.mp4', // 2 Water
-  '/assets/videos/13359010_1920_1080_50fps.mp4',    // 3 Environmental
-  '/assets/videos/13359010_1920_1080_50fps.mp4',    // 4 Energy
+  '/assets/videos/20606524-uhd_3840_2160_24fps.mp4',
+  '/assets/videos/3365440-uhd_3840_2160_30fps.mp4',
+  '/assets/videos/20606524-uhd_3840_2160_24fps.mp4',
+  '/assets/videos/13359010_1920_1080_50fps.mp4',
+  '/assets/videos/13359010_1920_1080_50fps.mp4',
 ]
 
 export default function Sectors({ dark = false }) {
@@ -36,35 +36,58 @@ export default function Sectors({ dark = false }) {
   }
 
   const activeIndex = open !== null ? sectors.findIndex(s => s.id === open) : 0
-  const activeSector = sectors[activeIndex]
 
   return (
     <section id="sectors" style={{ position: 'relative', overflow: 'hidden', background: t.bgAlt }}>
-      <div style={{ height: '1px', background: t.divider }} />
-      <div className="container" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
-        <div style={{ marginBottom: '36px' }}>
-          <div style={{
-            display: 'inline-flex', alignItems: 'center', gap: '8px',
-            background: t.bgCard, padding: '5px 14px', borderRadius: '100px', marginBottom: '20px',
-          }}>
-            <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: t.blue }} />
-            <span style={{ fontSize: '0.62rem', letterSpacing: '0.25em', textTransform: 'uppercase', color: t.blue, fontWeight: 600 }}>Who We Serve</span>
+      <video
+        key={activeIndex}
+        autoPlay
+        loop
+        muted
+        playsInline
+        style={{
+          position: 'absolute',
+          top: 0, left: 0,
+          width: '100%', height: '100%',
+          objectFit: 'cover',
+          zIndex: 0,
+          opacity: 0.75,
+        }}
+      >
+        <source src={sectorVideos[activeIndex]} type="video/mp4" />
+      </video>
+      <div style={{
+        position: 'absolute',
+        top: 0, left: 0,
+        width: '100%', height: '100%',
+        background: 'linear-gradient(to right, rgba(255,255,255,0.55) 35%, rgba(255,255,255,0.05) 100%)',
+        zIndex: 0,
+      }} />
+      <div style={{ position: 'relative', zIndex: 1 }}>
+        <div style={{ height: '1px', background: t.divider }} />
+        <div className="container" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
+          <div style={{ marginBottom: '36px' }}>
+            <div style={{
+              display: 'inline-flex', alignItems: 'center', gap: '8px',
+              background: t.bgCard, padding: '5px 14px', borderRadius: '100px', marginBottom: '20px',
+            }}>
+              <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: t.blue }} />
+              <span style={{ fontSize: '0.62rem', letterSpacing: '0.25em', textTransform: 'uppercase', color: t.blue, fontWeight: 600 }}>Who We Serve</span>
+            </div>
+            <h2 style={{
+              fontFamily: "'Bricolage Grotesque', sans-serif",
+              fontSize: 'clamp(2rem, 3.5vw, 3.2rem)', fontWeight: 700,
+              lineHeight: 1.1, letterSpacing: '-0.025em', color: t.heading, maxWidth: '560px',
+            }}>
+              Built for the Sectors<br />
+              <span style={{ background: t.grad, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+                That Shape the Planet
+              </span>
+            </h2>
           </div>
-          <h2 style={{
-            fontFamily: "'Bricolage Grotesque', sans-serif",
-            fontSize: 'clamp(2rem, 3.5vw, 3.2rem)', fontWeight: 700,
-            lineHeight: 1.1, letterSpacing: '-0.025em', color: t.heading, maxWidth: '560px',
-          }}>
-            Built for the Sectors<br />
-            <span style={{ background: t.grad, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
-              That Shape the Planet
-            </span>
-          </h2>
-        </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 45%', gap: '64px', alignItems: 'start' }}>
-          {/* Accordion - max 680px */}
-          <div style={{ maxWidth: '680px' }}>
+          {/* Accordion - full width */}
+          <div>
             {sectors.map(s => (
               <div key={s.id} style={{ borderBottom: `1px solid ${t.border}` }}>
                 <button onClick={() => setOpen(s.id === open ? null : s.id)} style={{
@@ -104,55 +127,6 @@ export default function Sectors({ dark = false }) {
                 )}
               </div>
             ))}
-          </div>
-
-          {/* Video panel */}
-          <div style={{
-            position: 'sticky',
-            top: '120px',
-            width: '100%',
-            height: '420px',
-            borderRadius: '16px',
-            overflow: 'hidden',
-          }}>
-            <video
-              key={activeIndex}
-              autoPlay
-              loop
-              muted
-              playsInline
-              style={{
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                display: 'block',
-              }}
-            >
-              <source src={sectorVideos[activeIndex]} type="video/mp4" />
-            </video>
-            <div style={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              width: '100%',
-              height: '100%',
-              background: 'linear-gradient(to top, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.1) 100%)',
-              zIndex: 1,
-            }} />
-            <div style={{
-              position: 'absolute',
-              bottom: '20px',
-              left: '20px',
-              zIndex: 2,
-              fontFamily: "'Outfit', sans-serif",
-              fontSize: '14px',
-              fontWeight: 600,
-              letterSpacing: '1px',
-              textTransform: 'uppercase',
-              color: '#fff',
-            }}>
-              {activeSector.name}
-            </div>
           </div>
         </div>
       </div>
