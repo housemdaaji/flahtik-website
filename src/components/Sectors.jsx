@@ -38,7 +38,24 @@ export default function Sectors({ dark = false }) {
   const active = sectors.find(s => s.id === open)
 
   return (
-    <section id="sectors" style={{ background: t.bgAlt }}>
+    <section id="sectors" style={{ position: 'relative', overflow: 'hidden', background: t.bgAlt }}>
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        style={{
+          position: 'absolute',
+          top: 0, left: 0,
+          width: '100%', height: '100%',
+          objectFit: 'cover',
+          zIndex: 0,
+          opacity: 0.08,
+        }}
+      >
+        <source src="/assets/videos/20606524-uhd_3840_2160_24fps.mp4" type="video/mp4" />
+      </video>
+      <div style={{ position: 'relative', zIndex: 1 }}>
       <div style={{ height: '1px', background: t.divider }} />
       <div className="container" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
         <div style={{ marginBottom: '36px' }}>
@@ -167,6 +184,7 @@ export default function Sectors({ dark = false }) {
             </div>
           )}
         </div>
+      </div>
       </div>
     </section>
   )

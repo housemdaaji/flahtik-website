@@ -22,6 +22,23 @@ export default function Hero({ dark = false }) {
       background: t.bg, display: 'flex',
       alignItems: 'center',
     }}>
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        style={{
+          position: 'absolute',
+          top: 0, left: 0,
+          width: '100%', height: '100%',
+          objectFit: 'cover',
+          zIndex: 0,
+          opacity: 0.12,
+        }}
+      >
+        <source src="/assets/videos/3365440-uhd_3840_2160_30fps.mp4" type="video/mp4" />
+      </video>
+      <div style={{ position: 'relative', zIndex: 1 }}>
       {/* Dot grid */}
       <div style={{
         position: 'absolute', inset: 0,
@@ -129,6 +146,7 @@ export default function Hero({ dark = false }) {
           background: `linear-gradient(to bottom, ${t.blue}, transparent)`,
         }} />
         <span style={{ fontSize: '0.58rem', letterSpacing: '0.2em', textTransform: 'uppercase' }}>Scroll</span>
+      </div>
       </div>
     </section>
   )
