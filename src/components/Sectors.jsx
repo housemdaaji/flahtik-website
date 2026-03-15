@@ -9,11 +9,11 @@ const sectors = [
 ]
 
 const sectorVideos = [
-  '/assets/videos/20606524-uhd_3840_2160_24fps.mp4',
-  '/assets/videos/3365440-uhd_3840_2160_30fps.mp4',
-  '/assets/videos/20606524-uhd_3840_2160_24fps.mp4',
-  '/assets/videos/13359010_1920_1080_50fps.mp4',
-  '/assets/videos/13359010_1920_1080_50fps.mp4',
+  '/assets/videos/goverment%20and%20public%20sector.mp4',
+  '/assets/videos/agribusiness.mp4',
+  '/assets/videos/water%20utilities.mp4',
+  '/assets/videos/environmental%20and%20conservation.mp4',
+  '/assets/videos/energy%20and%20infra.mp4',
 ]
 
 export default function Sectors({ dark = false }) {

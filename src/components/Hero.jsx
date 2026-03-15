@@ -36,7 +36,7 @@ export default function Hero({ dark = false }) {
           opacity: 0.75,
         }}
       >
-        <source src="/assets/videos/3365440-uhd_3840_2160_30fps.mp4" type="video/mp4" />
+        <source src="/assets/videos/top%20website.mp4" type="video/mp4" />
       </video>
       <div style={{
         position: 'absolute',
