@@ -24,6 +24,29 @@ export default function About({ dark = false }) {
   }
   return (
     <section id="about" style={{ position: 'relative', overflow: 'hidden', background: t.bg }}>
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        style={{
+          position: 'absolute',
+          top: 0, left: 0,
+          width: '100%', height: '100%',
+          objectFit: 'cover',
+          zIndex: 0,
+          opacity: 0.75,
+        }}
+      >
+        <source src="/assets/videos/Built%20for%20planet.mp4" type="video/mp4" />
+      </video>
+      <div style={{
+        position: 'absolute',
+        top: 0, left: 0,
+        width: '100%', height: '100%',
+        background: 'linear-gradient(to right, rgba(255,255,255,0.55) 35%, rgba(255,255,255,0.05) 100%)',
+        zIndex: 0,
+      }} />
       <div style={{ position: 'relative', zIndex: 1 }}>
       <div style={{ height: '1px', background: t.divider }} />
       <div className="container" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
@@ -41,47 +64,20 @@ export default function About({ dark = false }) {
         </div>
 
         {/* Story */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: '64px', alignItems: 'start', marginBottom: '48px' }}>
-          <div>
-            <p style={{ fontSize: '1.05rem', color: t.body, lineHeight: 1.9, marginBottom: '20px', fontWeight: 400 }}>
-              Flahtik was founded in 2019 with a single conviction — that the gap between
-              what the Earth is telling us and what decisions get made is a problem worth solving.
-              We started in the Middle East because the region's challenges are the world's challenges:
-              water scarcity, desertification, food security, and the pressure to grow sustainably
-              in an arid environment.
-            </p>
-            <p style={{ fontSize: '1.05rem', color: t.body, lineHeight: 1.9, fontWeight: 400 }}>
-              Today we operate across four domains and six continents, delivering spatial intelligence
-              to governments, agribusinesses, water utilities, and environmental organisations. Every
-              model we build, every map we produce, every alert we send is rooted in one purpose —
-              helping people make better decisions about the living planet.
-            </p>
-          </div>
-
-          {/* Image placeholder */}
-          <div style={{
-            backgroundImage: 'url(/images/hands-earth.png)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            position: 'relative',
-            overflow: 'hidden',
-            aspectRatio: '4/3',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: '16px',
-          }}>
-            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(10,22,40,0.5), rgba(10,22,40,0.75))' }} />
-            <div style={{ position: 'relative', zIndex: 10, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '16px' }}>
-              <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="rgba(37,99,235,0.4)" strokeWidth="0.8">
-                <circle cx="12" cy="12" r="10" /><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20" />
-              </svg>
-              <span style={{ fontSize: '0.62rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.2)' }}>
-                Tunis HQ — Est. 2019
-              </span>
-            </div>
-          </div>
+        <div style={{ marginBottom: '48px' }}>
+          <p style={{ fontSize: '1.05rem', color: t.body, lineHeight: 1.9, marginBottom: '20px', fontWeight: 400 }}>
+            Flahtik was founded in 2019 with a single conviction — that the gap between
+            what the Earth is telling us and what decisions get made is a problem worth solving.
+            We started in the Middle East because the region's challenges are the world's challenges:
+            water scarcity, desertification, food security, and the pressure to grow sustainably
+            in an arid environment.
+          </p>
+          <p style={{ fontSize: '1.05rem', color: t.body, lineHeight: 1.9, fontWeight: 400 }}>
+            Today we operate across four domains and six continents, delivering spatial intelligence
+            to governments, agribusinesses, water utilities, and environmental organisations. Every
+            model we build, every map we produce, every alert we send is rooted in one purpose —
+            helping people make better decisions about the living planet.
+          </p>
         </div>
 
         {/* Values */}
