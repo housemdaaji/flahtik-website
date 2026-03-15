@@ -33,11 +33,18 @@ export default function Hero({ dark = false }) {
           width: '100%', height: '100%',
           objectFit: 'cover',
           zIndex: 0,
-          opacity: 0.12,
+          opacity: 0.35,
         }}
       >
         <source src="/assets/videos/3365440-uhd_3840_2160_30fps.mp4" type="video/mp4" />
       </video>
+      <div style={{
+        position: 'absolute',
+        top: 0, left: 0,
+        width: '100%', height: '100%',
+        background: 'linear-gradient(to right, rgba(255,255,255,0.85) 40%, rgba(255,255,255,0.2) 100%)',
+        zIndex: 0,
+      }} />
       <div style={{ position: 'relative', zIndex: 1 }}>
       {/* Dot grid */}
       <div style={{
