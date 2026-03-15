@@ -35,11 +35,18 @@ export default function About({ dark = false }) {
           width: '100%', height: '100%',
           objectFit: 'cover',
           zIndex: 0,
-          opacity: 0.08,
+          opacity: 0.75,
         }}
       >
         <source src="/assets/videos/13359010_1920_1080_50fps.mp4" type="video/mp4" />
       </video>
+      <div style={{
+        position: 'absolute',
+        top: 0, left: 0,
+        width: '100%', height: '100%',
+        background: 'linear-gradient(to right, rgba(255,255,255,0.55) 35%, rgba(255,255,255,0.05) 100%)',
+        zIndex: 0,
+      }} />
       <div style={{ position: 'relative', zIndex: 1 }}>
       <div style={{ height: '1px', background: t.divider }} />
       <div className="container" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
