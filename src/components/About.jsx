@@ -97,11 +97,11 @@ export default function About() {
             <p style={{ fontSize: '1rem', color: '#1e293b', fontWeight: 400 }}>We are always looking for exceptional people in geospatial science, AI, and climate tech.</p>
           </div>
           <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-            <a href="mailto:hello@flahtik.com" style={{ padding: '12px 24px', background: 'linear-gradient(135deg, #2563eb, #06b6d4)', color: '#fff', fontSize: '0.78rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em' }}>
+            <a href="mailto:contact@flahtik.com" style={{ padding: '12px 24px', background: 'linear-gradient(135deg, #2563eb, #06b6d4)', color: '#fff', fontSize: '0.78rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em' }}>
               View Open Roles →
             </a>
-            <a href="mailto:hello@flahtik.com" style={{ padding: '12px 20px', border: '1.5px solid #e2e8f0', color: '#1e293b', fontSize: '0.88rem', fontWeight: 500 }}>
-              hello@flahtik.com
+            <a href="mailto:contact@flahtik.com" style={{ padding: '12px 20px', border: '1.5px solid #e2e8f0', color: '#1e293b', fontSize: '0.88rem', fontWeight: 500 }}>
+              contact@flahtik.com
             </a>
           </div>
         </div>

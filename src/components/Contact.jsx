@@ -134,7 +134,7 @@ export default function Contact() {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1px', background: '#e2e8f0', border: '1px solid #e2e8f0' }}>
           {[
             { label: 'Headquarters', value: 'Tunis, Tunisia' },
-            { label: 'Email', value: 'hello@flahtik.com', href: 'mailto:hello@flahtik.com' },
+            { label: 'Email', value: 'contact@flahtik.com', href: 'mailto:contact@flahtik.com' },
             { label: 'Response Time', value: 'Within 1 business day' },
           ].map(d => (
             <div key={d.label} style={{ background: '#ffffff', padding: '28px 24px' }}>

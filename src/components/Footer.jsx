@@ -2,7 +2,7 @@ const cols = [
   { title: 'Solutions', links: [['Spatial Technology', '#services'], ['Environmental Intel', '#services'], ['Precision Agriculture', '#services'], ['Water Management', '#services']] },
   { title: 'Platform', links: [['How It Works', '#platform'], ['Data Pipeline', '#platform'], ['AI Models', '#platform'], ['Request Demo', '#contact']] },
   { title: 'Sectors', links: [['Government', '#sectors'], ['Agribusiness', '#sectors'], ['Water Utilities', '#sectors'], ['Conservation', '#sectors']] },
-  { title: 'Company', links: [['About', '#about'], ['Insights', '#insights'], ['Careers', 'mailto:hello@flahtik.com'], ['Contact', '#contact']] },
+  { title: 'Company', links: [['About', '#about'], ['Insights', '#insights'], ['Careers', 'mailto:contact@flahtik.com'], ['Contact', '#contact']] },
 ]
 
 export default function Footer() {
@@ -20,7 +20,7 @@ export default function Footer() {
             <div style={{ display: 'flex', gap: '10px' }}>
               {[
                 { href: 'https://github.com/housemdaaji', path: 'M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22' },
-                { href: 'mailto:hello@flahtik.com', path: 'M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2zM22 6l-10 7L2 6' },
+                { href: 'mailto:contact@flahtik.com', path: 'M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2zM22 6l-10 7L2 6' },
                 { href: 'https://www.linkedin.com/company/flah-tik/', path: 'M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z M4 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4z' },
                 { href: 'https://www.facebook.com/FLAHTIK/', path: 'M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z' },
               ].map((s, i) => (
